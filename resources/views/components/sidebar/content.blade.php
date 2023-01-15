@@ -20,7 +20,7 @@
         :isActive="request()->routeIs('cart.view')"
     >
         <x-slot name="icon">
-            <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <i class="fa-solid fa-cart-shopping flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
         </x-slot>
     </x-sidebar.link>
 

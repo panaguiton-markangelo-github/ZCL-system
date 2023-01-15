@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('professionals', function (Blueprint $table) {
+        Schema::create('recommended', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
-            $table->string('position');
-            $table->string('office');
-            $table->string('office_address');
-            $table->string('tel_no_work');
+            $table->string('rec_by');
+            $table->string('rec_by_position');
+            $table->string('rec_by_office');
+            $table->string('rec_by_office_address');
+            $table->string('rec_by_home_address');
+            $table->string('rec_by_tel_no_work');
+            $table->string('rec_by_cel_no');
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professionals');
+        Schema::dropIfExists('recommended');
     }
 };

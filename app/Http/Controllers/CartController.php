@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Books;
+use App\Models\Member;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,7 @@ class CartController extends Controller
 {
     public function index(){
         $cart = Cart::content();
+
         return view('cart_view', compact('cart'));
     }
 
@@ -19,7 +21,7 @@ class CartController extends Controller
             $book->id, 
             $book->title,
             $request->input('quantity'),
-            $book->price 
+            0
             );
         
         return redirect()->route('dashboard')->with('message', 'Successfully added!');

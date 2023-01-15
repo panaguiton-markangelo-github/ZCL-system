@@ -105,7 +105,7 @@
                     </p>
                     <div class="btn-box">
                       @auth
-                        <a href="#" class="btn-1">
+                        <a href="{{ route('dashboard') }}" class="btn-1">
                           <img src="images/search-icon.png" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 
@@ -146,7 +146,7 @@
                     </p>
                     <div class="btn-box">
                       @auth
-                        <a href="#" class="btn-1">
+                        <a href="{{ route('dashboard') }}" class="btn-1">
                           <img src="images/search-icon.png" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 
@@ -185,7 +185,7 @@
                     </p>
                     <div class="btn-box">
                       @auth
-                        <a href="#" class="btn-1">
+                        <a href="{{ route('dashboard') }}" class="btn-1">
                           <img src="images/search-icon.png" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Member;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,12 +26,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        
         //to allow user to login via loginrequest controller
         $request->authenticate();
 
         $request->session()->regenerate();
 
+        //check if the current user has already filed for member card application or is already a member
+        if ($member_data = Member::where('user_id', auth()->user()->id)->get()){
+            session(['member' => $member_data], 'none');
+        }
+        
+        
+
         return redirect()->route('dashboard');
+
+
     }
 
     /**
@@ -43,6 +54,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+        
+        session()->flush();
 
         return redirect('/');
     }

@@ -13,13 +13,29 @@
                 
             </x-button> --}}
 
+            <!-- NOTE HERE! START BY CONNECTING THIS VIEW TO DB
+                A.K.A. ROUTE AND CONTROLLER TO STORE THE DATA IN THE DB
+            -->
         </div>
     </x-slot>
 
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
-        <form method="POST" action="{{ route('login') }}">
+        {{-- @if (session('message') == 'Borrower card application was successfully sent for verification!')
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2000)"
+                class="text-sm text-green-600 dark:text-green-400 mb-2"
+            >
+                {{ __('Borrower card application was successfully sent for verification!') }}
+            </p>
+        @endif --}}
+
+        <form method="POST" action="{{ route('borrower.store') }}">
             @csrf
+            <input type="text" name="status" id="status" value="PENDING" hidden>
 
             <div class="grid grid-cols-3 gap-3">
                 <!-- First Name -->
@@ -38,7 +54,14 @@
                         required
                         autofocus
                     />
-                    
+
+                    @error('firstName')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('firstName')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror     
                 </div>
 
                 <!-- Last Name-->
@@ -443,10 +466,30 @@
                         class="block w-full"
                         type="text"
                         name="rec_by_tel_no_work"
-                        :value="old('tel_no_work')"
+                        :value="old('rec_by_tel_no_work')"
                       
                         autofocus
                         placeholder="{{ __('Tel.No (Work)') }}"
+                    />
+                    
+                </div>
+
+                <!-- Cel.No -->
+                <div class="space-y-2">
+                    <x-form.label
+                        for="rec_by_cel_no"
+                        :value="__('Cel. No')"
+                    />
+
+                    <x-form.input
+                        id="rec_by_cel_no"
+                        class="block w-full"
+                        type="text"
+                        name="rec_by_cel_no"
+                        :value="old('rec_by_cel_no')"
+                      
+                        autofocus
+                        placeholder="{{ __('Cel. No') }}"
                     />
                     
                 </div>

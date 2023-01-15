@@ -18,15 +18,47 @@
 
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
-        @if(session('message'))
-            <div class="mb-5 text-green-600">
-                {{session('message')}}
-            </div>
+        @if(session('message') == 'Borrower card application was successfully sent for verification!') 
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2000)"
+                class="text-sm text-green-600 dark:text-green-400 mb-2"
+            >
+                {{ __(session('message')) }}
+            </p>
         @endif
 
-        <x-button href="{{ route('borrower.app') }}" class="mb-6">
-            <span>{{ __('Borrow') }}</span>
-        </x-button>
+        @if(session('message') == 'Successfully deleted!') 
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2000)"
+                class="text-sm text-green-600 dark:text-green-400 mb-2"
+            >
+                {{ __(session('message')) }}
+            </p>
+        @endif
+        
+        <!-- If user has already sent a member card app, the user should not be redirected 
+            to the member card app anymore
+         -->
+        @if ($cart->count() <= 0)
+            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty!</p>
+        @else
+            @if (session('member.0.id'))
+                <x-button href="#" class="mb-6">
+                    <span>{{ __('Borrow') }}</span>
+                </x-button>
+            @else
+                <x-button href="{{ route('borrower.app') }}" class="mb-6">
+                    <span>{{ __('Borrow') }}</span>
+                </x-button>
+            @endif
+        @endif
+        
 
         <table id="table" class="display" style="width:100%;">
                     <thead>

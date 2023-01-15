@@ -17,15 +17,21 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
+        Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}} {{session('member.0.status')}}
     </div>
 
     <div class="p-6 mt-7 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
         @if(session('message'))
-            <div class="mb-5 text-green-600">
-                {{session('message')}}
-            </div>
-            
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2000)"
+                class="text-sm text-green-600 dark:text-green-400 mb-2"
+            >
+                {{ __(session('message')) }}
+            </p>
+                
         @endif
         <table id="table" class="display" style="width:100%;">
                     <thead>
