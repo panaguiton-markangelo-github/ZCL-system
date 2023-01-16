@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookRequestController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowerAppController;
 use App\Http\Controllers\CartController;
@@ -48,6 +49,9 @@ Route::post('/catalog/cart/remove', [CartController::class, 'remove'])->middlewa
 Route::get('/borrower/application', [BorrowerAppController::class, 'create'])->middleware(['auth', 'verified'])->name('borrower.app');
 Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->middleware(['auth', 'verified'])->name('borrower.store');
 
+//Borrower Book Requests routes
+Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
+Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
 
 
 

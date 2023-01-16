@@ -13,6 +13,12 @@ class BooksController extends Controller
         // $books = Books::where('email', '!=', "")->orderBy('firstName', 'asc')->limit(2)->get();
         $books = Books::all();
         $cart = Cart::content();
+
+        //check if the current user has already filed for member card application or is already a member
+        if ($member_data = Member::where('user_id', auth()->user()->id)->get()){
+            session(['member' => $member_data], 'none');
+        }
+        
         return view('dashboard', compact('books', 'cart'));
     }
 

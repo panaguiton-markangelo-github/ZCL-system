@@ -13,11 +13,18 @@
                 
             </x-button> --}}
 
+            <!-- ALMOST DONE HERE IN PUBLIC USER SIDE! LAST ONE IS TO 
+                MAKE THE STAR RATING AND CONNECT IT TO DB ALSO. CONNECT ALL THE FORMS-->
+
         </div>
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}} {{session('member.0.status')}}
+        <x-button href="{{ route('book_req.view') }}" class="justify-center w-full">
+            <i class="fa-solid fa-circle-info  mx-2"></i>
+            <span>{{ __('book request view') }}</span>
+        </x-button>
+        Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
     </div>
 
     <div class="p-6 mt-7 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">

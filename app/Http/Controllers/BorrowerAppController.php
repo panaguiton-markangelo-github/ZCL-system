@@ -33,6 +33,36 @@ class BorrowerAppController extends Controller
             "id_card" => ['required']
         ]);
 
+        if($request->stud_prof == "0"){
+            $request->validate([
+                "school" => ['required'],
+                "oos" => ['required'],
+                "school_level" => ['required'],
+                "grade_year_level" => ['required'],
+            ]);
+            
+
+        } elseif($request->stud_prof == "1"){
+            $request->validate([
+                "position" => ['required'],
+                "office" => ['required'],
+                "office_address" => ['required'],
+                "tel_no_work" => ['required'],
+            ]);
+        }
+
+        if($request->type == "2"){
+            $request->validate([
+                "rec_by" => ['required'],
+                "rec_by_position" => ['required'],
+                "rec_by_office" => ['required'],
+                "rec_by_office_address" => ['required'],
+                "rec_by_home_address" => ['required'],
+                "rec_by_tel_no_work" => ['required'],
+                "rec_by_cel_no" => ['required'],
+            ]);
+        }
+
         $member = Member::create([
             "user_id" => auth()->user()->id,
             "firstName" => $request->firstName,

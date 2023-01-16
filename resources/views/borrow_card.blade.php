@@ -13,9 +13,6 @@
                 
             </x-button> --}}
 
-            <!-- NOTE HERE! START BY CONNECTING THIS VIEW TO DB
-                A.K.A. ROUTE AND CONTROLLER TO STORE THE DATA IN THE DB
-            -->
         </div>
     </x-slot>
 
@@ -205,6 +202,14 @@
                         placeholder="{{ __('School') }}"
                         autofocus
                     />
+
+                    @error('school')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('school')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -224,6 +229,14 @@
                     <option value="YES"> YES </option>
                  
                     </select>
+
+                    @error('oos')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('oos')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -244,6 +257,13 @@
                     <option value="College"> College </option>
                     </select>
                     
+                    @error('school_level')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('school_level')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -263,6 +283,14 @@
                         autofocus
                         placeholder="{{ __('Grade/Year Level') }}"
                     />
+
+                    @error('grade_year_level')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('grade_year_level')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -288,6 +316,14 @@
                         placeholder="{{ __('Position') }}"
                         autofocus
                     />
+
+                    @error('position')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('position')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -308,6 +344,14 @@
                         autofocus
                         placeholder="{{ __('Office') }}"
                     />
+
+                    @error('office')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('office')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -328,6 +372,14 @@
                         autofocus
                         placeholder="{{ __('Office Address') }}"
                     />
+
+                    @error('office_address')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('office_address')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -348,6 +400,14 @@
                         autofocus
                         placeholder="{{ __('Tel.No (Work)') }}"
                     />
+
+                    @error('tel_no_work')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('tel_no_work')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -373,6 +433,14 @@
                         placeholder="{{ __('Recommended By') }}"
                         autofocus
                     />
+
+                    @error('rec_by')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -391,6 +459,14 @@
                         placeholder="{{ __('Position') }}"
                         autofocus
                     />
+
+                    @error('rec_by_position')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_position')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -411,6 +487,14 @@
                         autofocus
                         placeholder="{{ __('Office') }}"
                     />
+
+                    @error('rec_by_office')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_office')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -431,6 +515,14 @@
                         autofocus
                         placeholder="{{ __('Office Address') }}"
                     />
+
+                    @error('rec_by_office_address')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_office_address')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -451,6 +543,14 @@
                         autofocus
                         placeholder="{{ __('Home Address') }}"
                     />
+
+                    @error('rec_by_home_address')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_home_address')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -471,6 +571,14 @@
                         autofocus
                         placeholder="{{ __('Tel.No (Work)') }}"
                     />
+
+                    @error('rec_by_tel_no_work')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_tel_no_work')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
@@ -491,6 +599,14 @@
                         autofocus
                         placeholder="{{ __('Cel. No') }}"
                     />
+
+                    @error('rec_by_cel_no')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('rec_by_cel_no')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                    @enderror
                     
                 </div>
 
