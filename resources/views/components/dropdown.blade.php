@@ -26,18 +26,7 @@
     }
 @endphp
 
-
-<div>
-    <a href="{{ route('cart.view') }}">
-        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-        Cart ({{ Cart::content()->count() }})
-    </a>
-</div>
-
-
- <div>
-    <i class="fa-regular fa-bell"></i>
- </div>
+ 
 
 <div
     class="relative"

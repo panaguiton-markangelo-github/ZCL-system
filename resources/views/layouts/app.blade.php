@@ -29,6 +29,7 @@
 </head>
 
 <body class="font-sans antialiased">
+    <x-message />
     <div
         x-data="mainState"
         :class="{ dark: isDarkMode }"

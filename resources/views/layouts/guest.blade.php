@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <x-message />
     <div
         x-data="mainState"
         class="font-sans antialiased"

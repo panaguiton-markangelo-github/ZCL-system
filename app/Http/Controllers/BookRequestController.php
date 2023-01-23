@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookBorReq;
+use App\Models\User;
+use App\Notifications\RequestNotification;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class BookRequestController extends Controller
 {
@@ -14,6 +18,8 @@ class BookRequestController extends Controller
     }
     
     public function store(Request $request){
+        
+
         $request->validate([
             "book_reqs" => ['required']
         ]);
@@ -32,6 +38,26 @@ class BookRequestController extends Controller
                ]);
             }  
         }
+
+        $date_time = Carbon::now()->toDateTimeString();
+
+        // Notification::send($user, new RequestNotification("Request to borrow books: $date_time"));
+
+        $cur_user = auth()->user()->id;
+
+        $user = User::find($cur_user);
+
+        $info = [
+                'info' => "Request to borrow books (PENDING): $date_time",
+                'id' => auth()->user()->id,
+
+        ];
+        
+
+        $user->notify(new RequestNotification($info));
+
+        Cart::destroy();
+        
         
         return redirect()->route('dashboard')->with('message', 'Book Borrow Request was successfully sent for verification!');
     }

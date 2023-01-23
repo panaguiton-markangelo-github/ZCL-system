@@ -20,10 +20,6 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        <x-button href="{{ route('book_req.view') }}" class="justify-center w-full">
-            <i class="fa-solid fa-circle-info  mx-2"></i>
-            <span>{{ __('book request view') }}</span>
-        </x-button>
         Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
     </div>
 
@@ -33,7 +29,7 @@
                 x-data="{ show: true }"
                 x-show="show"
                 x-transition
-                x-init="setTimeout(() => show = false, 2000)"
+                x-init="setTimeout(() => show = false, 2500)"
                 class="text-sm text-green-600 dark:text-green-400 mb-2"
             >
                 {{ __(session('message')) }}

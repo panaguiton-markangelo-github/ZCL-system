@@ -52,6 +52,59 @@
             />
         </x-button>
 
+
+        <div>
+            <a href="{{ route('cart.view') }}">
+                <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                Cart ({{ Cart::content()->count() }})
+            </a>
+        </div>
+
+        <!--Notifications-->
+        <x-dropdown align="right" width="48">
+            
+            <x-slot name="trigger">
+                <button
+                    class="flex items-center p-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                    <div>{{ Auth::user()->name }}</div>
+
+                    <div class="ml-1">
+                       
+                        <i class="fa-regular fa-bell"></i>
+                        {{ auth()->user()->unreadNotifications->count() }}
+                        
+                    </div>
+                </button>
+            </x-slot>
+
+            <x-slot name="content">
+                {{-- Notifications here --}}
+                
+                @forelse (auth()->user()->unreadNotifications as $notification)
+
+                <a href="{{url('/markAsRead')}}/{{$notification->id}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out dark:focus:text-white dark:focus:bg-dark-eval-3 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-dark-eval-3">
+                    <p> {{ $notification->data['data'] }}</p>
+                    <hr>
+                </a>
+
+                @empty
+                <p> </p>
+                @endforelse 
+                    
+
+                @if (auth()->user()->unreadNotifications->count() == 0)
+                    <p style="font-size: 0.9rem;padding:.9rem;" class="text-center">No new notification</p>
+                    
+                @endif
+                    
+
+            </x-slot>
+            
+        </x-dropdown>
+        
+
+
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
                 <button
@@ -96,6 +149,7 @@
                 </form>
             </x-slot>
         </x-dropdown>
+
 
 
     </div>

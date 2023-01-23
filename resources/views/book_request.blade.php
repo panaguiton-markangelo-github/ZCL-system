@@ -8,8 +8,13 @@
         </div>
     </x-slot>
 
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        Note: Your request to borrow book/s will be processed by the librarian, kindly wait for the notification if your request was approved or declined.
+    </div>
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+
         <input type="checkbox" name = "select_all"  id="select_all">
         <label for="select_all">Book Title</label> 
 

@@ -33,12 +33,12 @@
 
         <div class="text-center">Shelf Location at Zamboanga City Library</div>
         <div class="flex justify-center">
-            <table class="table-fixed  border-separate border-spacing-8 text-center">
-                <thead class="bg-purple-500">
+            <table class="table-fixed border-separate border-spacing-8 text-center">
+                <thead>
                     <tr>
-                      <th>Collection</th>
-                      <th>Shelf Location</th>
-                      <th>Status</th>
+                      <th>Collection: </th>
+                      <th>Shelf Location: </th>
+                      <th>Status: </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,9 +54,13 @@
                 </tbody>
             </table>
         </div>
+
+        <hr> 
+        <br>
+
         @if ($cart->where('id', $book->id)->count())
             <div class="text-center" >
-                In Cart
+                This book is already on your cart.
             </div>
         @else
         <div>

@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
         
         
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('message', 'You have successfully logged in!');
 
 
     }
@@ -57,6 +57,6 @@ class AuthenticatedSessionController extends Controller
         
         session()->flush();
 
-        return redirect('/');
+        return redirect('/')->with('message', 'You have successfully logged out!');
     }
 }

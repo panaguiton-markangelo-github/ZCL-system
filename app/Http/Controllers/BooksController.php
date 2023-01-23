@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class BooksController extends Controller
 {
     public function index(){
-        // $books = Books::where('email', '!=', "")->orderBy('firstName', 'asc')->limit(2)->get();
-        $books = Books::all();
+        // $books = Books::where('status', '==', "AVAILABLE")->orderBy('created_at', 'DESC')->get();
+        $books = Books::where('status', '=', "AVAILABLE")->orderBy('id', 'DESC')->get();
+        // $books = Books::all();
         $cart = Cart::content();
 
         //check if the current user has already filed for member card application or is already a member

@@ -23,7 +23,7 @@
                 x-data="{ show: true }"
                 x-show="show"
                 x-transition
-                x-init="setTimeout(() => show = false, 2000)"
+                x-init="setTimeout(() => show = false, 2500)"
                 class="text-sm text-green-600 dark:text-green-400 mb-2"
             >
                 {{ __(session('message')) }}
@@ -35,7 +35,7 @@
                 x-data="{ show: true }"
                 x-show="show"
                 x-transition
-                x-init="setTimeout(() => show = false, 2000)"
+                x-init="setTimeout(() => show = false, 2500)"
                 class="text-sm text-green-600 dark:text-green-400 mb-2"
             >
                 {{ __(session('message')) }}
@@ -46,14 +46,16 @@
             to the member card app anymore
          -->
         @if ($cart->count() <= 0)
-            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty!</p>
+            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty! Kindly add at least one book to your cart.</p>
         @else
             @if (session('member.0.id'))
-                <x-button href="#" class="mb-6">
+                <x-button href="{{ route('book_req.view') }}" class="mb-6">
+                    <i class="fa-solid fa-check mx-2"></i>
                     <span>{{ __('Borrow') }}</span>
                 </x-button>
             @else
                 <x-button href="{{ route('borrower.app') }}" class="mb-6">
+                    <i class="fa-solid fa-check mx-2"></i>
                     <span>{{ __('Borrow') }}</span>
                 </x-button>
             @endif
@@ -80,6 +82,7 @@
                                 @csrf
                                 <input type="hidden" value="{{$item->rowId}}" name="row_id">
                                 <x-button class="justify-center w-full">
+                                    <i class="fa-solid fa-xmark mx-2"></i>
                                     <span>{{ __('Remove') }}</span>
                                 </x-button>
                             </form>

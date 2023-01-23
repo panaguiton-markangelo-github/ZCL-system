@@ -6,6 +6,9 @@ use App\Models\Member;
 use App\Models\Professional;
 use App\Models\Recommended;
 use App\Models\Student;
+use App\Models\User;
+use App\Notifications\RequestNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule as ValidationRule;
 
@@ -110,6 +113,21 @@ class BorrowerAppController extends Controller
         if ($member_data = Member::where('user_id', auth()->user()->id)->get()){
             session(['member' => $member_data], 'none');
         }
+
+        $date_time = Carbon::now()->toDateTimeString();
+
+        $cur_user = auth()->user()->id;
+
+        $user = User::find($cur_user);
+
+        $info = [
+                'info' => "Request for membership application (PENDING): $date_time",
+                'id' => auth()->user()->id,
+
+        ];
+        
+
+        $user->notify(new RequestNotification($info));
 
         return redirect()->route('cart.view')->with('message', 'Borrower card application was successfully sent for verification!');
 

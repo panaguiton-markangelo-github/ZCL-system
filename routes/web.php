@@ -54,6 +54,21 @@ Route::get('/book/request', [BookRequestController::class, 'create'])->middlewar
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
 
 
+//mark notification as read
+Route::get('/markAsRead/{id}', function($id){
+
+	$userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
+    //dd($userUnreadNotification);
+
+    if($userUnreadNotification){
+        $userUnreadNotification->markAsRead();
+    }
+
+	return redirect()->back();
+
+})->name('mark');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -16,8 +16,14 @@
         </div>
     </x-slot>
 
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+    You need first to fill out this membership form in order to request book/s to borrow.
+    <br>
+    Note: After submitting this form the libraian will now process your membership application, kindly wait for the notification if your request was approved or declined. You may still proceed on requesting to borrow books.
+    </div>
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         {{-- @if (session('message') == 'Borrower card application was successfully sent for verification!')
             <p
                 x-data="{ show: true }"
