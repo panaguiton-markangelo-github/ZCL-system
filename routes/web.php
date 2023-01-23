@@ -33,7 +33,7 @@ Route::get('/', function () {
     return view('landpage.index');
 });
 
-//public users routes
+//public users routes:
 
 //show all books to public user
 Route::get('/catalog', [BooksController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -52,6 +52,12 @@ Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->m
 //Borrower Book Requests routes
 Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
+
+
+//librarian for catalogin routes:
+
+//this is the next module you'll do.
+
 
 
 //mark notification as read
