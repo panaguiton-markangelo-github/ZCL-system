@@ -57,6 +57,6 @@ class AuthenticatedSessionController extends Controller
         
         session()->flush();
 
-        return redirect('/')->with('message', 'You have successfully logged out!');
+        return redirect()->route('login')->with('message', 'You have successfully logged out!');
     }
 }

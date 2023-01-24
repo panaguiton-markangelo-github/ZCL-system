@@ -22,6 +22,18 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+            if ($guard == 'librarians' && Auth::guard($guard)->check() && Auth::guard($guard)->user()->type == 1) {
+                return redirect()->route('head_librarian.dashboard');
+            }
+
+            if ($guard == 'librarians' && Auth::guard($guard)->check() && Auth::guard($guard)->user()->type == 2) {
+                return redirect()->route('borrowing_librarian.dashboard');
+            }
+
+            if ($guard == 'librarians' && Auth::guard($guard)->check() && Auth::guard($guard)->user()->type == 3) {
+                return redirect()->route('catalog_librarian.dashboard');
+            }
+
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }

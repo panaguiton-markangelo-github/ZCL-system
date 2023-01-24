@@ -11,6 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
     <style>
@@ -19,11 +21,15 @@
         }
     </style>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @livewireStyles --}}
 </head>
 
 <body class="font-sans antialiased">
+    <x-message />
     <div
         x-data="mainState"
         :class="{ dark: isDarkMode }"
@@ -32,7 +38,7 @@
     >
         <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200">
             <!-- Sidebar -->
-            <x-sidebar.sidebar />
+            <x-hlib.sidebar.sidebar />
 
             <!-- Page Wrapper -->
             <div
@@ -45,7 +51,7 @@
             >
 
                 <!-- Navbar -->
-                <x-navbar />
+                <x-hlib.navbar />
 
                 <!-- Page Heading -->
                 <header>
@@ -64,5 +70,7 @@
             </div>
         </div>
     </div>
+
+    {{-- @livewireScripts --}}
 </body>
 </html>

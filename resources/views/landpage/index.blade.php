@@ -67,8 +67,32 @@
                               </li>
                           @endif
 
+
                       @endauth
                     @endif
+
+                    @if (Route::has('librarian.login'))
+                      @auth('librarians')
+                        <li class="nav-item">
+                          <a href="{{ route('head_librarian.dashboard') }}" class="nav-link">Librarian Dashboard</a>
+                        </li>
+                         
+                      @else
+                        <li class="nav-item active">
+                          <a href="{{ route('librarian.login') }}" class="nav-link">Librarian Log in</a>
+                        </li>
+
+                          {{-- @if (Route::has('register'))
+                              <li class="nav-item active">
+                                <a href="{{ route('librarian.register') }}" class="nav-link">Librarian Register</a>
+                              </li>
+                          @endif --}}
+
+
+                      @endauth
+                    @endif
+                    
+                    
                                       
                   </ul>
                                    

@@ -5,6 +5,9 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowerAppController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DisplayDataController;
+use App\Http\Controllers\HLibrarianController;
+use App\Http\Controllers\LibrarianProfileController;
+use App\Http\Controllers\LibrariansController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -54,9 +57,49 @@ Route::get('/book/request', [BookRequestController::class, 'create'])->middlewar
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
 
 
-//librarian for catalogin routes:
+//librarians routes: Head librarian
 
-//this is the next module you'll do.
+
+Route::get('/head_librarian/dashboard', [HLibrarianController::class, 'home'])->middleware('auth:librarians')->name('head_librarian.dashboard');
+
+Route::get('/head_librarian/librarians', [HLibrarianController::class, 'index'])->middleware('auth:librarians')->name('librarians.view');
+
+Route::post('/head_librarian/add/librarian', [HLibrarianController::class, 'store'])->middleware('auth:librarians')->name('librarians.store');
+
+Route::get('/head_librarian/edit/librarian/{id}', [HLibrarianController::class, 'edit'])->middleware('auth:librarians')->name('librarians.edit');
+
+Route::put('/head_librarian/update/librarian/{id}', [HLibrarianController::class, 'update'])->middleware('auth:librarians')->name('librarians.update');
+
+Route::delete('/head_librarian/delete/librarian/{id}', [HLibrarianController::class, 'destroy'])->middleware('auth:librarians')->name('librarians.delete');
+
+
+//end of head librarian routes
+
+//-------------------------------------
+
+//librarians routes: Borrow librarian
+
+
+Route::get('/borrow_librarian/dashboard', function(){
+    return view('borrowing_librarian.dashboard_borrowing_librarian');
+})->middleware('auth:librarians')->name('borrowing_librarian.dashboard');
+
+
+//end of borrowing librarian routes
+
+
+//-------------------------------------
+
+//librarians routes: Catalog librarian
+
+Route::get('/catalog_librarian/dashboard', function(){
+    return view('catalog_librarian.dashboard_catalog_librarian');
+})->middleware('auth:librarians')->name('catalog_librarian.dashboard');
+
+
+//end of catalog librarian routes
+
+
 
 
 
@@ -82,6 +125,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth:librarians')->group(function () {
+    Route::get('/librarian/profile', [LibrarianProfileController::class, 'edit'])->name('librarian.profile.edit');
+    Route::patch('/librarian/profile', [LibrarianProfileController::class, 'update'])->name('librarian.profile.update');
+    Route::delete('/librarian/profile', [LibrarianProfileController::class, 'destroy'])->name('librarian.profile.destroy');
+});
+
+
 // // useless routes
 // // Just to demo sidebar dropdown links active states.
 // Route::get('/buttons/text', function () {
@@ -97,3 +147,4 @@ Route::middleware('auth')->group(function () {
 // })->middleware(['auth'])->name('buttons.text-icon');
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/libauth.php';

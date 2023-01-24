@@ -39,6 +39,7 @@ class BookRequestController extends Controller
             }  
         }
 
+        //send notification via database
         $date_time = Carbon::now()->toDateTimeString();
 
         // Notification::send($user, new RequestNotification("Request to borrow books: $date_time"));
@@ -56,8 +57,9 @@ class BookRequestController extends Controller
 
         $user->notify(new RequestNotification($info));
 
+        //end send notification via database
+
         Cart::destroy();
-        
         
         return redirect()->route('dashboard')->with('message', 'Book Borrow Request was successfully sent for verification!');
     }

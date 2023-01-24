@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('type');
+            // types : 1 = Head librarian, 2 = borrowing librarian, 3 = catalog librarian
+            $table->tinyInteger('type')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

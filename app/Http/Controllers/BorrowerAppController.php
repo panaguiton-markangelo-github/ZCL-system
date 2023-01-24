@@ -114,6 +114,7 @@ class BorrowerAppController extends Controller
             session(['member' => $member_data], 'none');
         }
 
+        //send notification via database
         $date_time = Carbon::now()->toDateTimeString();
 
         $cur_user = auth()->user()->id;
@@ -128,6 +129,8 @@ class BorrowerAppController extends Controller
         
 
         $user->notify(new RequestNotification($info));
+
+        //end send notification via database
 
         return redirect()->route('cart.view')->with('message', 'Borrower card application was successfully sent for verification!');
 

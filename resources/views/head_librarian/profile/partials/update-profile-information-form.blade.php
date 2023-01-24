@@ -9,13 +9,13 @@
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    <form id="send-verification" method="post" action="{{ route('librarian.verification.send') }}">
         @csrf
     </form>
 
     <form
         method="post"
-        action="{{ route('profile.update') }}"
+        action="{{ route('librarian.profile.update') }}"
         class="mt-6 space-y-6"
     >
         @csrf
