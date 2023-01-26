@@ -62,6 +62,7 @@ Route::post('/book/request', [BookRequestController::class, 'store'])->middlewar
 
 Route::get('/head_librarian/dashboard', [HLibrarianController::class, 'home'])->middleware('auth:librarians')->name('head_librarian.dashboard');
 
+//librarians module routes
 Route::get('/head_librarian/librarians', [HLibrarianController::class, 'index'])->middleware('auth:librarians')->name('librarians.view');
 
 Route::post('/head_librarian/add/librarian', [HLibrarianController::class, 'store'])->middleware('auth:librarians')->name('librarians.store');
@@ -71,7 +72,32 @@ Route::get('/head_librarian/edit/librarian/{id}', [HLibrarianController::class, 
 Route::put('/head_librarian/update/librarian/{id}', [HLibrarianController::class, 'update'])->middleware('auth:librarians')->name('librarians.update');
 
 Route::delete('/head_librarian/delete/librarian/{id}', [HLibrarianController::class, 'destroy'])->middleware('auth:librarians')->name('librarians.delete');
+//end of librarians module routes
 
+
+//announcements module routes
+Route::get('/head_librarian/announcements', [HLibrarianController::class, 'indexAnnounce'])->middleware('auth:librarians')->name('head_librarian.view.announcements');
+
+Route::post('/head_librarian/add/announcement', [HLibrarianController::class, 'storeAnnounce'])->middleware('auth:librarians')->name('announce.store');
+
+Route::get('/head_librarian/edit/announcement/{id}', [HLibrarianController::class, 'editAnnounce'])->middleware('auth:librarians')->name('announce.edit');
+
+Route::put('/head_librarian/update/announcement/{id}', [HLibrarianController::class, 'updateAnnounce'])->middleware('auth:librarians')->name('announce.update');
+
+Route::delete('/head_librarian/delete/announcement/{id}', [HLibrarianController::class, 'destroyAnnounce'])->middleware('auth:librarians')->name('announce.delete');
+//end of announcements module routes
+
+//events module routes
+Route::get('/head_librarian/events', [HLibrarianController::class, 'indexEvents'])->middleware('auth:librarians')->name('head_librarian.view.events');
+
+Route::post('/head_librarian/add/event', [HLibrarianController::class, 'storeEvents'])->middleware('auth:librarians')->name('events.store');
+
+Route::get('/head_librarian/edit/event/{id}', [HLibrarianController::class, 'editEvents'])->middleware('auth:librarians')->name('events.edit');
+
+Route::put('/head_librarian/update/event/{id}', [HLibrarianController::class, 'updateEvents'])->middleware('auth:librarians')->name('events.update');
+
+Route::delete('/head_librarian/delete/event/{id}', [HLibrarianController::class, 'destroyEvents'])->middleware('auth:librarians')->name('events.delete');
+//end of events module routes
 
 //end of head librarian routes
 

@@ -24,6 +24,26 @@
         </x-slot>
     </x-sidebar.link>
 
+    <x-sidebar.link
+        title="Events"
+        href="{{ route('head_librarian.view.events') }}"
+        :isActive="request()->routeIs('head_librarian.view.events')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-calendar-days flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
+        </x-slot>
+    </x-sidebar.link>
+
+    <x-sidebar.link
+        title="Announcements"
+        href="{{ route('head_librarian.view.announcements') }}"
+        :isActive="request()->routeIs('head_librarian.view.announcements')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-bullhorn flex-shrink-0 w-6 h-5"></i>
+        </x-slot>
+    </x-sidebar.link>
+
      
     {{-- <x-sidebar.dropdown
         title="Buttons"

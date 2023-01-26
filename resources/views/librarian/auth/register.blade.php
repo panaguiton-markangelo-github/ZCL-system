@@ -2,8 +2,18 @@
     <x-auth-card>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-        <h3 class="text-2xl font-bold text-center">Create an account for Head Librarian</h3>
 
+        @if ($hLibrarian != 0)
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ __('An account is already existing for head librarian ') }}
+                <a href="{{ route('librarian.login') }}" class="text-blue-500 hover:underline">
+                    {{ __('Login here') }}
+                </a>
+            </p>
+        @endif
+
+        @if ($hLibrarian == 0)
+        <h3 class="text-2xl font-bold text-center">Create an account for Head Librarian</h3>
         <form method="POST" action="{{ route('librarian.register') }}">
             @csrf
 
@@ -135,20 +145,29 @@
                 </div>
 
                 <div>
-                    <x-button class="justify-center w-full gap-2">
-                        <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
+                    @if ($hLibrarian == 0)
+                        <x-button class="justify-center w-full gap-2">
+                            <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
 
-                        <span>{{ __('Register') }}</span>
-                    </x-button>
+                            <span>{{ __('Register') }}</span>
+                        </x-button>
+                    @endif
+                    
                 </div>
 
-                <p class="text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Already registered?') }}
-                    <a href="{{ route('librarian.login') }}" class="text-blue-500 hover:underline">
-                        {{ __('Login') }}
-                    </a>
-                </p>
+                
+                @if ($hLibrarian == 0)
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {{ __('Go back') }}
+                        <a href="{{ route('librarian.login') }}" class="text-blue-500 hover:underline">
+                            {{ __('Here') }}
+                        </a>
+                    </p>
+                @endif
+
             </div>
         </form>
+        @endif
+        
     </x-auth-card>
 </x-librarian-guest-layout>

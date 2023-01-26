@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Librarians") }}
+                {{ __("Events") }}
             </h2>
 
             {{-- {{if auth() }} --}}
@@ -19,7 +19,7 @@
     <div class="p-6 mt-2 bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         <div class="sm:rounded-lg">
             <div class="max-w-xl">
-                @include('head_librarian.partials.add_librarian')
+                @include('head_librarian.partials.add_event')
             </div>
         </div>   
         
@@ -60,59 +60,56 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Date</th>
                             <th></th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-                     @foreach ($data as $user)
+                     @foreach ($data as $event)
                      
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$user->firstName}}</td>
-                        <td>{{$user->lastName}}</td>
-                        <td>{{$user->email}}</td>
-                        
-                        @if ($user->type == '2')
-                            <td>Librarian for Borrowing</td>
-                        @endif
-                        @if ($user->type == '3')
-                            <td>Librarian for Cataloging</td>
-                        @endif
+                        <td>{{$event->title}}</td>
+                        <td>{{$event->description}}</td>
+                        <td>{{$event->date}}</td>
+                       
 
                         <td>
-                           
+
                             <div class="sm:rounded-lg">
                                 <div class="max-w-xl">
-                                    <x-button variant="success" href="/head_librarian/edit/librarian/{{ $user->id }}">
-                                        <i class="fa-solid fa-user-pen mx-2"></i>
-                                        <span>{{ __('Edit Librarian') }}</span>
-                                    </x-button>
+                                    <x-button variant="success" href="/head_librarian/edit/event/{{ $event->id }}">
+                                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                                        <span>{{ __('Edit Event') }}</span>
+                                    </x-button> 
                                    
                                 </div>
                             </div>  
-                                       
                             
+                            
+
                         </td>
 
 
-                    
                     </tr>
                     @endforeach 
                         
+
+             
                         
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Type</th>
-                            <th></th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th></th>
+                        
+                           
                         </tr>
                     </tfoot>
                 </table>

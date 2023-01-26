@@ -22,6 +22,8 @@
     </style>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/datepicker.min.js" defer></script>
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -71,6 +73,7 @@
         </div>
     </div>
 
+    
     {{-- @livewireScripts --}}
 </body>
 </html>

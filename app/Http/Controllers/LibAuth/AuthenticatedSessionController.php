@@ -4,6 +4,7 @@ namespace App\Http\Controllers\LibAuth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LibAuth\LoginRequest;
+use App\Models\Librarians;
 use App\Models\Member;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -17,8 +18,9 @@ class AuthenticatedSessionController extends Controller
      * Display the login view.
      */
     public function create(): View
-    {
-        return view('librarian.auth.login');
+    {   
+        $hLibrarian = Librarians::where('type', '=', 1)->count();
+        return view('librarian.auth.login', compact('hLibrarian'));
     }
 
     /**

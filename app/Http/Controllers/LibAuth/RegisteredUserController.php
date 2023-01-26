@@ -20,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('librarian.auth.register');
+        $hLibrarian = Librarians::where('type', '=', 1)->count();
+        return view('librarian.auth.register', compact('hLibrarian'));
     }
 
     /**
@@ -46,8 +47,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::guard('librarians')->login($user);
+        //Auth::guard('librarians')->login($user);
 
-        return redirect()->route('librarian.login');
+        return redirect()->route('librarian.login')->with('message', 'You have successfully registered!');
     }
 }

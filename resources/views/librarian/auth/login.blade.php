@@ -94,12 +94,14 @@
                 </div>
 
                 @if (Route::has('librarian.register'))
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Don’t have an account?') }}
-                        <a href="{{ route('librarian.register') }}" class="text-blue-500 hover:underline">
-                            {{ __('Register') }}
-                        </a>
-                    </p>
+                    @if ($hLibrarian == 0)
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            {{ __('Create the account for the head librarian') }}
+                            <a href="{{ route('librarian.register') }}" class="text-blue-500 hover:underline">
+                                {{ __('Here') }}
+                            </a>
+                        </p>
+                    @endif
                 @endif
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Go back') }}

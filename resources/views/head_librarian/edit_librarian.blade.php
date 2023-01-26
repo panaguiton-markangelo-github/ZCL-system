@@ -264,25 +264,17 @@
         <hr>
         <br>
         <div class="flex justify-center text-center">
-            <form action="/head_librarian/delete/librarian/{{ $user->id }}" method="POST">
-                @method('delete')
-                @csrf
-                <input type="number" name="id" value= {{ $user->id }} hidden>
-                <x-button
-                    variant="danger"
-                    class="ml-3"
-                >
-                    {{ __('Delete this Librarian account credentials') }}
-                </x-button>
-
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Proceed with caution: This will delete the account credentials for this librarian permanently.') }}
-                </p>
-            </form>
+                  
+            <div class="sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('head_librarian.partials.del_confirm')
+                </div>
+            </div>   
+            
         </div>
     </div>
 
-    {{-- Almost done with this head librarian user --}}
+    {{-- Almost done with this head librarian user Finish up here--}}
 
    
 </x-hlibrarian-layout>
