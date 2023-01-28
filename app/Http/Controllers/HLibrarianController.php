@@ -143,59 +143,107 @@ class HLibrarianController extends Controller
 
     // start of methods for events module.
 
-    public function indexEvents(){
-        $data = Events::all();
+    public function indexEvents(Request $request){
+        // $data = Events::all();
+        if($request->ajax()){
+            $data = Events::whereDate('start', '>=', $request->start)
+                ->whereDate('end', '<=', $request->end)
+                ->get(['id', 'title', 'start', 'end']);
 
-        return view('head_librarian.events', compact('data'));
+            return response()->json($data);
+        }
+
+        return view('head_librarian.events');
     }
 
     public function storeEvents(Request $request){
-        $validated = $request->validate([
-            "title" => ['required', 'min:4'],
-            "description" => ['required'],
-            "date" => ['required'],
+
+        if($request->ajax())
+        {
+            if($request->type == 'add')
+            {
+                $event = Events::create([
+                    'title' => $request->title,
+                    'start' => $request->start,
+                    'end' => $request->end,
+                   
+                ]);
+
+                return response()->json($event);
+            }
+        }
+        else if (!$request->ajax())
+        {
+           
+            $event = Events::create([
+                'title' => $request->title,
+                'start' => $request->start,
+                'end' => $request->end,
+                
+            ]);
+
+            return redirect()->route('head_librarian.view.events')->with('message', 'New event was created successfully!');
+              
+        }
+
+
+
+        // $validated = $request->validate([
+        //     "title" => ['required', 'min:4'],
+        //     "description" => ['required'],
+        //     "date" => ['required'],
             
-        ]);
-
-        $event = Events::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'date' => $request->date,
-        ]);
-
-        return redirect()->route('head_librarian.view.events')->with('message', 'New event was created successfully!');
+        // ]);
+        // return redirect()->route('head_librarian.view.events')->with('message', 'New event was created successfully!');
     }
 
-    public function editEvents($id){
-        $event = Events::findOrFail($id);
+    // public function editEvents($id){
+    //     $event = Events::findOrFail($id);
 
-        return view('head_librarian.edit_event', compact('event'));
+    //     return view('head_librarian.edit_event', compact('event'));
+    // }
+
+    public function updateEvents(Request $request){
+        if($request->type == 'update'){
+
+            $event = Events::find($request->id)->update([   
+                'title' => $request->title,
+                'start' => $request->start,
+                'end' => $request->end,
+            ]);
+
+            return response()->json($event);
+
+        }
+
+        // $validated = $request->validate([
+        //     "title" => ['required', 'min:4'],
+        //     "description" => ['required'],
+        //     "date" => ['required'],
+        // ]);
+
+        // $events->where('id', $request->id)->update([   
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'date' => $request->date,
+        // ]);
+
+        // return redirect()->route('head_librarian.view.events')->with('message', 'The event was updated successfully!');
     }
 
-    public function updateEvents(Request $request, Events $events){
-        $validated = $request->validate([
-            "title" => ['required', 'min:4'],
-            "description" => ['required'],
-            "date" => ['required'],
-        ]);
+    public function destroyEvents(Request $request){
 
-        $events->where('id', $request->id)->update([   
-            'title' => $request->title,
-            'description' => $request->description,
-            'date' => $request->date,
-        ]);
+        if($request->type == 'delete')
+        {
+            $event = Events::find($request->id)->delete();
 
-        return redirect()->route('head_librarian.view.events')->with('message', 'The event was updated successfully!');
-    }
+            return response()->json($event);
+        }
+        // $events->where('id', $request->id)->delete();
 
-    public function destroyEvents(Request $request, Events $events){
-
-        $events->where('id', $request->id)->delete();
-
-        return redirect()->route('head_librarian.view.events')->with('message', 'The event was deleted successfully!');
+        // return redirect()->route('head_librarian.view.events')->with('message', 'The event was deleted successfully!');
 
     }
-
 
 
     // end of methods for events module.

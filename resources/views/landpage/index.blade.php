@@ -1,5 +1,6 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"/>
 
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -14,19 +15,24 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"/>
 
   <!-- bootstrap core css -->
-  {{-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/> --}}
+  {{-- <link rel="stylesheet" type="text/css" href="ZCL-system\resources\css\bootstrap.css"/> --}}
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&amp;display=swap" rel="stylesheet"/>
-  <!-- Custom styles for this template -->
-  {{-- <link href="css/style.css" rel="stylesheet"/> --}}
-  <!-- responsive style -->
-  {{-- <link href="css/responsive.css" rel="stylesheet"/> --}}
-
-  @vite(['resources/css/landpage/css/bootstrap.css', 'resources/css/landpage/css/style.css', 'resources/css/landpage/css/responsive.css', 'resources/js/landpage/js/jquery-3.4.1.min.js', 'resources/js/landpage/js/bootstrap.js'])
   
-  {{-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script> --}}
+  <!-- Custom styles for this template -->
+  {{-- <link href="resources/css/style.css" rel="stylesheet"/> --}}
+  <!-- responsive style -->
+  {{-- <link href="resources/css/responsive.css" rel="stylesheet"/> --}}
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" />
+  
+  @vite(['resources/css/landpage/css/style.css', 'resources/css/landpage/css/fullcalendar.css','resources/css/landpage/css/responsive.css', 'resources/css/landpage/css/bootstrap.css', 'resources/js/landpage/js/bootstrap.js'])
+  
+  {{-- <script type="text/javascript" src="resources/js/landpage/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="resources/js/landpage/js/bootstrap.js"></script> --}}
+  
 </head>
 
 <body>
@@ -125,7 +131,10 @@
                       Library
                     </h1>
                     <p>
-                      ZCL is a Public Library that provides free access to information, connects people with information.
+                      ZCL is a Public Library that provides free access to 
+                      <br>
+                      information,     
+                      connects people with information.
                     </p>
                     <div class="btn-box">
                       @auth
@@ -166,7 +175,10 @@
                       Library
                     </h1>
                     <p>
-                      ZCL is a Public Library that provides free access to information, connects people with information.
+                      ZCL is a Public Library that provides free access to 
+                      <br> information, 
+                      
+                      connects people with information.
                     </p>
                     <div class="btn-box">
                       @auth
@@ -205,7 +217,10 @@
                       Library
                     </h1>
                     <p>
-                      ZCL is a Public Library that provides free access to information, connects people with information.
+                      ZCL is a Public Library that provides free access to 
+                      <br>
+                      information, 
+                      connects people with information.
                     </p>
                     <div class="btn-box">
                       @auth
@@ -383,19 +398,8 @@
         </h2>
       </div>
       <div class="layout_padding2">
-        <div class="img-box">
-          <img src="images/problem.jpg" alt=""/>
-        </div>
         <div class="detail-box">
-          <p>
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#39;t look even slightly believable. I
-          </p>
-          <div>
-            <a href="">
-              Read More
-            </a>
-          </div>
+          <div id="calendar"></div>
         </div>
       </div>
 
@@ -514,8 +518,35 @@
   </div>
 
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script>
   
+  
+  <script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+        var calendar = $('#calendar').fullCalendar({
+            timeZone: 'Asia/Manila',
+            views: {
+                listDay: { buttonText: 'list day' },
+                listWeek: { buttonText: 'list week' },
+                listMonth: { buttonText: 'list month' }
+            },
+            events:'/fetch/events',
+            header:{
+                left:'prev,next,today',
+                center:'title',
+                right:'month,agendaWeek,agendaDay,listWeek,listMonth'
+            },
+          });
+    });
+</script>
 
 </body>
 </html>

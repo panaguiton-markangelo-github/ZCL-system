@@ -56,64 +56,60 @@
                 @enderror 
             </div>
 
-            <!-- Description -->
+            <!-- Start -->
 
             <div class="mt-6 space-y-6">
                 <x-form.label
-                    for="description"
-                    :value="__('Description (maximum of 300 characters)')"
+                    for="start"
+                    :value="__('Start')"
                 />
 
-                <textarea 
-                    name="description" 
-                    id="description" 
-                    cols="60" 
-                    rows="10" 
-                    class="block w-3/4 py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                    focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                    dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" 
-                    required
-                    autofocus
-                    maxlength="300"
-                >
-
-                </textarea>
-
                
+            <x-form.input
+                id="start"
+                name="start"
+                type="datetime-local"
+                class="block w-3/4"
+                :value="old('start')"
+                placeholder="{{ __('Start') }}"
+                required
+                autofocus
+            />
+            
 
-                @error('description')
+                @error('start')
                     <p class="text-red-500 text-xs p-1">
-                        @error('description')
+                        @error('start')
                             {{ $message }}
                         @enderror
                     </p>
                 @enderror 
             </div>
 
-            <!-- Date -->
+            <!-- End -->
 
             <div class="mt-6 space-y-6">
                 <x-form.label
-                    for="Date"
-                    :value="__('Date')"
+                    for="end"
+                    :value="__('End')"
                 />
 
                
             <x-form.input
-                id="date"
-                name="date"
-                type="date"
+                id="end"
+                name="end"
+                type="datetime-local"
                 class="block w-3/4"
-                :value="old('date')"
-                placeholder="{{ __('Date') }}"
+                :value="old('end')"
+                placeholder="{{ __('End') }}"
                 required
                 autofocus
             />
             
 
-                @error('date')
+                @error('end')
                     <p class="text-red-500 text-xs p-1">
-                        @error('date')
+                        @error('end')
                             {{ $message }}
                         @enderror
                     </p>

@@ -6,11 +6,14 @@ use App\Http\Controllers\BorrowerAppController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DisplayDataController;
 use App\Http\Controllers\HLibrarianController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LibrarianProfileController;
 use App\Http\Controllers\LibrariansController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Events;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +35,10 @@ use App\Http\Controllers\UserController;
 //update - update a data
 //destroy - delete a data
 
-Route::get('/', function () {
-    return view('landpage.index');
-});
+Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
+Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
-//public users routes:
+// start public users routes:
 
 //show all books to public user
 Route::get('/catalog', [BooksController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -56,9 +58,11 @@ Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->m
 Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
 
+// end public users routes:
+
+//--------------------------------------------------
 
 //librarians routes: Head librarian
-
 
 Route::get('/head_librarian/dashboard', [HLibrarianController::class, 'home'])->middleware('auth:librarians')->name('head_librarian.dashboard');
 
@@ -92,16 +96,19 @@ Route::get('/head_librarian/events', [HLibrarianController::class, 'indexEvents'
 
 Route::post('/head_librarian/add/event', [HLibrarianController::class, 'storeEvents'])->middleware('auth:librarians')->name('events.store');
 
-Route::get('/head_librarian/edit/event/{id}', [HLibrarianController::class, 'editEvents'])->middleware('auth:librarians')->name('events.edit');
+// Route::get('/head_librarian/edit/event/{id}', [HLibrarianController::class, 'editEvents'])->middleware('auth:librarians')->name('events.edit');
 
-Route::put('/head_librarian/update/event/{id}', [HLibrarianController::class, 'updateEvents'])->middleware('auth:librarians')->name('events.update');
+Route::post('/head_librarian/update/event', [HLibrarianController::class, 'updateEvents'])->middleware('auth:librarians')->name('events.update');
 
-Route::delete('/head_librarian/delete/event/{id}', [HLibrarianController::class, 'destroyEvents'])->middleware('auth:librarians')->name('events.delete');
+Route::post('/head_librarian/delete/event', [HLibrarianController::class, 'destroyEvents'])->middleware('auth:librarians')->name('events.delete');
 //end of events module routes
 
 //end of head librarian routes
 
-//-------------------------------------
+
+//-------------------------------------------------
+
+//next is to display announcements on the landing page, and to create the review by users module.
 
 //librarians routes: Borrow librarian
 
@@ -114,7 +121,9 @@ Route::get('/borrow_librarian/dashboard', function(){
 //end of borrowing librarian routes
 
 
-//-------------------------------------
+
+//----------------------------------------------
+
 
 //librarians routes: Catalog librarian
 
