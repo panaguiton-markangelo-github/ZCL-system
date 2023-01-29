@@ -27,7 +27,7 @@
 
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" />
-  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   @vite(['resources/css/landpage/css/style.css', 'resources/css/landpage/css/fullcalendar.css','resources/css/landpage/css/responsive.css', 'resources/css/landpage/css/bootstrap.css', 'resources/js/landpage/js/bootstrap.js'])
   
   {{-- <script type="text/javascript" src="resources/js/landpage/js/jquery-3.4.1.min.js"></script>
@@ -67,13 +67,6 @@
                           <a href="{{ route('login') }}" class="nav-link">Log in</a>
                         </li>
 
-                          @if (Route::has('register'))
-                              <li class="nav-item active">
-                                <a href="{{ route('register') }}" class="nav-link">Register</a>
-                              </li>
-                          @endif
-
-
                       @endauth
                     @endif
 
@@ -97,8 +90,14 @@
 
                       @endauth
                     @endif
-                    
-                    
+
+                    <li class="nav-item">
+                      <a href="#news_ann_section" class="nav-link">Announcements</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="#event_section" class="nav-link">Events</a>
+                    </li>
                                       
                   </ul>
                                    
@@ -263,7 +262,7 @@
   </div>
 
   <!-- welcome section -->
-  <section class="welcome_section layout_padding">
+  <section class="welcome_section layout_padding" id="welcome_section">
     <div class="container">
       <div class="custom_heading-container">
         <h2>
@@ -299,7 +298,7 @@
 
   <!-- service section -->
 
-  <section class="service_section">
+  <section class="service_section" id="service_section">
     <div class="container">
       <div class="custom_heading-container">
         <h2>
@@ -361,28 +360,70 @@
 
 
   <!--news and announcements section -->
-  <section class="news_ann_section layout_padding">
+  <section class="client_section layout_padding" id="news_ann_section">
     <div class="container">
-      <div class="custom_heading-container">
-        <h2>
-          News and Announcements
-        </h2>
-      </div>
-      <div class="layout_padding2">
-        <div class="img-box">
-          <img src="images/problem.jpg" alt=""/>
-        </div>
-        <div class="detail-box">
-          <p>
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-            some form, by injected humour, or randomised words which don&#39;t look even slightly believable. I
-          </p>
-          <div>
-            <a href="">
-              Read More
-            </a>
+      <h2>
+        News and Announcements
+      </h2>
+      <div id="carouselNewsControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="client_container layout_padding2">
+              <div class="client_text text-center">
+                <p>
+                  News and Announcements from the Zamboanga City Library will be desiplayed
+                  in this section.
+                </p>
+              </div>
+              <div class="detail-box">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
+                </div>
+                <div class="name">
+                  <h5>
+                    Zamboanga City Library
+                  </h5>
+                  <p>
+                    Region 9, Philippines
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+          @foreach ($data as $announce)
+          <div class="carousel-item">
+            <div class="client_container layout_padding2">
+              <div class="client_text text-center">
+                <p>
+                  {{$announce->details}}
+                  <br>
+                  Announced at: <b>{{$announce->created_at}}</b>
+                </p>
+              </div>
+              <div class="detail-box">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
+                </div>
+                <div class="name">
+                  <h5>
+                    Zamboanga City Library
+                  </h5>
+                  <p>
+                    Region 9, Philippines
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        
         </div>
+        <a class="carousel-control-prev" href="#carouselNewsControls" role="button" data-slide="prev">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselNewsControls" role="button" data-slide="next">
+          <span class="sr-only">Next</span>
+        </a>
       </div>
 
     </div>
@@ -390,7 +431,7 @@
   <!-- end news and announcements section -->
 
   <!--event calendar section -->
-  <section class="event_section layout_padding">
+  <section class="event_section layout_padding" id="event_section">
     <div class="container">
       <div class="custom_heading-container">
         <h2>
@@ -410,7 +451,7 @@
   
 
   <!-- client section -->
-  <section class="client_section layout_padding">
+  <section class="client_section layout_padding" id="client_section">
     <div class="container">
       <h2>
         What Our Clients Says
@@ -512,6 +553,10 @@
     <section class="container-fluid footer_section">
       <p>
         © All Rights Reserved 2022-2023
+        <br>
+        Zamboanga City Library
+        <br>
+        Zamboanga City, Region 9, Philippines
       </p>
     </section>
     <!-- footer section -->
@@ -521,6 +566,8 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
   
   
   <script>
@@ -546,6 +593,15 @@
             },
           });
     });
+</script>
+
+<script>
+  $(document).ready(function () {
+       $('#table').DataTable({
+       responsive: true,
+       scrollX: true
+   });
+   });
 </script>
 
 </body>

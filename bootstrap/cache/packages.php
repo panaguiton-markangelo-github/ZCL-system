@@ -70,6 +70,13 @@
       'Livewire' => 'Livewire\\Livewire',
     ),
   ),
+  'mydnic/laravel-kustomer' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mydnic\\Kustomer\\KustomerServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 

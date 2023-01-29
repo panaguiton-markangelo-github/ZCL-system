@@ -11,6 +11,7 @@ use App\Http\Controllers\LibrarianProfileController;
 use App\Http\Controllers\LibrariansController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingsController;
 use App\Http\Controllers\UserController;
 use App\Models\Events;
 use Illuminate\Http\Request;
@@ -57,6 +58,9 @@ Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->m
 //Borrower Book Requests routes
 Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');
+
+//Ratings/feedbacks
+Route::post('/ratings', [RatingsController::class, 'store'])->middleware(['auth', 'verified'])->name('user.review.store');
 
 // end public users routes:
 
@@ -108,7 +112,7 @@ Route::post('/head_librarian/delete/event', [HLibrarianController::class, 'destr
 
 //-------------------------------------------------
 
-//next is to display announcements on the landing page, and to create the review by users module.
+//next is to display announcements on the landing page, and to create the review by users module.''''
 
 //librarians routes: Borrow librarian
 

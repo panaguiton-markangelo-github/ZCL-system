@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcements;
 use App\Models\Events;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function index(){
-       
-        return view('landpage.index');
+        
+        $data = Announcements::all();
+        return view('landpage.index', compact('data'));
     }
 
     public function fetchEvents(Request $request){

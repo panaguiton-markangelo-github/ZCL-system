@@ -13,6 +13,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
+        "mydnic/laravel-kustomer": "^1.8",
         "nesbot/carbon": "^2.65",
         "yajra/laravel-datatables-oracle": "^10.2"
     },

@@ -5,16 +5,14 @@
                 {{ __('Browse the online catalog for books') }}
             </h2>
 
-            {{-- {{if auth() }} --}}
+            @include('partials.rate')
+            
            
             {{-- <x-button target="_blank" href="https://github.com/kamona-wd/kui-laravel-breeze" variant="black"
                 class="justify-center max-w-xs gap-2">
                 <span>Cart</span>
                 
             </x-button> --}}
-
-            <!-- ALMOST DONE HERE IN PUBLIC USER SIDE! LAST ONE IS TO 
-                MAKE THE STAR RATING AND CONNECT IT TO DB ALSO. CONNECT ALL THE FORMS-->
 
         </div>
     </x-slot>
@@ -36,6 +34,22 @@
             </p>
                 
         @endif
+
+        @error('rating')
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2500)"
+                class="text-sm text-red-500 dark:text-red-400"
+            >
+                @error('rating')
+                <p class="text-sm text-red-500 dark:text-red-400">You need to select a star to submit the review form!</p> 
+                @enderror
+            </p>
+        
+        @enderror 
+
         <table id="table" class="display" style="width:100%;">
                     <thead>
                         <tr>

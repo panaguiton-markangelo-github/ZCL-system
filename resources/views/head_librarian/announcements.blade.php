@@ -80,7 +80,7 @@
                                 <div class="max-w-xl">
                                     <x-button variant="success" href="/head_librarian/edit/announcement/{{ $announce->id }}">
                                         <i class="fa-solid fa-pen-to-square mx-2"></i>
-                                        <span>{{ __('Edit Event') }}</span>
+                                        <span>{{ __('Edit Announcement') }}</span>
                                     </x-button> 
                                    
                                 </div>

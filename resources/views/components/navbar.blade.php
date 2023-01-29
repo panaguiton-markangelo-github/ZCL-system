@@ -53,7 +53,7 @@
         </x-button>
 
 
-        <div>
+        <div class="text-sm font-medium text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
             <a href="{{ route('cart.view') }}">
                 <i class="fa-sharp fa-solid fa-cart-shopping"></i>
                 Cart ({{ Cart::content()->count() }})
