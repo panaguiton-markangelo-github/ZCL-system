@@ -143,7 +143,6 @@ Route::put('/catalog_librarian/update/book/{id}', [CLibrarianController::class, 
 Route::delete('/catalog_librarian/delete/book/{id}', [CLibrarianController::class, 'destroyBook'])->middleware('auth:librarians')->name('catalog_librarian.delete.books');
 
 
-
 //end of catalog librarian routes
 
 

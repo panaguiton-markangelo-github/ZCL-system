@@ -50,7 +50,7 @@
     
            
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Note: After clicking the confirm button, the details of this book will be updated.') }}
+                {{ __('Note: After clicking the update button, the details of this book will be updated.') }}
             </p>
 
             <br>
