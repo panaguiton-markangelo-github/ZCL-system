@@ -1,22 +1,71 @@
-<x-app-layout>
+<x-clibrarian-layout>
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
                 {{ __('Dashboard') }}
             </h2>
 
-            {{-- {{if auth() }} --}}
-           
-            <x-button target="_blank" href="https://github.com/kamona-wd/kui-laravel-breeze" variant="black"
-                class="justify-center max-w-xs gap-2">
-                <span>button here</span>
-                
-            </x-button>
+            
             
         </div>
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{ __("You're logged in!")  }}
+        {{ __("Welcome Catalog Librarian ")  }} {{Auth::guard('librarians')->user()->firstName}} {{Auth::guard('librarians')->user()->lastName}}
+        {{ __("!")  }}
     </div>
-</x-app-layout>
+
+    <br>
+    
+    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 grid grid-cols-2 gap-1">
+        
+        <div class="flex justify-center">
+            <div class="block py-6 px-6 rounded-lg shadow-lg  w-1/2">
+                
+                <h5 class="text-xl leading-tight font-medium mb-2 text-center"> 
+                    <i class="fa-solid fa-users text-2xl"></i> Total users 
+                </h5>
+                <p class="text-base mb-4">
+
+                @if ($users == 0)
+                    There are currently no registered users.
+                @endif
+
+                @if ($users == 1)
+                    There is currently {{$users}} registered user.
+                @endif
+
+                @if ($users > 1)
+                    There are currently {{$users}} registered users.
+                @endif
+                
+                </p>
+
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="block py-6 px-6 rounded-lg shadow-lg  w-1/2">
+                <h5 class=" text-xl leading-tight font-medium mb-2 text-center"> 
+                    <i class="fa-solid fa-book text-2xl"></i> Total books
+                </h5>
+                <p class=" text-base mb-4">
+                    @if ($books == 0)
+                        There are currently no registered books.
+                    @endif
+
+                    @if ($books == 1)
+                        There is currently {{$books}} registered book.
+                    @endif
+
+                    @if ($books > 1)
+                        There are currently {{$books}} registered books..
+                    @endif
+                </p>
+
+            </div>
+        </div>
+    
+    </div>
+
+</x-clibrarian-layout>

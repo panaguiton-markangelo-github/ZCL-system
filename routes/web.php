@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\BLibrarianController;
 use App\Http\Controllers\BookRequestController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowerAppController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CLibrarianController;
 use App\Http\Controllers\DisplayDataController;
 use App\Http\Controllers\HLibrarianController;
 use App\Http\Controllers\LandingPageController;
@@ -109,21 +111,14 @@ Route::post('/head_librarian/delete/event', [HLibrarianController::class, 'destr
 
 //end of head librarian routes
 
-
 //-------------------------------------------------
 
-//next is to display announcements on the landing page, and to create the review by users module.''''
 
 //librarians routes: Borrow librarian
 
-
-Route::get('/borrow_librarian/dashboard', function(){
-    return view('borrowing_librarian.dashboard_borrowing_librarian');
-})->middleware('auth:librarians')->name('borrowing_librarian.dashboard');
-
+Route::get('/borrowing_librarian/dashboard', [BLibrarianController::class, 'home'])->middleware('auth:librarians')->name('borrowing_librarian.dashboard');
 
 //end of borrowing librarian routes
-
 
 
 //----------------------------------------------
@@ -131,9 +126,22 @@ Route::get('/borrow_librarian/dashboard', function(){
 
 //librarians routes: Catalog librarian
 
-Route::get('/catalog_librarian/dashboard', function(){
-    return view('catalog_librarian.dashboard_catalog_librarian');
-})->middleware('auth:librarians')->name('catalog_librarian.dashboard');
+Route::get('/catalog_librarian/dashboard', [CLibrarianController::class, 'home'])->middleware('auth:librarians')->name('catalog_librarian.dashboard');
+
+
+//Books Module Routes
+Route::get('/catalog_librarian/books', [CLibrarianController::class, 'indexBooks'])->middleware('auth:librarians')->name('catalog_librarian.view.books');
+
+Route::post('/catalog_librarian/add/book', [CLibrarianController::class, 'storeBooks'])->middleware('auth:librarians')->name('catalog_librarian.add.books');
+
+Route::get('/catalog_librarian/show/book/{id}', [CLibrarianController::class, 'showBook'])->middleware('auth:librarians')->name('catalog_librarian.show.books');
+
+Route::get('/catalog_librarian/edit/book/{id}', [CLibrarianController::class, 'editBook'])->middleware('auth:librarians')->name('catalog_librarian.edit.books');
+
+Route::put('/catalog_librarian/update/book/{id}', [CLibrarianController::class, 'updateBook'])->middleware('auth:librarians')->name('catalog_librarian.update.books');
+
+Route::delete('/catalog_librarian/delete/book/{id}', [CLibrarianController::class, 'destroyBook'])->middleware('auth:librarians')->name('catalog_librarian.delete.books');
+
 
 
 //end of catalog librarian routes

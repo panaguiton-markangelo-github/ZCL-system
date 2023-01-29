@@ -169,7 +169,7 @@
                     variant="success"
                     class="ml-3"
                 >
-                    {{ __('Confirm') }}
+                    {{ __('Update') }}
                 </x-button> 
             </div>
         </form>

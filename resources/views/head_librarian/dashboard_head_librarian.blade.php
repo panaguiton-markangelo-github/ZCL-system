@@ -27,11 +27,6 @@
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1 grid grid-cols-2 gap-1">
 
-        
-
-        
-    
-
         <div class="flex justify-center">
             <div class="block py-6 px-6 rounded-lg shadow-lg  w-1/2">
                 <h5 class=" text-xl leading-tight font-medium mb-2 text-center"> 
