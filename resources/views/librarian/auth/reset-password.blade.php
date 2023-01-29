@@ -24,6 +24,7 @@
                         name="email"
                         :value="old('email', $request->email)"
                         required
+                        readonly
                         autofocus
                     />
                 </div>

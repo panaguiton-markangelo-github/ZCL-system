@@ -78,7 +78,7 @@
                          
                       @else
                         <li class="nav-item active">
-                          <a href="{{ route('librarian.login') }}" class="nav-link">Librarian Log in</a>
+                          <a href="{{ route('librarian.login') }}" class="nav-link">Admin</a>
                         </li>
 
                           {{-- @if (Route::has('register'))
@@ -337,21 +337,6 @@
             </p>
           </div>
         </div>
-        {{-- <div class="service_box">
-          <div class="img-box">
-            <img src="images/s-3.jpg" alt=""/>
-          </div>
-          <div class="detail-box">
-            <h4>
-              Financial <br/>
-              Planning
-            </h4>
-            <p>
-              have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even
-              slightly believable. If you are
-            </p>
-          </div>
-        </div> --}}
       </div>
     </div>
   </section>
@@ -371,7 +356,7 @@
             <div class="client_container layout_padding2">
               <div class="client_text text-center">
                 <p>
-                  News and Announcements from the Zamboanga City Library will be desiplayed
+                  News and Announcements from the Zamboanga City Library will be displayed
                   in this section.
                 </p>
               </div>
@@ -460,82 +445,61 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="client_container layout_padding2">
-              <div class="client_text">
+              <div class="client_text text-center">
                 <p>
-                  psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  Reviews from users/clients will be displayed
+                  in this section.
                 </p>
               </div>
               <div class="detail-box">
                 <div class="img-box">
-                  <img src="images/client.png" alt=""/>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
                 </div>
                 <div class="name">
                   <h5>
-                    Joans Mark
+                    Zamboanga City Library
                   </h5>
                   <p>
-                    cal
+                    Region 9, Philippines
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="client_container layout_padding2">
-              <div class="client_text">
-                <p>
-                  psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                </p>
-              </div>
-              <div class="detail-box">
-                <div class="img-box">
-                  <img src="images/client.png" alt=""/>
-                </div>
-                <div class="name">
-                  <h5>
-                    Joans Mark
-                  </h5>
+
+          @foreach ($ratings as $rating)
+            <div class="carousel-item">
+              <div class="client_container layout_padding2">
+                <div class="client_text text-center">
                   <p>
-                    cal
+                    @if ($rating->comments == null)
+                      <p>No comment</p>
+                    @else
+                      {{$rating->comments}}
+                    @endif
                   </p>
+                </div>
+                <div class="detail-box">
+                  <div class="img-box">
+                    <img src="https://img.icons8.com/officel/80/null/circled-user-male-skin-type-1-2.png"/>
+                  </div>
+                  <div class="name">
+                    <h5>
+                      {{$rating->firstName}} {{$rating->lastName}}
+                    </h5>
+                    <p>
+                      @if ($rating->star_rating == 1)
+                        Rating: {{$rating->star_rating}} star
+                      @else
+                        Rating: {{$rating->star_rating}} stars
+                      @endif
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="client_container layout_padding2">
-              <div class="client_text">
-                <p>
-                  psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                </p>
-              </div>
-              <div class="detail-box">
-                <div class="img-box">
-                  <img src="images/client.png" alt=""/>
-                </div>
-                <div class="name">
-                  <h5>
-                    Joans Mark
-                  </h5>
-                  <p>
-                    cal
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
+          
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
           <span class="sr-only">Previous</span>

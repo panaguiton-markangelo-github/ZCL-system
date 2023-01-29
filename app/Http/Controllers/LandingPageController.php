@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcements;
 use App\Models\Events;
+use App\Models\Ratings;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -11,7 +12,11 @@ class LandingPageController extends Controller
     public function index(){
         
         $data = Announcements::all();
-        return view('landpage.index', compact('data'));
+        
+        $ratings = Ratings::join('users', 'users.id', '=', 'ratings.user_id')
+        ->get(['ratings.*', 'users.firstName', 'users.lastName']);
+
+        return view('landpage.index', compact('data', 'ratings'));
     }
 
     public function fetchEvents(Request $request){

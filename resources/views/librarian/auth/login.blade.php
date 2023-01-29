@@ -78,7 +78,7 @@
                         </span>
                     </label>
 
-                    @if (Route::has('password.request'))
+                    @if (Route::has('librarian.password.request'))
                         <a class="text-sm text-blue-500 hover:underline" href="{{ route('librarian.password.request') }}">
                             {{ __('Forgot your password?') }}
                         </a>

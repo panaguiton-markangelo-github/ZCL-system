@@ -12,6 +12,6 @@ class LibrarianLayout extends Component
      */
     public function render(): View
     {
-        return view('librarian..auth.layouts.app');
+        return view('librarian.auth.layouts.app');
     }
 }

@@ -23,6 +23,7 @@
                         type="email"
                         name="email"
                         :value="old('email', $request->email)"
+                        readonly
                         required
                         autofocus
                     />

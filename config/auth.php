@@ -103,6 +103,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        'librarians' => [
+            'provider' => 'librarians',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
     ],
 
     /*

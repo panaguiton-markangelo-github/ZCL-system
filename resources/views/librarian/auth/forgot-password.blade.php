@@ -46,6 +46,15 @@
                     </x-button>
                 </div>
             </div>
+
+            <br>
+            
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ __('Remember your password now?') }}
+                <a href="{{route('librarian.login')}}" class="text-blue-500 hover:underline">
+                    {{ __('Click here to login') }}
+                </a>
+            </p>
         </form>
     </x-auth-card>
 </x-librarian-guest-layout>
