@@ -2,14 +2,17 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Choose books to borrow from your cart:") }}
+                {{ __("Choose book/s to borrow from your cart:") }}
             </h2>
 
         </div>
     </x-slot>
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        Note: Your request to borrow book/s will be processed by the librarian, kindly wait for the notification if your request was approved or declined.
+        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+            Note: Your request to borrow book/s will be processed by the librarian,
+            kindly wait for the notification if your request was approved or declined.
+        </p>
     </div>
 
 

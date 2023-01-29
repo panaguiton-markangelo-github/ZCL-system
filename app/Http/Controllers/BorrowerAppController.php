@@ -24,7 +24,7 @@ class BorrowerAppController extends Controller
     }
 
     public function store(Request $request){
-        //type 0=LGU, 1=NON-LGU, 2=RECOMMENED
+        //type 0=NON-LGU, 1=LGU, 2=RECOMMENED
         //status PENDING, APPROVED, DECLINED
         $validated = $request->validate([
             "firstName" => ['required', 'min:4'],

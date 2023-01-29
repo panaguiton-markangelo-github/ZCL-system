@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Book's Details") }}
+                {{ __("Book's Details for") }} {{$book->title}}
             </h2>
 
             {{-- {{if auth() }} --}}
@@ -24,43 +24,116 @@
     </div>
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
-        <div class="mb-2">Title: <span class="font-bold">{{$book->title}}</span> </div>
-        <div class="mb-2">Summary: <span class="font-bold">{{$book->summary}}</span></div>
+        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+            {{ __('Book Details') }}
+        </p>
 
-        <div class="mb-2">Author: <span class="font-bold">{{$book->author}}</span> </div>
-        <div class="mb-2">Published: <span class="font-bold">{{$book->published}}</span> </div>
-        <div class="mb-7">Subjects: <span class="font-bold">{{$book->subject}}</span> </div>
+        <br>
+        <hr>
 
-        <div class="text-center">Shelf Location at Zamboanga City Library</div>
-        <div class="flex justify-center">
-            <table class="table-fixed border-separate border-spacing-8 text-center">
-                <thead>
-                    <tr>
-                      <th>Collection: </th>
-                      <th>Shelf Location: </th>
-                      <th>Status: </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <td>
-                        <span class="font-bold">{{$book->collection}}</span>
-                    </td>
-                    <td>
-                        <span class="font-bold">{{$book->shelf_location}}</span>
-                    </td>
-                    <td>
-                        <span class="font-bold">{{$book->status}}
-                    </td>
-                </tbody>
-            </table>
+        <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Title: ') }} {{$book->title}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Author: ') }} {{$book->author}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Published: ') }} {{$book->published}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Subject: ') }} {{$book->subject}} 
+                </p>
+
+            </div>
         </div>
 
+        <br>
+
+        <div class="grid grid-cols-2 gap-2 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Publisher: ') }} {{$book->publisher}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('ISBN: ') }} {{$book->isbn}} 
+                </p>
+
+            </div>
+        </div>
+
+        <br>
+
+        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+            {{ __('Summary') }}
+        </p>
+
+        <br>
+        <hr>
+        
+        <div>
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                {{ __('Summary: ') }} {{$book->summary}} 
+            </p>
+
+        </div>
+
+        <br>
+
+        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+            {{ __('Book Location') }}
+        </p>
+
+        <br>
+        <hr>
+
+        <div class="grid grid-cols-3 gap-3 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Collection: ') }} {{$book->collection}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Shelf Location: ') }} {{$book->shelf_location}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Status: ') }} {{$book->status}} 
+                </p>
+
+            </div>
+        </div>
+
+        <br>
+        <br>
         <hr> 
         <br>
 
         @if ($cart->where('id', $book->id)->count())
             <div class="text-center" >
-                This book is already on your cart.
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('This book is already on your cart.') }}
+                </p>
             </div>
         @else
         <div>

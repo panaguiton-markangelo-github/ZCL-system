@@ -17,25 +17,19 @@
     </x-slot>
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-    You need first to fill out this membership form in order to request book/s to borrow.
-    <br>
-    Note: After submitting this form the libraian will now process your membership application, kindly wait for the notification if your request was approved or declined. You may still proceed on requesting to borrow books.
+        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+            You need first to fill out this membership form in order to request book/s to borrow.
+            <br>
+            <br>
+            Note: After submitting this form the libraian will now process your membership application, 
+            kindly wait for the notification if your request was approved or declined. 
+            You may still proceed on requesting to borrow books.
+        </p>
     </div>
 
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        {{-- @if (session('message') == 'Borrower card application was successfully sent for verification!')
-            <p
-                x-data="{ show: true }"
-                x-show="show"
-                x-transition
-                x-init="setTimeout(() => show = false, 2000)"
-                class="text-sm text-green-600 dark:text-green-400 mb-2"
-            >
-                {{ __('Borrower card application was successfully sent for verification!') }}
-            </p>
-        @endif --}}
-
+       
         <form method="POST" action="{{ route('borrower.store') }}">
             @csrf
             <input type="text" name="status" id="status" value="PENDING" hidden>
