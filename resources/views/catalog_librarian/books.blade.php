@@ -55,25 +55,43 @@
             @endforeach
 
         @endif 
-    
-        <table id="table" class="table-auto display" style="width:100%;">
-                    <thead>
+
+        
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-x-auto">
+                  <table id="table" class="min-w-full">
+                    <thead>
+                        <tr>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
+                                
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>
+                
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th>
+                                    
+                        </tr>
+
                         <tr>
-                            <th>No.</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Published</th>
-                            
-                            <th>collection</th>
-            
-                            <th>Status</th>
-                            <th></th> 
-                            <th> </th>
-                             
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">No.</th>
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Title</th>
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Author</th>
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Published</th>
+                                
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">collection</th>
+                
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Status</th>
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th> 
+                                <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th>
                         </tr>
-                    </thead>
-                    <tbody>
-                     @foreach ($books as $book)
+                    </thead>
+                    <tbody>
+                        @foreach ($books as $book)
                      
                     <tr>
                         <td>{{$loop->iteration}}</td>
@@ -91,8 +109,8 @@
                                 <div class="max-w-xl">
                                     <x-button variant="success" href="/catalog_librarian/show/book/{{ $book->id }}">
                                         {{-- <i class="fa-solid fa-pen-to-square mx-2"></i> --}}
-                                        <i class="fa-solid fa-circle-info mx-2"></i>
-                                        <span>{{ __('View More') }}</span>
+                                        <i class="fa-solid fa-circle-info pr-2"></i>
+                                        <span>{{ __('View') }}</span>
                                     </x-button> 
                                    
                                 </div>
@@ -107,7 +125,7 @@
                             <div class="sm:rounded-lg">
                                 <div class="max-w-xl">
                                     <x-button variant="success" href="/catalog_librarian/edit/book/{{ $book->id }}">
-                                        <i class="fa-solid fa-pen-to-square mx-2"></i>
+                                        <i class="fa-solid fa-pen-to-square pr-2"></i>
                                         <span>{{ __('Edit Book') }}</span>
                                     </x-button> 
                                    
@@ -119,37 +137,61 @@
 
                     </tr>
                     @endforeach 
-                        
-
-                        
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>No.</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Published</th>
-                            
-                            <th>collection</th>
-            
-                            <th>Status</th>  
-                            <th></th>
-                            <th> </th>
-                           
-                        </tr>
-                    </tfoot>
-                </table>
+                           
+   
+                           
+                       </tbody>
+                       <tfoot>
+                           <tr>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
+                                
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>
+                
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 
+                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th>
+                            </tr>
+                       </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     <script>
-           $(document).ready(function () {
-                $('#table').DataTable({
-                responsive: true,
-                scrollX: true
-            });
+          $(document).ready(function () {
+                $('#table').DataTable({
+                    initComplete: function () {
+                        this.api()
+                            .columns()
+                            .every(function () {
+                                var column = this;
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.header()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
+            
+                                        column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                    });
+            
+                                column
+                                    .data()
+                                    .unique()
+                                    .sort()
+                                    .each(function (d, j) {
+                                        select.append('<option value="' + d + '">' + d + '</option>');
+                                    });
+                            });
+                    },
+                });
             });
     </script>
 </x-clibrarian-layout>

@@ -46,7 +46,7 @@
                         class="block w-full"
                         type="text"
                         name="firstName"
-                        :value="old('firstName')"
+                        :value="auth()->user()->firstName"
                         placeholder="{{ __('First Name') }}"
                         required
                         autofocus
@@ -73,7 +73,7 @@
                         class="block w-full"
                         type="text"
                         name="lastName"
-                        :value="old('lastName')"
+                        :value="auth()->user()->lastName"
                         required
                         autofocus
                         placeholder="{{ __('Last Name') }}"
@@ -93,7 +93,7 @@
                         class="block w-full"
                         type="email"
                         name="email"
-                        :value="old('email')"
+                        :value="auth()->user()->email"
                         required
                         autofocus
                         placeholder="{{ __('Email') }}"
@@ -634,7 +634,7 @@
 
             <div>
                 <x-button class="justify-center mt-5 w-50 gap-2">
-                    <span>{{ __('Next') }}</span>
+                    <span>{{ __('Submit') }}</span>
                 </x-button>
             </div>
         </form>

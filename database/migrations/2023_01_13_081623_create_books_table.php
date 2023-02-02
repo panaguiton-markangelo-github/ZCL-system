@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('shelf_location');
             $table->integer('price');
             $table->string('status');
+            $table->dateTime('borrowed_at');
             $table->timestamps();
         });
     }

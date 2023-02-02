@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RequestNotification extends Notification
+class LibrarianRequestNotification extends Notification
 {
     use Queueable;
-    public $info;
+    public $info_lib;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($info)
+    public function __construct($info_lib)
     {
-        $this->info = $info;
+        $this->info_lib = $info_lib;
         
     }
 
@@ -57,9 +57,11 @@ class RequestNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => $this->info['info'],
-            'remarks' => $this->info['remarks'],
-            'userID' => $this->info['id']
+            'data' => $this->info_lib['info'],
+            'userID' => $this->info_lib['user_id'],
+            'userFirstName' => $this->info_lib['user_firstName'],
+            'userLastName' => $this->info_lib['user_lastName'],
+            'type' => $this->info_lib['type']
         ];
     }
 }

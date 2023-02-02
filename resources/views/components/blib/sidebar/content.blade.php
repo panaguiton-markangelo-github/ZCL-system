@@ -6,8 +6,8 @@
 
     <x-sidebar.link
         title="Home"
-        href="{{ route('catalog_librarian.dashboard') }}"
-        :isActive="request()->routeIs('catalog_librarian.dashboard')"
+        href="{{ route('borrowing_librarian.dashboard') }}"
+        :isActive="request()->routeIs('borrowing_librarian.dashboard')"
     >
         <x-slot name="icon">
             <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
@@ -15,12 +15,32 @@
     </x-sidebar.link>
 
     <x-sidebar.link
-        title="Books"
-        href="{{ route('catalog_librarian.view.books') }}"
-        :isActive="request()->routeIs('catalog_librarian.view.books')"
+        title="Borrowed Books"
+        href="{{ route('borrowing_librarian.borrowed_books.view') }}"
+        :isActive="request()->routeIs('borrowing_librarian.borrowed_books.view')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-book-open-reader flex-shrink-0" aria-hidden="true"></i>
+        </x-slot>
+    </x-sidebar.link>
+
+    <x-sidebar.link
+        title="Requested Books"
+        href="{{ route('borrowing_librarian.requested_books.view') }}"
+        :isActive="request()->routeIs('borrowing_librarian.requested_books.view')"
     >
         <x-slot name="icon">
             <i class="fa-solid fa-book flex-shrink-0" aria-hidden="true"></i>
+        </x-slot>
+    </x-sidebar.link>
+
+    <x-sidebar.link
+        title="Borrower's card"
+        href="{{ route('borrowing_librarian.borrower_card_app.view') }}"
+        :isActive="request()->routeIs('borrowing_librarian.borrower_card_app.view')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-users-rectangle flex-shrink-0" aria-hidden="true"></i>
         </x-slot>
     </x-sidebar.link>
 

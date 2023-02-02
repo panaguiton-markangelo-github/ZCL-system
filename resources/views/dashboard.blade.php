@@ -7,18 +7,27 @@
 
             @include('partials.rate')
             
-           
-            {{-- <x-button target="_blank" href="https://github.com/kamona-wd/kui-laravel-breeze" variant="black"
-                class="justify-center max-w-xs gap-2">
-                <span>Cart</span>
-                
-            </x-button> --}}
 
         </div>
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
+
+        @if (!session('member.0.id'))
+            <br>
+            <br>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                Hi there! It seems you have not yet applied for a borrower card application. 
+                <br>
+                Note: You will have to apply for a borrower card, in order to borrow books from the 
+                Zamboanga City Library.
+                <br>  
+            </p> 
+
+            <a class="text-sm text-cyan-500 dark:text-cyan-400" href="{{ route('borrower.app') }}">Click here to apply.</a>
+                        
+        @endif
     </div>
 
     <div class="p-6 mt-7 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">

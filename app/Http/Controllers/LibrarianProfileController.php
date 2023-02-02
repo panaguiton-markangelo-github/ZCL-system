@@ -23,7 +23,7 @@ class LibrarianProfileController extends Controller
             ]);
         }
         else if(Auth::guard('librarians')->user()->type == 2){
-            return view('borrow_librarian.profile.edit', [
+            return view('borrowing_librarian.profile.edit', [
                 'user' => $request->user(),
             ]);
         }

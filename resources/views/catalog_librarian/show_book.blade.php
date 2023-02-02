@@ -12,7 +12,7 @@
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
 
            
-        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+        <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
             {{ __('Book Details') }}
         </p>
 
@@ -67,7 +67,7 @@
 
         <br>
 
-        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+        <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
             {{ __('Summary') }}
         </p>
 
@@ -83,7 +83,7 @@
 
         <br>
 
-        <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
+        <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
             {{ __('Book Location') }}
         </p>
 

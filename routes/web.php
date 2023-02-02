@@ -41,6 +41,9 @@ use Illuminate\Http\Request;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
+//polish some aspects in the public users, like when the member card was declined allow the user to submit a 
+//member card application again!
+
 // start public users routes:
 
 //show all books to public user
@@ -118,7 +121,26 @@ Route::post('/head_librarian/delete/event', [HLibrarianController::class, 'destr
 
 Route::get('/borrowing_librarian/dashboard', [BLibrarianController::class, 'home'])->middleware('auth:librarians')->name('borrowing_librarian.dashboard');
 
+//start borrowed books routes
+Route::get('/borrowing_librarian/borrowed/books', [BLibrarianController::class, 'borrowedBooksIndex'])->middleware('auth:librarians')->name('borrowing_librarian.borrowed_books.view');
+//end borrowed books routes
+
+//start requested books routes
+Route::get('/borrowing_librarian/requested/books', [BLibrarianController::class, 'requestedBooksIndex'])->middleware('auth:librarians')->name('borrowing_librarian.requested_books.view');
+Route::get('/borrowing_librarian/requested/books/{id}', [BLibrarianController::class, 'requestedBooksShow'])->middleware('auth:librarians')->name('borrowing_librarian.requested_books.show');
+Route::put('/borrowing_librarian/update/requested/books/{id}', [BLibrarianController::class, 'requestedBooksUpdate'])->middleware('auth:librarians')->name('borrowing_librarian.requested_books.update');
+
+//end requested books routes
+
+//start borrower card app routes
+Route::get('/borrowing_librarian/application/borrower', [BLibrarianController::class, 'borrowersCardIndex'])->middleware('auth:librarians')->name('borrowing_librarian.borrower_card_app.view');
+Route::get('/borrowing_librarian/application/borrower/{id}', [BLibrarianController::class, 'borrowersCardShow'])->middleware('auth:librarians')->name('borrowing_librarian.borrower_card_app.show');
+Route::put('/borrowing_librarian/update/application/borrower/{id}', [BLibrarianController::class, 'borrowersCardUpdate'])->middleware('auth:librarians')->name('borrowing_librarian.borrower_card_app.update');
+//end borrower card app routes
+
 //end of borrowing librarian routes
+
+
 
 
 //----------------------------------------------
@@ -148,8 +170,7 @@ Route::delete('/catalog_librarian/delete/book/{id}', [CLibrarianController::clas
 
 
 
-
-//mark notification as read
+//mark notification as read for public user
 Route::get('/markAsRead/{id}', function($id){
 
 	$userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
@@ -162,6 +183,29 @@ Route::get('/markAsRead/{id}', function($id){
 	return redirect()->back();
 
 })->name('mark');
+
+//mark notification as read for borrowing librarian
+Route::get('/markAsRead/librarian/{id}', function($id){
+
+	$userUnreadNotifications = auth()->guard('librarians')->user()->unreadNotifications->where('id', $id);
+
+    foreach ($userUnreadNotifications as $userUnreadNotification) {
+        if($userUnreadNotification->data['type'] == "borrower_card_app" ){
+            $userUnreadNotification->markAsRead();
+    
+            return redirect()->route('borrowing_librarian.borrower_card_app.view');
+        }
+
+        if($userUnreadNotification->data['type'] == "book_request" ){
+            $userUnreadNotification->markAsRead();
+    
+            return redirect()->route('borrowing_librarian.requested_books.view');
+        }
+    
+    }
+
+
+})->name('mark_read_librarian');
 
 
 

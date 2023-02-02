@@ -10,10 +10,12 @@ class CLibrarianController extends Controller
 {
     public function home()
     {
-        $users = User::all()->count();
-        $books = Books::all()->count();
+        $users = User::limit(10)->get();
+        $books = Books::limit(10)->get();
+        $allBooks = Books::all();
+        $allUsers = User::all();
 
-        return view('catalog_librarian.dashboard_catalog_librarian', compact('users', 'books'));
+        return view('catalog_librarian.dashboard_catalog_librarian', compact('users', 'books', 'allBooks', 'allUsers'));
 
     }
 

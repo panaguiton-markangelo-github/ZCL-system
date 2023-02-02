@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Librarians;
 use App\Models\Member;
 use App\Models\Professional;
 use App\Models\Recommended;
 use App\Models\Student;
 use App\Models\User;
+use App\Notifications\LibrarianRequestNotification;
 use App\Notifications\RequestNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -121,14 +123,30 @@ class BorrowerAppController extends Controller
 
         $user = User::find($cur_user);
 
-        $info = [
-                'info' => "Request for membership application (PENDING): $date_time",
-                'id' => auth()->user()->id,
+       
 
+        $info = [
+                'info' => "You have applied for borrower card (PENDING): at $date_time",
+                'remarks' => "Sent for approval request",
+                'id' => auth()->user()->id,
         ];
         
 
         $user->notify(new RequestNotification($info));
+
+        $bor_lib = Librarians::where('type', '=', '2')->get();
+
+        $info_lib = [
+            'info' => "Application for borrower card (PENDING): at $date_time",
+            'user_id' => auth()->user()->id,
+            'user_firstName' => auth()->user()->firstName,
+            'user_lastName' => auth()->user()->lastName,
+            'type' => "borrower_card_app",
+        ];
+
+        foreach ($bor_lib as $bor_lib_id) {
+            $bor_lib_id->notify(new LibrarianRequestNotification($info_lib));
+        }
 
         //end send notification via database
 

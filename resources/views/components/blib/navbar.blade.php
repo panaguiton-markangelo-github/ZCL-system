@@ -52,14 +52,6 @@
             />
         </x-button>
 
-
-        <div class="text-sm font-medium text-gray-500 rounded-md hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
-            <a href="{{ route('cart.view') }}">
-                <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                Cart ({{ Cart::content()->count() }})
-            </a>
-        </div>
-
         <!--Notifications-->
         <x-dropdown align="right" width="48">
             
@@ -80,12 +72,12 @@
             <x-slot name="content">
                 {{-- Notifications here --}}
                 
-                @forelse (auth()->user()->unreadNotifications as $notification)
+                @forelse (auth()->guard('librarians')->user()->unreadNotifications as $notification)
 
-                <a href="{{url('/markAsRead')}}/{{$notification->id}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out dark:focus:text-white dark:focus:bg-dark-eval-3 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-dark-eval-3">
+                <a href="{{url('/markAsRead/librarian')}}/{{$notification->id}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out dark:focus:text-white dark:focus:bg-dark-eval-3 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-dark-eval-3">
                     <p> {{ $notification->data['data'] }}</p>
                     <br>
-                    <p> Remarks: {{ $notification->data['remarks'] }}</p>
+                    <p> Borrower Name: {{ $notification->data['userFirstName'] }} {{ $notification->data['userLastName'] }}</p>
                     <hr>
                 </a>
 
@@ -94,7 +86,7 @@
                 @endforelse 
                     
 
-                @if (auth()->user()->unreadNotifications->count() == 0)
+                @if (auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
                     <p style="font-size: 0.9rem;padding:.9rem;" class="text-center">No new notification</p>
                     
                 @endif
@@ -103,15 +95,16 @@
             </x-slot>
             
         </x-dropdown>
-        
 
+
+        
 
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
                 <button
                     class="flex items-center p-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
                 >
-                    <div>{{ Auth::user()->firstName }}</div>
+                    <div>{{ Auth::guard('librarians')->user()->firstName }}</div>
 
                     <div class="ml-1">
                         <svg
@@ -132,17 +125,17 @@
             <x-slot name="content">
                 <!-- Profile -->
                 <x-dropdown-link
-                    :href="route('profile.edit')"
+                    :href="route('librarian.profile.edit')"
                 >
                     {{ __('Profile') }}
                 </x-dropdown-link>
 
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('librarian.logout') }}">
                     @csrf
 
                     <x-dropdown-link
-                        :href="route('logout')"
+                        :href="route('librarian.logout')"
                         onclick="event.preventDefault(); this.closest('form').submit();"
                     >
                         {{ __('Log Out') }}

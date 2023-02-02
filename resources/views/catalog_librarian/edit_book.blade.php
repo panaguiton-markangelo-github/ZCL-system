@@ -55,7 +55,7 @@
 
             <br>
 
-            <p class="mt-2 text-xl text-gray-600 dark:text-gray-400 text-center">
+            <p class="mt-2 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
                 {{ __('Book Details') }}
             </p>
     
@@ -226,7 +226,7 @@
 
             <br>
 
-            <p class="mt-2 text-xl text-gray-600 dark:text-gray-400 text-center">
+            <p class="mt-2 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
                 {{ __('Summary') }}
             </p>
     
@@ -267,7 +267,7 @@
             </div>
 
             <br>
-            <p class="mt-2 text-xl text-gray-600 dark:text-gray-400 text-center">
+            <p class="mt-2 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
                 {{ __('Book Location') }}
             </p>
     
