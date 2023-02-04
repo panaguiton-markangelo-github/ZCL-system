@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         //check if the current user has already filed for member card application or is already a member
-        if ($member_data = Member::where('user_id', auth()->user()->id)->get()){
+        if ($member_data = Member::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(1)->get()){
             session(['member' => $member_data], 'none');
         }
         

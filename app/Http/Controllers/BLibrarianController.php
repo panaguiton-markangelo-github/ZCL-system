@@ -38,7 +38,7 @@ class BLibrarianController extends Controller
     //start borrowed books methods
 
     public function borrowedBooksIndex(){
-        $borrowed_books = Books::where('status', '=', 'BORROWED')->get();
+        $borrowed_books = Books::where('status', '=', 'BORROWED')->orderBy('borrowed_at', 'desc')->get();
         return view('borrowing_librarian.borrowed_books', compact('borrowed_books'));
     }
 
@@ -53,6 +53,7 @@ class BLibrarianController extends Controller
         ->join('books', 'book_id', '=', 'books.id')
         ->join('members', 'member_id', '=', 'members.id')
         ->select('book_bor_reqs.created_at','book_bor_reqs.id','book_bor_reqs.book_id','book_bor_reqs.member_id','book_bor_reqs.status', 'books.title', 'members.firstName', 'members.lastName')
+        ->orderBy('book_bor_reqs.created_at', 'desc')
         ->get();
 
         return view('borrowing_librarian.requested_books', compact('request_books'));
@@ -62,18 +63,21 @@ class BLibrarianController extends Controller
     public function requestedBooksShow($id){
         $request_book = DB::table('book_bor_reqs')
         ->join('books', 'book_id', '=', 'books.id')
-        ->join('members', 'member_id', '=', 'members.id')
         ->where('book_bor_reqs.id', '=', $id)
-        ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'books.title', 'books.author', 'books.published', 
+        ->orderBy('book_bor_reqs.created_at', 'desc')
+        ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'book_bor_reqs.member_id', 'books.title', 'books.author', 'books.published', 
                  'books.subject', 'books.publisher', 'books.isbn', 'books.summary', 
-                 'books.collection', 'books.shelf_location', 'books.status', 'members.firstName', 
-                 'members.lastName', 'members.email', 'members.phone', 'members.status AS memberStatus',
+                 'books.collection', 'books.shelf_location', 'books.status',
                  'book_bor_reqs.status AS bookReqStatus'
                  )
         ->limit(1)
         ->get();
 
-        return view('borrowing_librarian.show_req_book', compact('request_book'));
+        $member_info = Member::where('id', '=', $request_book[0]->member_id)
+                               ->orderBy('created_at', 'desc')
+                               ->first();
+
+        return view('borrowing_librarian.show_req_book', compact('request_book', 'member_info'));
 
     }
 
@@ -106,7 +110,7 @@ class BLibrarianController extends Controller
             
                 $info = [
                         'info' => "Your Book Request was APPROVED: Book Title($b_id->title) at $date_time",
-                        'remarks' => "Request Approved",
+                        'remarks' => "Request Approved. Kindly proceed to Zamboanga City Library to get your borrowed book.",
                         'id' => $user->id,
                 ];
                 
@@ -149,7 +153,7 @@ class BLibrarianController extends Controller
 
     //start borrowers card application methods
     public function borrowersCardIndex(){
-        $borrowers_app = Member::all();
+        $borrowers_app = Member::orderBy('created_at', 'desc')->get();
 
         return view('borrowing_librarian.borrower_card_app', compact('borrowers_app'));
 

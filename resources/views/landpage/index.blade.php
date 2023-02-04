@@ -4,10 +4,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <!-- Site Metas -->
+  {{-- Site Metas
   <meta name="keywords" content=""/>
   <meta name="description" content=""/>
-  <meta name="author" content=""/>
+  <meta name="author" content=""/> --}}
 
   <title>{{ config('app.name', 'K UI') }}</title>
 
@@ -26,10 +26,13 @@
   {{-- <link href="resources/css/responsive.css" rel="stylesheet"/> --}}
 
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   @vite(['resources/css/landpage/css/style.css', 'resources/css/landpage/css/fullcalendar.css','resources/css/landpage/css/responsive.css', 'resources/css/landpage/css/bootstrap.css', 'resources/js/landpage/js/bootstrap.js'])
   
+  {{-- old css for full calender ver. --}}
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" /> --}}
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
+
   {{-- <script type="text/javascript" src="resources/js/landpage/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="resources/js/landpage/js/bootstrap.js"></script> --}}
   
@@ -529,10 +532,12 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
-  
+  {{-- Old moment js version --}}
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> --}}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
   
   <script>
     $(document).ready(function () {
@@ -559,14 +564,6 @@
     });
 </script>
 
-<script>
-  $(document).ready(function () {
-       $('#table').DataTable({
-       responsive: true,
-       scrollX: true
-   });
-   });
-</script>
 
 </body>
 </html>

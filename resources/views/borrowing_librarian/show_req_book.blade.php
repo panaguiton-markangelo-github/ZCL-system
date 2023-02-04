@@ -136,34 +136,34 @@
         <div class="grid grid-cols-5 gap-5 text-center">
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('First Name: ') }} {{$request_book[0]->firstName}} 
+                    {{ __('First Name: ') }} {{$member_info->firstName}} 
                 </p>
             </div>
             
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Last Name: ') }} {{$request_book[0]->lastName}} 
+                    {{ __('Last Name: ') }} {{$member_info->lastName}} 
                 </p>
 
             </div>
 
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Email: ') }} {{$request_book[0]->email}} 
+                    {{ __('Email: ') }} {{$member_info->email}} 
                 </p>
 
             </div>
 
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Phone: ') }} {{$request_book[0]->phone}} 
+                    {{ __('Phone: ') }} {{$member_info->phone}} 
                 </p>
 
             </div>
 
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Borrower Card Status: ') }} {{$request_book[0]->memberStatus}} 
+                    {{ __('Borrower Card Status: ') }} {{$member_info->status}} 
                 </p>
 
             </div>
@@ -182,7 +182,7 @@
 
         </div>
 
-        @if ($request_book[0]->memberStatus == 'PENDING')
+        @if ($member_info->status == 'PENDING')
             <p class="text-sm text-red-600 dark:text-red-400 text-center font-bold">
                 The Borrower Card Application of this borrower is not yet approved!
             </p>
@@ -193,7 +193,7 @@
         <hr>
         <br>
 
-        @if ($request_book[0]->memberStatus == 'DECLINED')
+        @if ($member_info->status == 'DECLINED')
             <p class="text-sm text-red-600 dark:text-red-400 text-center font-bold">
                 The Borrower Card Application of this borrower was declined! Thus you cannot
                 approve nor decline this book borrow request.

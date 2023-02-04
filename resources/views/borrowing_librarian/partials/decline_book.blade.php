@@ -23,7 +23,7 @@
         
             @method('put')
 
-            @if ($request_book[0]->memberStatus == 'APPROVED')
+            @if ($member_info->status == 'APPROVED')
                 <h2 class="text-lg font-medium">
                     {{ __('Decline this book borrow request') }}
                 </h2>
@@ -108,7 +108,7 @@
                         
 
 
-            @if ($request_book[0]->memberStatus == 'PENDING')
+            @if ($member_info->status == 'PENDING')
                 <h2 class="text-lg font-medium">
                     {{ __('Cannot decline this book borrow request') }}
                 </h2>

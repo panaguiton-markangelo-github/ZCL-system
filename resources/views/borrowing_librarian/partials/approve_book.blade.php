@@ -22,7 +22,7 @@
 
             @method('put')
 
-            @if ($request_book[0]->memberStatus == 'APPROVED')
+            @if ($member_info->status == 'APPROVED')
                 @if ($request_book[0]->status == 'AVAILABLE')
                     <h2 class="text-lg font-medium">
                         {{ __('Approve this book borrow request') }}
@@ -74,7 +74,7 @@
             @endif
             
 
-            @if ($request_book[0]->memberStatus == 'PENDING')
+            @if ($member_info->status == 'PENDING')
                 <h2 class="text-lg font-medium">
                     {{ __('Cannot approve this book borrow request') }}
                 </h2>
@@ -112,7 +112,7 @@
 
             @endif
 
-            @if ($request_book[0]->memberStatus == 'APPROVED')
+            @if ($member_info->status == 'APPROVED')
                 @if ($request_book[0]->status == 'BORROWED')
                     <h2 class="text-lg font-medium">
                         {{ __('Cannot approve this book borrow request') }}

@@ -9,6 +9,39 @@
         </div>
     </x-slot>
 
+    <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        @if ($cart->count() <= 0)
+            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty! Kindly add at least one book to your cart.</p>
+        @else
+            @if($is_status_member->count())
+                @if ($is_status_member[0]->status == 'DECLINED')
+                    <p class="text-sm text-orange-500 dark:text-orange-400">
+                        Hi there! It seems your borrower card application was declined. 
+                        Due to this, your previous request to borrow book/s will not be processed anymore.  
+                        You may submit another request if you wish to borrow books from the catalog section.
+                        <br>  
+                        <br>
+                        Note: You will have to have an approved borrower card, in order to borrow books from the 
+                        Zamboanga City Library.
+                    </p> 
+                    <a class="text-sm text-cyan-500 dark:text-cyan-400" href="{{ route('borrower.app') }}">Click here to submit another borrower card application.</a>
+                
+                @else
+                    <x-button href="{{ route('book_req.view') }}">
+                        <i class="fa-solid fa-check pr-2"></i>
+                        <span>{{ __('Borrow') }}</span>
+                    </x-button>
+                @endif
+            
+            @else
+                <x-button href="{{ route('borrower.app') }}">
+                    <i class="fa-solid fa-check pr-2"></i>
+                    <span>{{ __('Borrow') }}</span>
+                </x-button>
+            @endif
+        @endif
+    </div>
+
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
         @if(session('message') == 'Borrower card application was successfully sent for verification!') 
@@ -35,25 +68,6 @@
             </p>
         @endif
         
-        <!-- If user has already sent a member card app, the user should not be redirected 
-            to the member card app anymore
-         -->
-        @if ($cart->count() <= 0)
-            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty! Kindly add at least one book to your cart.</p>
-        @else
-            @if (session('member.0.id'))
-                <x-button href="{{ route('book_req.view') }}" class="mb-6">
-                    <i class="fa-solid fa-check mx-2"></i>
-                    <span>{{ __('Borrow') }}</span>
-                </x-button>
-            @else
-                <x-button href="{{ route('borrower.app') }}" class="mb-6">
-                    <i class="fa-solid fa-check mx-2"></i>
-                    <span>{{ __('Borrow') }}</span>
-                </x-button>
-            @endif
-        @endif
-        
 
         <table id="table" class="display" style="width:100%;">
                     <thead>
@@ -75,7 +89,7 @@
                                 @csrf
                                 <input type="hidden" value="{{$item->rowId}}" name="row_id">
                                 <x-button class="justify-center w-full">
-                                    <i class="fa-solid fa-xmark mx-2"></i>
+                                    <i class="fa-solid fa-xmark pr-2"></i>
                                     <span>{{ __('Remove') }}</span>
                                 </x-button>
                             </form>

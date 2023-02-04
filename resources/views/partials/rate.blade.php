@@ -96,7 +96,7 @@
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'add-rating')"
     >
-        <i class="fa-sharp fa-solid fa-star px-1"></i>
+        <i class="fa-sharp fa-solid fa-star pr-1"></i>
         
         {{ __('Feedback') }}
     </x-button>
