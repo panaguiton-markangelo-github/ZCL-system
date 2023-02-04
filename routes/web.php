@@ -41,8 +41,7 @@ use Illuminate\Http\Request;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
-//polish some aspects in the public users, like when the member card was declined allow the user to  
-// edit member card application.
+//done! hehehe ask for some feedback to your client mark..
 
 // start public users routes:
 
