@@ -95,7 +95,7 @@
 
                         <tr>
                             <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Title</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Author</th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th>

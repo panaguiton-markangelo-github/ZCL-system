@@ -56,17 +56,24 @@
         <x-dropdown align="right" width="48">
             
             <x-slot name="trigger">
-                <button
-                    class="flex items-center p-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
-                >
+                <div class="mx-2 inline-flex relative w-fit"> 
+                    <button
+                        class="inline-block flex items-center py-2 px-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
+                    >
 
-                    <div class="ml-1">
-                       
-                        <i class="fa-regular fa-bell"></i>
-                        {{ auth()->user()->unreadNotifications->count() }}
-                        
-                    </div>
-                </button>
+                        <div> 
+                            @if(auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
+                                <i class="fa-regular fa-bell"></i> 
+                            @else
+                                <i class="fa-regular fa-bell"></i>
+                                <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 dark:bg-red-500 text-white rounded-full z-10">
+                                    {{ auth()->guard('librarians')->user()->unreadNotifications->count() }}
+
+                                </div>   
+                            @endif
+                        </div>
+                    </button>
+                </div>
             </x-slot>
 
             <x-slot name="content">

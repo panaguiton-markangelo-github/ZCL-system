@@ -350,9 +350,11 @@
   <!--news and announcements section -->
   <section class="client_section layout_padding" id="news_ann_section">
     <div class="container">
-      <h2>
-        News and Announcements
-      </h2>
+      <div class="custom_heading-container">
+        <h2>
+          News and Announcements
+        </h2>
+      </div>
       <div id="carouselNewsControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -441,9 +443,11 @@
   <!-- client section -->
   <section class="client_section layout_padding" id="client_section">
     <div class="container">
-      <h2>
-        What Our Clients Says
-      </h2>
+      <div class="custom_heading-container">
+        <h2>
+          What Our Clients Says
+        </h2>
+      </div>
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
