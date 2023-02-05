@@ -5,14 +5,7 @@
                 {{ __("Announcements") }}
             </h2>
 
-            {{-- {{if auth() }} --}}
            
-            {{-- <x-button target="_blank" href="https://github.com/kamona-wd/kui-laravel-breeze" variant="black"
-                class="justify-center max-w-xs gap-2">
-                <span>Cart</span>
-                
-            </x-button> --}}
-
         </div>
     </x-slot>
 
@@ -157,6 +150,9 @@
 </x-hlibrarian-layout>
 
 <style>
+    .dataTables_wrapper .dataTables_length select {
+        padding-right: 25px;
+    }
     tfoot input {
         width: 100%;
         padding: 3px;

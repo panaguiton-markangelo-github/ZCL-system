@@ -119,13 +119,19 @@
            $(document).ready(function () {
                 $('#table').DataTable({
                 responsive: true,
-                scrollX: true
+                scrollX: true,
+                "language": {
+                    "emptyTable": "There are currently no books in your cart."
+                },
             });
             });
     </script>
 </x-app-layout>
 
 <style>
+    .dataTables_wrapper .dataTables_length select {
+        padding-right: 25px;
+    }
     tfoot input {
         width: 100%;
         padding: 3px;

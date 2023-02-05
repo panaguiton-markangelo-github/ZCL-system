@@ -42,6 +42,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
 //done! hehehe ask for some feedback to your client mark..
+//allow the users' feedbacks to be seen by the librarians.
 
 // start public users routes:
 

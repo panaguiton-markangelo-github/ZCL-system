@@ -48,7 +48,7 @@
         
     </div>
 
-    <div class="p-6 mt-7 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
         @if(session('message'))
             <p
                 x-data="{ show: true }"
@@ -110,20 +110,27 @@
                                     </td>
 
                                     <td>
-                                        <a href="/catalog/book/{{ $book->id }}">
-                                            {{$book->title}}
-                                        </a>
+                                        
+                                        {{$book->title}}
+                                        
                                     </td>
                                     <td>
-                                        <a href="/catalog/book/{{ $book->id }}">
-                                            {{$book->author}}
-                                        </a>
+                                        
+                                        {{$book->author}}
+                                       
                                     </td>
                                     <td>
-                                        <a href="/catalog/book/{{ $book->id }}">
-                                            {{$book->published}}
-                                        </a>
+                                        
+                                        {{$book->published}}
+                                    
                                     </td>
+                                    <td>
+                                        <x-button href="/catalog/book/{{ $book->id }}" class="justify-center w-full">
+                                            <i class="fa-solid fa-circle-info pr-2"></i>
+                                            <span>{{ __('View') }}</span>
+                                        </x-button>
+                                    </td>
+
                                     @if ($cart->where('id', $book->id)->count())
                                         <td>
                                             In Cart
@@ -142,14 +149,7 @@
                                     </td>
                                     @endif
             
-                                    <td>
-                                        <x-button href="/catalog/book/{{ $book->id }}" class="justify-center w-full">
-                                            <i class="fa-solid fa-circle-info pr-2"></i>
-                                            <span>{{ __('View') }}</span>
-                                        </x-button>
-                                    </td>
                                     
-                                
                 
                                 </tr>
                             @endforeach
@@ -180,6 +180,9 @@
     <script>
         $(document).ready(function () {
              $('#table').DataTable({
+                "language": {
+                    "emptyTable": "There are no books currently available in the catalog."
+                },
                  initComplete: function () {
                      this.api()
                          .columns()
@@ -204,10 +207,13 @@
                  },
              });
          });
-    </script>
+ </script>
 </x-app-layout>
 
 <style>
+    .dataTables_wrapper .dataTables_length select {
+        padding-right: 25px;
+    }
     tfoot input {
         width: 100%;
         padding: 3px;

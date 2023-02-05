@@ -9,13 +9,6 @@
                 {{ __("Events") }}
             </h2>
 
-            {{-- {{if auth() }} --}}
-           
-            {{-- <x-button target="_blank" href="https://github.com/kamona-wd/kui-laravel-breeze" variant="black"
-                class="justify-center max-w-xs gap-2">
-                <span>Cart</span>
-                
-            </x-button> --}}
 
         </div>
     </x-slot>
@@ -120,12 +113,6 @@
                     }
                 })
 
-                // if (email) {
-                //     Swal.fire(`Entered email: ${email}`)
-                // }
-
-                // var title = prompt('Event Title (Create an event):');
-
                 if(title)
                 {
                     var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
@@ -149,7 +136,7 @@
                                 'The event was successfully created!.',
                                 'success'
                             )
-                            // alert("Event Created Successfully");
+                            
                         }
                     })
                 }
@@ -269,14 +256,6 @@
   </script>
 
 
-    {{-- <script>
-           $(document).ready(function () {
-                $('#table').DataTable({
-                responsive: true,
-                scrollX: true
-            });
-            });
-    </script> --}}
 </x-hlibrarian-layout>
 
 <style>

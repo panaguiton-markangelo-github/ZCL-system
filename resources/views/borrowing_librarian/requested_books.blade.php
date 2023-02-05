@@ -167,6 +167,9 @@
 </x-blibrarian-layout>
 
 <style>
+    .dataTables_wrapper .dataTables_length select {
+        padding-right: 25px;
+    }
     tfoot input {
         width: 100%;
         padding: 3px;
