@@ -57,13 +57,13 @@
                         </tr>
 
                         <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Borrowed Date</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Title</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Author</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Published</th>  
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">collection</th>       
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Status</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Borrowed Date</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>  
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>       
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -117,21 +117,23 @@
                             .columns()
                             .every(function () {
                                 var column = this;
-                                var select = $('<select><option value=""></option></select>')
-                                    .appendTo($(column.header()).empty())
-                                    .on('change', function () {
-                                        var val = $.fn.dataTable.util.escapeRegex($(this).val());
-            
-                                        column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                if ($(column.header()).hasClass('select_search')) {
+
+                                    var select = $('<select><option value=""></option></select>')
+                                        .appendTo($(column.header()).empty())
+                                        .on('change', function () {
+                                            var val = $.fn.dataTable.util.escapeRegex(
+                                                $(this).val()
+                                            );
+                                            column
+                                                .search(val ? '^' + val + '$' : '', true, false)
+                                                .draw();
+                                        });
+                                    column.data().unique().sort().each(function (d, j) {
+                                        select.append('<option value="' + d + '">' + d + '</option>')
                                     });
-            
-                                column
-                                    .data()
-                                    .unique()
-                                    .sort()
-                                    .each(function (d, j) {
-                                        select.append('<option value="' + d + '">' + d + '</option>');
-                                    });
+
+                                }
                             });
                     },
                 });

@@ -65,11 +65,11 @@
                         </tr>
 
                         <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">First Name</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Last Name</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Email</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Type</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Type</th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         </tr>
                     </thead>
@@ -141,21 +141,23 @@
                          .columns()
                          .every(function () {
                              var column = this;
-                             var select = $('<select><option value=""></option></select>')
-                                 .appendTo($(column.header()).empty())
-                                 .on('change', function () {
-                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-         
-                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                 });
-         
-                             column
-                                 .data()
-                                 .unique()
-                                 .sort()
-                                 .each(function (d, j) {
-                                     select.append('<option value="' + d + '">' + d + '</option>');
-                                 });
+                             if ($(column.header()).hasClass('select_search')) {
+
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.header()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+
+                            }
                          });
                  },
              });

@@ -94,10 +94,10 @@
                         </tr>
 
                         <tr>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No</th> 
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Title</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Author</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Published</th>
+                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Title</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Author</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th> 
                         </tr>
@@ -124,24 +124,24 @@
                                         {{$book->published}}
                                     
                                     </td>
-                                    <td>
-                                        <x-button href="/catalog/book/{{ $book->id }}" class="justify-center w-full">
+                                    <td class="text-center">
+                                        <x-button href="/catalog/book/{{ $book->id }}" class="justify-center w-3/4">
                                             <i class="fa-solid fa-circle-info pr-2"></i>
                                             <span>{{ __('View') }}</span>
                                         </x-button>
                                     </td>
 
                                     @if ($cart->where('id', $book->id)->count())
-                                        <td>
+                                        <td class="text-center">
                                             In Cart
                                         </td>
                                     @else
-                                    <td>
+                                    <td class="text-center">
                                         <form action="{{ route('cart.store') }}" method="POST">
                                             @csrf
                                             <input type="hidden" value="{{$book->id}}" name="book_id">
                                             <input type="number" value="1" name="quantity" hidden>
-                                            <x-button class="justify-center w-full">
+                                            <x-button class="justify-center w-3/4">
                                                 <i class="fa-solid fa-cart-plus pr-2"></i>
                                                 <span>{{ __('Add to cart') }}</span>
                                             </x-button>
@@ -188,21 +188,23 @@
                          .columns()
                          .every(function () {
                              var column = this;
-                             var select = $('<select><option value=""></option></select>')
-                                 .appendTo($(column.header()).empty())
-                                 .on('change', function () {
-                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-         
-                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                 });
-         
-                             column
-                                 .data()
-                                 .unique()
-                                 .sort()
-                                 .each(function (d, j) {
-                                     select.append('<option value="' + d + '">' + d + '</option>');
-                                 });
+                             if ($(column.header()).hasClass('select_search')) {
+
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.header()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+
+                            }
                          });
                  },
              });

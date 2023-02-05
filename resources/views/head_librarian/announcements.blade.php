@@ -63,8 +63,8 @@
                         </tr>
 
                         <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left">Details</th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Details</th>
                             <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                             
                         </tr>
@@ -84,7 +84,7 @@
                                         <div class="sm:rounded-lg">
                                             <div class="max-w-xl">
                                                 <x-button variant="success" href="/head_librarian/edit/announcement/{{ $announce->id }}">
-                                                    <i class="fa-solid fa-pen-to-square mx-2"></i>
+                                                    <i class="fa-solid fa-pen-to-square pr-2"></i>
                                                     <span>{{ __('Edit Announcement') }}</span>
                                                 </x-button> 
                                             
@@ -127,21 +127,23 @@
                          .columns()
                          .every(function () {
                              var column = this;
-                             var select = $('<select><option value=""></option></select>')
-                                 .appendTo($(column.header()).empty())
-                                 .on('change', function () {
-                                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-         
-                                     column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                 });
-         
-                             column
-                                 .data()
-                                 .unique()
-                                 .sort()
-                                 .each(function (d, j) {
-                                     select.append('<option value="' + d + '">' + d + '</option>');
-                                 });
+                             if ($(column.header()).hasClass('select_search')) {
+
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.header()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+
+                            }
                          });
                  },
              });
