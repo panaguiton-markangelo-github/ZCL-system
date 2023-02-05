@@ -336,7 +336,7 @@
             </h4>
             <p>
               Users can also borrow books with ease just by filling
-              up a form using the borrowing system.
+              out a form using the borrowing system.
             </p>
           </div>
         </div>
