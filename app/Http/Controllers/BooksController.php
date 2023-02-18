@@ -29,7 +29,9 @@ class BooksController extends Controller
         {
             if($is_status_member[0]->type == '0'){
                 $books = Books::where('status', '=', "AVAILABLE")
-                                ->where('collection', '=', "fiction")
+                                ->where('collection', '=', "fiction-college")
+                                ->orWhere('collection', '=', "fiction-children")
+                                ->orWhere('collection', '=', "fiction-hs")
                                 ->orderBy('id', 'DESC')->get();
                                 
             }

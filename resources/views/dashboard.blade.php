@@ -39,10 +39,15 @@
                     You may submit another request if you wish to borrow books from the catalog section.
                     <br>  
                     <br>
-                    Note: You will have to have an approved borrower card, in order to borrow books from the 
+                    Note: You need to have an approved borrower card, in order to borrow books from the 
                     Zamboanga City Library.
                 </p> 
                 <a class="text-sm text-cyan-500 dark:text-cyan-400" href="{{ route('borrower.app') }}">Click here to submit another borrower card application.</a>
+                <br>
+                <p class="text-sm text-orange-500 dark:text-orange-400">
+                    Please take note that you need to request to borrow books again after submitting another borrower card
+                    application.
+                </p>
             @endif
         @endif
         

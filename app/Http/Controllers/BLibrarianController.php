@@ -68,6 +68,10 @@ class BLibrarianController extends Controller
         ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'book_bor_reqs.member_id', 'books.title', 'books.author', 'books.published', 
                  'books.subject', 'books.publisher', 'books.isbn', 'books.summary', 
                  'books.collection', 'books.shelf_location', 'books.status',
+                 'books.place_pub','books.edition_vol','books.pagination','books.date_acq',
+                 'books.source','books.series','books.incls','books.property_no',
+                 'books.acc_no','books.amount','books.call_no','books.lc',
+                 'books.ddc','books.author_no','books.c','books.section',
                  'book_bor_reqs.status AS bookReqStatus'
                  )
         ->limit(1)

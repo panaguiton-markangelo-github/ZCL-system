@@ -41,8 +41,9 @@ use Illuminate\Http\Request;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
-//done! hehehe ask for some feedback to your client mark..
-//allow the users' feedbacks to be seen by the librarians.
+//done! hehehe.
+//allow the users' feedbacks to be seen by the librarians 
+//We'll do this later on.....
 
 // start public users routes:
 

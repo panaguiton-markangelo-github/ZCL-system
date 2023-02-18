@@ -61,7 +61,20 @@
 
         <br>
 
-        <div class="grid grid-cols-2 gap-2 text-center">
+        <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Place of Pub: ') }} {{$request_book[0]->place_pub}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Edition/Vol: ') }} {{$request_book[0]->edition_vol}} 
+                </p>
+
+            </div>
+
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                     {{ __('Publisher: ') }} {{$request_book[0]->publisher}} 
@@ -77,6 +90,117 @@
         </div>
 
         <br>
+
+        <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Pagination: ') }} {{$request_book[0]->pagination}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Source: ') }} {{$request_book[0]->source}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Series: ') }} {{$request_book[0]->series}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Incls: ') }} {{$request_book[0]->incls}} 
+                </p>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Date Acquired: ') }} {{$request_book[0]->date_acq}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Property No: ') }} {{$request_book[0]->property_no}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Acc. No: ') }} {{$request_book[0]->acc_no}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Amount: ') }} {{$request_book[0]->amount}} 
+                </p>
+
+            </div>
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-3 gap-3 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Call No: ') }} {{$request_book[0]->call_no}} 
+                </p>
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('LC: ') }} {{$request_book[0]->lc}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('DDC: ') }} {{$request_book[0]->ddc}} 
+                </p>
+            </div>
+            
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-3 gap-3 text-center">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Author No: ') }} {{$request_book[0]->author_no}} 
+                </p>
+
+            </div>
+            
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('©: ') }} {{$request_book[0]->c}} 
+                </p>
+
+            </div>
+
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Section: ') }} {{$request_book[0]->section}} 
+                </p>
+            </div>
+            
+        </div>
+
+        <br>
+
+       
 
         <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
             {{ __('Summary') }}
