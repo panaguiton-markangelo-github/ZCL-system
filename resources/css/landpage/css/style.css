@@ -46,8 +46,8 @@ body {
 /*header section*/
 .hero_area {
   height: 94vh;
-  background: -webkit-gradient(linear, left top, right top, from(#864ddf), to(#203376));
-  background: linear-gradient(to right, #864ddf, #203376);
+  background: -webkit-gradient(linear, left top, right top, from(#9d0208), to(#c1121f));
+  background: linear-gradient(to right, #9d0208, #c1121f);
 }
 
 .hero_area::before {
@@ -214,7 +214,7 @@ a:focus {
   background-repeat: no-repeat;
   background-size: 14px;
   background-position: center;
-  background-color: #383a90;
+  background-color: #c1121f;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -247,7 +247,7 @@ a:focus {
   text-align: center;
   line-height: 55px;
   color: #f9fcfb;
-  background-color: #547bfe;
+  background-color: #c1121f;
   opacity: 1;
   display: none;
 }
@@ -328,7 +328,7 @@ a:focus {
 .service_section {
   text-align: center;
   color: #f9fcfb;
-  background-image: url(/public/images/service-bg.png);
+  background-image: url(/public/images/service-bg-red.png);
   background-size: 100% 100%;
   padding-top: 275px;
   padding-bottom: 125px;
@@ -441,8 +441,8 @@ a:focus {
 
 .why_section {
   color: #f9fcfb;
-  background: -webkit-gradient(linear, left top, right top, from(#1b3374), to(#8f4fe8));
-  background: linear-gradient(to right, #1b3374, #8f4fe8);
+  background: -webkit-gradient(linear, left top, right top, from(#9d0208), to(#c1121f));
+  background: linear-gradient(to right, #9d0208, #c1121f);
 }
 
 .why_section .custom_heading-container h2 {
@@ -489,7 +489,7 @@ a:focus {
   background-repeat: no-repeat;
   background-size: 14px;
   background-position: center;
-  background-color: #383a90;
+  background-color: #c1121f;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -532,7 +532,7 @@ a:focus {
 .client_container .detail-box .img-box {
   width: 75px;
   margin-right: 15px;
-  border: 10px solid #9852f2;
+  border: 10px solid #c1121f;
   border-radius: 100%;
   overflow: hidden;
 }
@@ -587,7 +587,7 @@ a:focus {
 .contact_section button {
   display: inline-block;
   padding: 12px 40px;
-  background-color: #a053f9;
+  background-color: #c1121f;
   color: #f9fcfb;
   border-radius: 5px;
   -webkit-box-shadow: 0px 2px 7px 0px rgba(32, 50, 117, 0.26);
@@ -610,7 +610,7 @@ a:focus {
 
 /* info section */
 .footer_bg {
-  background-image: url(/public/images/footer-bg.png);
+  background-image: url(/public/images/footer-bg-red.png);
   background-size: cover;
   padding-top: 280px;
   margin-top: -125px;
