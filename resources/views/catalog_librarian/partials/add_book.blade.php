@@ -646,9 +646,7 @@
                     required
                     autofocus
                     maxlength="200"
-                >
-
-                </textarea>
+                ></textarea>
 
                 @error('summary')
                     <p class="text-red-500 text-xs p-1">

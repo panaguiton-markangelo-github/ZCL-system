@@ -119,8 +119,6 @@
             </x-slot>
             
         </x-dropdown>
-        
-
 
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
@@ -166,7 +164,6 @@
                 </form>
             </x-slot>
         </x-dropdown>
-
 
 
     </div>

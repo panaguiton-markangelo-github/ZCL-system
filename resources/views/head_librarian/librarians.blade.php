@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
     
         @if(session('message')) 
             <p
@@ -49,85 +49,70 @@
 
         @endif 
 
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="overflow-x-auto">
-                  <table id="table" class="min-w-full">
-                    <thead>
-                         <tr>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">First Name</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Last Name</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Email</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Type</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
-                        </tr>
+        <div class="overflow-x-auto">
+            <table id="table" class="min-w-full">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">First Name</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Last Name</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Email</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Type</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
+                    </tr>
 
-                        <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Type</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Type</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                        @foreach ($data as $user)
-                     
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$user->firstName}}</td>
-                                <td>{{$user->lastName}}</td>
-                                <td>{{$user->email}}</td>
-                                
-                                @if ($user->type == '2')
-                                    <td>Librarian for Borrowing</td>
-                                @endif
-                                @if ($user->type == '3')
-                                    <td>Librarian for Cataloging</td>
-                                @endif
-        
-                                <td>
-                                
-                                    <div class="sm:rounded-lg">
-                                        <div class="max-w-xl">
-                                            <x-button variant="success" href="/head_librarian/edit/librarian/{{ $user->id }}">
-                                                <i class="fa-solid fa-user-pen mx-2"></i>
-                                                <span>{{ __('Edit Librarian') }}</span>
-                                            </x-button>
-                                        
-                                        </div>
-                                    </div>  
-                                            
-                                    
-                                </td>
-        
-        
+                    @foreach ($data as $user)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$user->firstName}}</td>
+                            <td>{{$user->lastName}}</td>
+                            <td>{{$user->email}}</td>
                             
-                            </tr>
-                        @endforeach 
-                           
-                       </tbody>
-               
-                       <tfoot>
-                           <tr>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">First Name</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Last Name</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Email</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Type</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
-                            </tr>
-                       </tfoot>
-                  </table>
-                </div>
-              </div>
-            </div>
-        </div>
+                            @if ($user->type == '2')
+                                <td>Librarian for Borrowing</td>
+                            @endif
+                            @if ($user->type == '3')
+                                <td>Librarian for Cataloging</td>
+                            @endif
     
+                            <td>
+                                <div class="sm:rounded-lg">
+                                    <div class="max-w-xl">
+                                        <x-button variant="success" href="/head_librarian/edit/librarian/{{ $user->id }}">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </x-button>
+                                    
+                                    </div>
+                                </div>   
+                            </td>
+                        </tr>
+                    @endforeach 
+                </tbody>
+           
+                <tfoot>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">First Name</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Last Name</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Email</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Type</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -170,9 +155,9 @@
         padding-right: 25px;
     }
     tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
 </style>
 

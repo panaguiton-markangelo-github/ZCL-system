@@ -30,6 +30,7 @@
 
 <body class="font-sans antialiased">
     <x-message />
+    <x-e_message />
     <div
         x-data="mainState"
         :class="{ dark: isDarkMode }"

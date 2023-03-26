@@ -41,9 +41,10 @@ use Illuminate\Http\Request;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
-//done! hehehe.
-//allow the users' feedbacks to be seen by the librarians 
-//We'll do this later on.....
+//done with the latest changes...
+//notifications make it scrollable when notification are many,
+//and fix the colors at the sort number of data table when dark mode...
+
 
 // start public users routes:
 
@@ -60,7 +61,9 @@ Route::post('/catalog/cart/remove', [CartController::class, 'remove'])->middlewa
 //borrower application routes
 Route::get('/borrower/application', [BorrowerAppController::class, 'create'])->middleware(['auth', 'verified'])->name('borrower.app');
 Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->middleware(['auth', 'verified'])->name('borrower.store');
-
+Route::get('/borrower/card/view/{id}', [BorrowerAppController::class, 'show'])->middleware(['auth', 'verified'])->name('borrower.view');
+Route::get('/borrower/card/edit/{id}', [BorrowerAppController::class, 'edit'])->middleware(['auth', 'verified'])->name('borrower.edit');
+Route::put('/borrower/card/update/{id}', [BorrowerAppController::class, 'update'])->middleware(['auth', 'verified'])->name('borrower.update');
 //Borrower Book Requests routes
 Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');

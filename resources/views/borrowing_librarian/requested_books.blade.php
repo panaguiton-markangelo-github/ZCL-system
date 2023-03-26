@@ -10,7 +10,7 @@
         </div>
     </x-slot>
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
     
         @if(session('message')) 
             <p
@@ -39,97 +39,78 @@
             @endforeach
 
         @endif
-        
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="overflow-x-auto">
-                  <table id="table" class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Request Date</th>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Book Title</th>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's First Name</th>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's Last Name</th>            
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
-                            <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"></th> 
-                                
-                        </tr>
 
-                        <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Request Date</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>            
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Status</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th> 
-                                
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($request_books as $rbook)
-                        
-                       <tr>
-                           <td>{{$loop->iteration}}</td>
+        <div class="overflow-x-auto">
+            <table id="table" class="min-w-full">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Request Date</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Book Title</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's First Name</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's Last Name</th>            
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"></th>     
+                    </tr>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Request Date</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>            
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Status</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th> 
+                            
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($request_books as $rbook)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$rbook->created_at}}</td>
-                           <td>{{$rbook->title}}</td>
-                           <td>{{$rbook->firstName}}</td>
-                           <td>{{$rbook->lastName}}</td>
-                           @if ($rbook->status == 'PENDING')
-                               <td class="text-yellow-500 dark:text-yellow-400">{{$rbook->status}}</td>
-                           @endif
-                           @if ($rbook->status == 'APPROVED')
-                               <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
-                           @endif
-                           @if ($rbook->status == 'DECLINED')
-                               <td class="text-red-500 dark:text-red-400">{{$rbook->status}}</td>
-                           @endif
-                          
-                       
-                           <td>
-                              
-       
-                               <div class="sm:rounded-lg">
-                                   <div class="max-w-xl">
-                                       <x-button variant="success" href="/borrowing_librarian/requested/books/{{$rbook->id}}">
-                                           {{-- <i class="fa-solid fa-pen-to-square mx-2"></i> --}}
-                                           <i class="fa-solid fa-circle-info pr-2"></i>
-                                           <span>{{ __('View') }}</span>
-                                       </x-button> 
-                                      
-                                   </div>
-                               </div>  
-                               
-                       
-                           </td> 
-   
-                          
-   
-                       </tr>
-                       @endforeach 
-                           
-   
-                           
-                       </tbody>
-                       <tfoot>
-                           <tr>
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No.</th>
-                                <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Request Date</th>
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Book Title</th>
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's First Name</th>
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's Last Name</th>            
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
-                               <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"></th>
-                             
-                           </tr>
-                       </tfoot>
-                  </table>
-                </div>
-              </div>
-            </div>
+                            <td>{{$rbook->title}}</td>
+                            <td>{{$rbook->firstName}}</td>
+                            <td>{{$rbook->lastName}}</td>
+                            @if ($rbook->status == 'PENDING')
+                                <td class="text-yellow-500 dark:text-yellow-400">{{$rbook->status}}</td>
+                            @endif
+                            @if ($rbook->status == 'APPROVED')
+                                <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
+                            @endif
+                            @if ($rbook->status == 'DECLINED')
+                                <td class="text-red-500 dark:text-red-400">{{$rbook->status}}</td>
+                            @endif
+
+                            <td>
+                                <div class="sm:rounded-lg">
+                                    <div class="max-w-xl">
+                                        <x-button variant="success" href="/borrowing_librarian/requested/books/{{$rbook->id}}">
+                                            {{-- <i class="fa-solid fa-pen-to-square mx-2"></i> --}}
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </x-button> 
+                                        
+                                    </div>
+                                </div>  
+                            </td> 
+
+                        </tr>
+                    @endforeach 
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Request Date</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Book Title</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's First Name</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Borrower's Last Name</th>            
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"></th>      
+                    </tr>
+                </tfoot>
+              </table>
         </div>
+        
     
     </div>
 
@@ -173,9 +154,9 @@
         padding-right: 25px;
     }
     tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
 </style>
 

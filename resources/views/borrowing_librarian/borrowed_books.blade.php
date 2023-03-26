@@ -10,7 +10,7 @@
         </div>
     </x-slot>
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
     
         @if(session('message')) 
             <p
@@ -38,72 +38,58 @@
             </p>
             @endforeach
 
-        @endif 
+        @endif
+        
+        <div class="overflow-x-auto" >
+            <table id="table" class="min-w-full">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Borrowed Date</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                    </tr>
 
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="overflow-x-auto">
-                  <table id="table" class="min-w-full">
-                    <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Borrowed Date</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>  
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>       
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($borrowed_books as $book)
                         <tr>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Borrowed Date</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
-                        </tr>
-
-                        <tr>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Borrowed Date</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>  
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>       
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($borrowed_books as $book)
-                     
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$book->borrowed_at}}</td>
                             <td>{{$book->title}}</td>
                             <td>{{$book->author}}</td>
                             <td>{{$book->published}}</td>
                             <td>{{$book->collection}}</td>
                             <td>{{$book->status}}</td>
-                        
-                        
-                        
-
-                        </tr>
-                        @endforeach 
-                           
-   
-                           
-                       </tbody>
-                       <tfoot>
-                           <tr>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Borrowed Date</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
-                            </tr>
-                       </tfoot>
-                  </table>
-                </div>
-              </div>
-            </div>
+                        </tr>
+                    @endforeach 
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Borrowed Date</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-    
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -146,9 +132,9 @@
         padding-right: 25px;
     }
     tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
 </style>
 

@@ -52,9 +52,7 @@
                     required
                     autofocus
                     maxlength="100"
-                >
-
-                </textarea>
+                ></textarea>
 
                 @error('remarks')
                     <p class="text-red-500 text-xs p-1">

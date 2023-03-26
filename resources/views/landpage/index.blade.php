@@ -58,50 +58,72 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex  flex-column flex-lg-row align-items-center">
-                  <ul class="navbar-nav  ">
-                    @if (Route::has('login'))
+                  <ul class="navbar-nav">
+
+                    @if (auth()->user())
                       @auth
                         <li class="nav-item">
                           <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
-                         
+
+                        <li class="nav-item">
+                          <a href="#news_ann_section" class="nav-link">Announcements</a>
+                        </li>
+    
+                        <li class="nav-item">
+                          <a href="#event_section" class="nav-link">Events</a>
+                        </li>                         
+                      @endauth
+
+                    @else
+                      @if (auth()->guard('librarians')->user())
+                        @auth('librarians')
+                          @if (auth()->guard('librarians')->user()->type == 1)
+                            <li class="nav-item">
+                              <a href="{{ route('head_librarian.dashboard') }}" class="nav-link">Head Librarian Dashboard</a>
+                            </li>
+                          @endif
+
+                          @if (auth()->guard('librarians')->user()->type == 2)
+                            <li class="nav-item">
+                              <a href="{{ route('borrowing_librarian.dashboard') }}" class="nav-link">Borrowing Librarian Dashboard</a>
+                            </li>
+                          @endif
+
+                          @if (auth()->guard('librarians')->user()->type == 3)
+                            <li class="nav-item">
+                              <a href="{{ route('catalog_librarian.dashboard') }}" class="nav-link">Catalog Librarian Dashboard</a>
+                            </li>
+                          @endif
+                          
+                          <li class="nav-item">
+                            <a href="#news_ann_section" class="nav-link">Announcements</a>
+                          </li>
+      
+                          <li class="nav-item">
+                            <a href="#event_section" class="nav-link">Events</a>
+                          </li>
+                        @endauth
+
                       @else
                         <li class="nav-item active">
                           <a href="{{ route('login') }}" class="nav-link">Log in</a>
                         </li>
-
-                      @endauth
-                    @endif
-
-                    @if (Route::has('librarian.login'))
-                      @auth('librarians')
-                        <li class="nav-item">
-                          <a href="{{ route('head_librarian.dashboard') }}" class="nav-link">Librarian Dashboard</a>
-                        </li>
-                         
-                      @else
+                        
                         <li class="nav-item active">
                           <a href="{{ route('librarian.login') }}" class="nav-link">Admin</a>
                         </li>
 
-                          {{-- @if (Route::has('register'))
-                              <li class="nav-item active">
-                                <a href="{{ route('librarian.register') }}" class="nav-link">Librarian Register</a>
-                              </li>
-                          @endif --}}
-
-
-                      @endauth
+                        <li class="nav-item">
+                          <a href="#news_ann_section" class="nav-link">Announcements</a>
+                        </li>
+    
+                        <li class="nav-item">
+                          <a href="#event_section" class="nav-link">Events</a>
+                        </li>
+                      @endif
                     @endif
 
-                    <li class="nav-item">
-                      <a href="#news_ann_section" class="nav-link">Announcements</a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="#event_section" class="nav-link">Events</a>
-                    </li>
-                                      
                   </ul>
                                    
                 </div>

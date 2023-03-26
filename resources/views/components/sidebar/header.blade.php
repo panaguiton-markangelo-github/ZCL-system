@@ -5,7 +5,7 @@
         class="inline-flex items-center gap-2"
     >
         {{-- <x-application-logo aria-hidden="true" class="w-10 h-auto" /> --}}
-        <a class="w-14 h-auto" title="Zamboanga City Government, Public domain, via Wikimedia Commons" href="#"><img alt="Seal of Zamboanga City" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png"></a>
+        <a class="w-14 h-auto" title="Zamboanga City Government" href="{{ route('landingpage') }}"><img alt="Seal of Zamboanga City" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png"></a>
 
         <span class="sr-only">Dashboard</span>
     </a>

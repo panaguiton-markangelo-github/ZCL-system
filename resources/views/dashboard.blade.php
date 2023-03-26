@@ -1,19 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-center">
             <h2 class="text-xl font-semibold leading-tight">
                 {{ __('Browse the online catalog for books') }}
             </h2>
 
             @include('partials.rate')
-            
+
+            @if (session('member.0.id'))
+                <x-button class="justify-center" href="/borrower/card/view/{{auth()->user()->id}}">
+                    <i class="fa-solid fa-users-rectangle px-1"></i>
+                    {{ __('Borrower Card') }}
+                </x-button>
+            @endif
 
         </div>
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
-
         @if (!session('member.0.id'))
             <br>
             <br>
@@ -53,7 +58,7 @@
         
     </div>
 
-    <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         @if(session('message'))
             <p
                 x-data="{ show: true }"
@@ -63,6 +68,19 @@
                 class="text-sm text-green-600 dark:text-green-400 mb-2"
             >
                 {{ __(session('message')) }}
+            </p>
+                
+        @endif
+
+        @if(session('error_message'))
+            <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 2500)"
+                class="text-sm text-red-600 dark:text-red-400 mb-2"
+            >
+                {{ __(session('error_message')) }}
             </p>
                 
         @endif
@@ -82,101 +100,69 @@
         
         @enderror 
         
+        <div class="overflow-x-auto" >
+            <table id="table" class="min-w-full">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  text-left">No</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                    </tr>
 
-        <div class="flex flex-col">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="overflow-x-auto">
-                  <table id="table" class="min-w-full">
-                    <thead>
-                         <tr>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No</th> 
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th> 
-                        </tr>
-
-                        <tr>
-                            <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Author</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th>
-                            <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"> </th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @foreach ($books as $book)
-                                <tr>
-                                    <td>
-                                        {{$loop->iteration}}
-                                    </td>
-
-                                    <td>
-                                        
-                                        {{$book->title}}
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                        {{$book->author}}
-                                       
-                                    </td>
-                                    <td>
-                                        
-                                        {{$book->published}}
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left select_search">Author</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Published</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach ($books as $book)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$book->title}}</td>
+                                <td>{{$book->author}}</td>                                  
+                                <td>{{$book->published}}</td>                            
                                     
-                                    </td>
-                                    <td class="text-center">
-                                        <x-button href="/catalog/book/{{ $book->id }}" class="justify-center w-3/4">
-                                            <i class="fa-solid fa-circle-info pr-2"></i>
-                                            <span>{{ __('View') }}</span>
+                                <td class="text-center">
+                                    <x-button href="/catalog/book/{{ $book->id }}" class="justify-center">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </x-button>
+                                </td>
+                                @if ($cart->where('id', $book->id)->count())
+                                    <td class="text-center">In Cart</td>
+                                @else
+                                <td class="text-center">
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$book->id}}" name="book_id">
+                                        <input type="number" value="1" name="quantity" hidden>
+                                        <x-button class="justify-center">
+                                            <i class="fa-solid fa-cart-plus"></i>
                                         </x-button>
-                                    </td>
-
-                                    @if ($cart->where('id', $book->id)->count())
-                                        <td class="text-center">
-                                            In Cart
-                                        </td>
-                                    @else
-                                    <td class="text-center">
-                                        <form action="{{ route('cart.store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" value="{{$book->id}}" name="book_id">
-                                            <input type="number" value="1" name="quantity" hidden>
-                                            <x-button class="justify-center w-3/4">
-                                                <i class="fa-solid fa-cart-plus pr-2"></i>
-                                                <span>{{ __('Add to cart') }}</span>
-                                            </x-button>
-                                        </form>
-                                    </td>
-                                    @endif
-            
-                                    
-                
-                                </tr>
-                            @endforeach
-                           
-                           
-                       </tbody>
-                       <tfoot>
-                           <tr>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No</th> 
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th>
-                                <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"> </th> 
-                            </tr>
-                       </tfoot>
-                  </table>
-                </div>
-              </div>
-            </div>
+                                    </form>
+                                </td>
+                                @endif        
+                            </tr>
+                        @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium  text-left">No</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                    </tr>
+                </tfoot>
+              </table>
         </div>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
@@ -185,6 +171,7 @@
     <script>
         $(document).ready(function () {
              $('#table').DataTable({
+                responsive: true,
                 "language": {
                     "emptyTable": "There are no books currently available in the catalog."
                 },
@@ -222,9 +209,9 @@
         padding-right: 25px;
     }
     tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
 </style>
 

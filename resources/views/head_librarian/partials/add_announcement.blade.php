@@ -47,9 +47,7 @@
                     required
                     autofocus
                     maxlength="300"
-                >
-
-                </textarea>
+                ></textarea>
 
                 @error('details')
                     <p class="text-red-500 text-xs p-1">
