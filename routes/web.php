@@ -42,10 +42,7 @@ use Illuminate\Http\Request;
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
-//done with the latest changes...
-//notifications make it scrollable when notification are many,
-//and fix the colors at the sort number of data table when dark mode...
-
+//done with the latest changes....
 
 // start public users routes:
 
