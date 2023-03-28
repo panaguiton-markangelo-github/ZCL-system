@@ -44,6 +44,29 @@
         </x-slot>
     </x-sidebar.link>
 
+    <x-sidebar.link
+        title="Notifications"
+        href="{{ route('borrowing_librarian.noty.view') }}"
+        :isActive="request()->routeIs('borrowing_librarian.noty.view')"
+    >
+        <x-slot name="icon">
+
+            @if (auth()->guard('librarians')->user()->unreadNotifications->count() > 0)
+                <i class="fa-solid fa-bell fa-shake flex-shrink-0 w-6 h-5"></i>
+            @else
+                <i class="fa-regular fa-bell flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
+            @endif
+
+            @if (auth()->guard('librarians')->user()->unreadNotifications->count() > 0)
+                <div class="py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 dark:bg-red-500 text-white rounded-full">
+                    {{ auth()->guard('librarians')->user()->unreadNotifications->count() }}
+                </div>
+            @endif
+    
+        </x-slot>
+        
+    </x-sidebar.link>
+
     
     {{-- <x-sidebar.link
         title="Events"

@@ -18,7 +18,10 @@
             <div class="max-w-xl">
                 @include('head_librarian.partials.add_event')
             </div>
-        </div>   
+        </div> 
+        
+        <br>
+        <p>Note: You may also add an event by clicking a day in the calendar below.</p>
         
     </div>
 
@@ -100,7 +103,7 @@
                 const { value: title } = await Swal.fire({
                     title: 'Create an event',
                     input: 'text',
-                    inputLabel: 'Event Title (for the date/s): ',
+                    inputLabel: 'Event Title (The date will be what you have clicked!): ',
                     inputPlaceholder: 'Enter the event title',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

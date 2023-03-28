@@ -52,58 +52,75 @@
             />
         </x-button>
 
-        <!--Notifications-->
-        <x-dropdown align="right" width="48">
-            
-            <x-slot name="trigger">
-                <div class="mx-2 inline-flex relative w-fit"> 
-                    <button
-                        class="inline-block flex items-center py-2 px-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-
-                        <div> 
-                            @if(auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
-                                <i class="fa-regular fa-bell"></i> 
-                            @else
-                                <i class="fa-regular fa-bell"></i>
-                                <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 dark:bg-red-500 text-white rounded-full z-10">
-                                    {{ auth()->guard('librarians')->user()->unreadNotifications->count() }}
-
-                                </div>   
-                            @endif
-                        </div>
-                    </button>
-                </div>
-            </x-slot>
-
-            <x-slot name="content">
-                {{-- Notifications here --}}
-                
-                @forelse (auth()->guard('librarians')->user()->unreadNotifications as $notification)
-
-                <a href="{{url('/markAsRead/librarian')}}/{{$notification->id}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out dark:focus:text-white dark:focus:bg-dark-eval-3 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-dark-eval-3">
-                    <p> {{ $notification->data['data'] }}</p>
-                    <br>
-                    <p> Borrower Name: {{ $notification->data['userFirstName'] }} {{ $notification->data['userLastName'] }}</p>
-                    <hr>
+        @if (auth()->guard('librarians')->user()->unreadNotifications->count() > 4)
+            <div class="mx-2 inline-flex relative w-fit">
+                <a href="{{route('borrowing_librarian.noty.view')}}" class="inline-block flex items-center py-2 px-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fa-solid fa-bell fa-shake"></i>
                 </a>
+                <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 dark:bg-red-500 text-white rounded-full z-10">
+                    {{ auth()->guard('librarians')->user()->unreadNotifications->count() }}
 
-                @empty
-                <p> </p>
-                @endforelse 
+                </div>
+            </div>     
+        @else
+            <!--Notifications-->
+            <x-dropdown align="right" width="48">
+                
+                <x-slot name="trigger">
+                    <div class="mx-2 inline-flex relative w-fit"> 
+
+        
+                        <button
+                            class="inline-block flex items-center py-2 px-2 text-sm font-medium text-gray-500 rounded-md transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none focus:ring focus:ring-purple-500 focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark-eval-1 dark:text-gray-400 dark:hover:text-gray-200"
+                        >
+
+
+                            <div> 
+                            
+                                @if(auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
+                                    <i class="fa-regular fa-bell"></i> 
+                                @else
+                                    <i class="fa-solid fa-bell fa-shake"></i>
+                                    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 dark:bg-red-500 text-white rounded-full z-10">
+                                        {{ auth()->guard('librarians')->user()->unreadNotifications->count() }}
+
+                                    </div>   
+                                @endif
+        
+                            </div>
+                        </button>
+                        
+                    </div>
+                </x-slot>
+                
+                <x-slot name="content">
+                    {{-- Notifications here --}}
                     
+                    @forelse (auth()->guard('librarians')->user()->unreadNotifications as $notification)
 
-                @if (auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
-                    <p style="font-size: 0.9rem;padding:.9rem;" class="text-center">No new notification</p>
-                    
-                @endif
-                    
+                    <a href="{{url('/markAsRead/librarian')}}/{{$notification->id}}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out dark:focus:text-white dark:focus:bg-dark-eval-3 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-dark-eval-3">
+                        <p> {{ $notification->data['data'] }}</p>
+                        <br>
+                        <p> Borrower Name: {{ $notification->data['userFirstName'] }} {{ $notification->data['userLastName'] }}</p>
+                        <hr>
+                    </a>
 
-            </x-slot>
-            
-        </x-dropdown>
+                    @empty
+                    <p> </p>
+                    @endforelse 
+                        
 
+                    @if (auth()->guard('librarians')->user()->unreadNotifications->count() == 0)
+                        <p style="font-size: 0.9rem;padding:.9rem;" class="text-center">No new notification</p>
+                        
+                    @endif
+                        
 
+                </x-slot>
+                
+            </x-dropdown>
+
+        @endif
         
 
         <x-dropdown align="right" width="48">

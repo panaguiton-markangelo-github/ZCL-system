@@ -11,6 +11,7 @@ use App\Http\Controllers\HLibrarianController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LibrarianProfileController;
 use App\Http\Controllers\LibrariansController;
+use App\Http\Controllers\PNotifyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RatingsController;
@@ -57,6 +58,9 @@ Route::get('/catalog/book/{id}', [BooksController::class, 'show'])->middleware([
 Route::get('/catalog/cart', [CartController::class, 'index'])->middleware(['auth', 'verified'])->name('cart.view');
 Route::post('/catalog/cart/store', [CartController::class, 'store'])->middleware(['auth', 'verified'])->name('cart.store');
 Route::post('/catalog/cart/remove', [CartController::class, 'remove'])->middleware(['auth', 'verified'])->name('cart.remove');
+
+//notifications public user
+Route::get('/catalog/notifications', [PNotifyController::class, 'index'])->middleware(['auth', 'verified'])->name('noty.view');
 
 //borrower application routes
 Route::get('/borrower/application', [BorrowerAppController::class, 'create'])->middleware(['auth', 'verified'])->name('borrower.app');
@@ -141,6 +145,10 @@ Route::get('/borrowing_librarian/application/borrower', [BLibrarianController::c
 Route::get('/borrowing_librarian/application/borrower/{id}', [BLibrarianController::class, 'borrowersCardShow'])->middleware('auth:librarians')->name('borrowing_librarian.borrower_card_app.show');
 Route::put('/borrowing_librarian/update/application/borrower/{id}', [BLibrarianController::class, 'borrowersCardUpdate'])->middleware('auth:librarians')->name('borrowing_librarian.borrower_card_app.update');
 //end borrower card app routes
+
+//start librarian borrowing noty view
+Route::get('/borrowing_librarian/notifications', [BLibrarianController::class, 'notyIndex'])->middleware('auth:librarians')->name('borrowing_librarian.noty.view');
+//end librarian borrowing noty view
 
 //end of borrowing librarian routes
 

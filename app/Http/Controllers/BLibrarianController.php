@@ -222,7 +222,16 @@ class BLibrarianController extends Controller
 
 
     }
+    
 
     //end borrowers card application methods
+
+    //start noti methods
+
+    public function notyIndex(){
+        return view('borrowing_librarian.bl_noty_view');
+    }
+
+    //end noti methods
 
 }
