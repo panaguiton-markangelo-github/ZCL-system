@@ -26,52 +26,6 @@
             <input type="text" name="id" id="id" value="{{$member->id}}" hidden>
 
             <div class="grid grid-cols-3 gap-3">
-                <!-- First Name -->
-                <div class="space-y-2">
-                    <x-form.label
-                        for="firstName"
-                        :value="__('First Name')"
-                    />
-                    <x-form.input
-                        id="firstName"
-                        class="block w-full"
-                        type="text"
-                        name="firstName"
-                        :value="$member->firstName"
-                        placeholder="{{ __('First Name') }}"
-                        required
-                        autofocus
-                    />
-
-                    @error('firstName')
-                    <p class="text-red-500 text-xs p-1">
-                        @error('firstName')
-                            {{ $message }}
-                        @enderror
-                    </p>
-                    @enderror     
-                </div>
-
-                <!-- Last Name-->
-                <div class="space-y-2">
-                    <x-form.label
-                        for="lastName"
-                        :value="__('Last Name')"
-                    />
-
-                    <x-form.input
-                        id="lastName"
-                        class="block w-full"
-                        type="text"
-                        name="lastName"
-                        :value="$member->lastName"
-                        required
-                        autofocus
-                        placeholder="{{ __('Last Name') }}"
-                    />
-                    
-                </div>
-
                 <!-- Email -->
                 <div class="space-y-2">
                     <x-form.label
@@ -134,8 +88,8 @@
 
             </div>
 
-             <!-- student/prof -->
-             <div class="space-y-2 mt-5">
+            <!-- student/prof -->
+            <div class="space-y-2 mt-5">
                 <x-form.label
                     for="stud_prof"
                     :value="__('Please select if you are a student or professional')"
@@ -154,526 +108,487 @@
                     <option value="1"> Professional </option>
                 @endif
 
-             </select>
-             </div>
-
-             <!-- Type -->
-             <div class="space-y-2 mt-5">
-                <x-form.label
-                    for="type"
-                    :value="__('Member Type')"
-                />
-                <select name="type" id="type" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
-
-                @if ($member->type == '0')
-                    <option value="0" selected> Non-LGU </option>
-                    <option value="1"> LGU </option>
-                    <option value="2"> Recommended </option>
-                @endif
-
-                @if ($member->type == '1')
-                    <option value="0"> Non-LGU </option>
-                    <option value="1" selected> LGU </option>
-                    <option value="2"> Recommended </option>
-                @endif
-
-                @if ($member->type == '2')
-                    <option value="0"> Non-LGU </option>
-                    <option value="1"> LGU </option>
-                    <option value="2" selected> Recommended </option>
-                @endif
-                
-             
-             </select>
-
-             <p class="mx-2 text-sm" id="desc_0" style="display:none;"> Note: Non-LGU member can only borrow fiction books. ID card is necessary for identification purposes.</p>
-             <p class="mx-2 text-sm" id="desc_1" style="display:none;"> Note: LGU member can borrow any type of books. ID card is necessary for identification purposes.</p>
-             <p class="mx-2 text-sm" id="desc_2" style="display:none;"> Note: Recommended member can borrow any type of books, you need to input additional information as to who recommended you. <br> ID card is necessary for identification purposes.</p>
-             </div>
+                </select>
+            </div>
 
              
-                <!-- If student fields -->
-                <h2 id="stud_label" class="text-md mt-5 font-semibold leading-tight" style="display:none;">
-                    {{ __("If you are a student:") }}
-                </h2>
-                <div id="stud_fields" class="grid grid-cols-2 gap-2 mt-2" style="display:none;">
-                    @if ($is_stud->count())
-                        <!-- School -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="school"
-                                :value="__('School')"
-                            />
-                            <x-form.input
-                                id="school"
-                                class="block w-full"
-                                type="text"
-                                name="school"
-                                :value="$is_stud[0]->school"
-                                placeholder="{{ __('School') }}"
-                                autofocus
-                            />
+            <!-- If student fields -->
+            <h2 id="stud_label" class="text-md mt-5 font-semibold leading-tight" style="display:none;">
+                {{ __("If you are a student:") }}
+            </h2>
+            <div id="stud_fields" class="grid grid-cols-2 gap-2 mt-2" style="display:none;">
+                @if ($is_stud->count())
+                    <!-- School -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="school"
+                            :value="__('School')"
+                        />
+                        <x-form.input
+                            id="school"
+                            class="block w-full"
+                            type="text"
+                            name="school"
+                            :value="$is_stud[0]->school"
+                            placeholder="{{ __('School') }}"
+                            autofocus
+                        />
 
+                        @error('school')
+                        <p class="text-red-500 text-xs p-1">
                             @error('school')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('school')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
-
-                        <!-- Out of school-->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="oos"
-                                :value="__('Out of School')"
-                            />
-
-                            <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                            focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                            dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
-                            
-                            @if ($is_stud[0]->out_of_school == "NO")
-                                <option value="NO" selected> NO </option>
-                                <option value="YES"> YES </option>
-                            @endif
-
-                            @if ($is_stud[0]->out_of_school == "YES")
-                                <option value="NO"> NO </option>
-                                <option value="YES" selected> YES </option>
-                            @endif
-
+                        </p>
+                        @enderror
                         
+                    </div>
+
+                    <!-- Out of school-->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="oos"
+                            :value="__('Out of School')"
+                        />
+
+                        <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
+                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
                         
-                            </select>
-
-                            @error('oos')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('oos')
-                                    {{ $message }}
-                                @enderror
-                            </p>
-                            @enderror
-                            
-                        </div>
-
-                        <!-- School Level -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="school_level"
-                                :value="__('School Level')"
-                            />
-
-                            <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                            focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                            dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
-
-
-                            @if($is_stud[0]->school_level == "Elementary")
-                                <option value="Elementary" selected> Elementary </option>
-                                <option value="Highschool"> Highschool </option>
-                                <option value="College"> College </option>
-                            @endif
-
-                            @if($is_stud[0]->school_level == "Highschool")
-                                <option value="Elementary"> Elementary </option>
-                                <option value="Highschool" selected> Highschool </option>
-                                <option value="College"> College </option>
-                            @endif
-
-                            @if($is_stud[0]->school_level == "College")
-                                <option value="Elementary"> Elementary </option>
-                                <option value="Highschool"> Highschool </option>
-                                <option value="College" selected> College </option>
-                            @endif
-            
-                            
-                            </select>
-                            
-                            @error('school_level')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('school_level')
-                                    {{ $message }}
-                                @enderror
-                            </p>
-                            @enderror
-                            
-                        </div>
-
-                        <!-- Grade/Year Level -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="grade_year_level"
-                                :value="__('Grade/Year Level')"
-                            />
-
-                            <x-form.input
-                                id="grade_year_level"
-                                class="block w-full"
-                                type="text"
-                                name="grade_year_level"
-                                :value="$is_stud[0]->grade_year_level"
-                                autofocus
-                                placeholder="{{ __('Grade/Year Level') }}"
-                            />
-
-                            @error('grade_year_level')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('grade_year_level')
-                                    {{ $message }}
-                                @enderror
-                            </p>
-                            @enderror
-                            
-                        </div>
-                    @else
-                        <!-- School -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="school"
-                                :value="__('School')"
-                            />
-                            <x-form.input
-                                id="school"
-                                class="block w-full"
-                                type="text"
-                                name="school"
-                                :value="old('school')"
-                                placeholder="{{ __('School') }}"
-                                autofocus
-                            />
-
-                            @error('school')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('school')
-                                    {{ $message }}
-                                @enderror
-                            </p>
-                            @enderror
-                            
-                        </div>
-
-                        <!-- Out of school-->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="oos"
-                                :value="__('Out of School')"
-                            />
-
-                            <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                            focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                            dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
-            
-                            <option value="" selected></option>
-                            <option value="NO"> NO </option>
+                        @if ($is_stud[0]->out_of_school == "NO")
+                            <option value="NO" selected> NO </option>
                             <option value="YES"> YES </option>
-                        
-                            </select>
+                        @endif
 
+                        @if ($is_stud[0]->out_of_school == "YES")
+                            <option value="NO"> NO </option>
+                            <option value="YES" selected> YES </option>
+                        @endif
+
+                    
+                    
+                        </select>
+
+                        @error('oos')
+                        <p class="text-red-500 text-xs p-1">
                             @error('oos')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('oos')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- School Level -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="school_level"
-                                :value="__('School Level')"
-                            />
+                    <!-- School Level -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="school_level"
+                            :value="__('School Level')"
+                        />
 
-                            <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                            focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                            dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
-            
-                            <option value="" selected></option>
-                            <option value="Elementary"> Elementary </option>
+                        <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
+                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
+
+
+                        @if($is_stud[0]->school_level == "Elementary")
+                            <option value="Elementary" selected> Elementary </option>
                             <option value="Highschool"> Highschool </option>
                             <option value="College"> College </option>
-                            </select>
-                            
+                        @endif
+
+                        @if($is_stud[0]->school_level == "Highschool")
+                            <option value="Elementary"> Elementary </option>
+                            <option value="Highschool" selected> Highschool </option>
+                            <option value="College"> College </option>
+                        @endif
+
+                        @if($is_stud[0]->school_level == "College")
+                            <option value="Elementary"> Elementary </option>
+                            <option value="Highschool"> Highschool </option>
+                            <option value="College" selected> College </option>
+                        @endif
+        
+                        
+                        </select>
+                        
+                        @error('school_level')
+                        <p class="text-red-500 text-xs p-1">
                             @error('school_level')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('school_level')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- Grade/Year Level -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="grade_year_level"
-                                :value="__('Grade/Year Level')"
-                            />
+                    <!-- Grade/Year Level -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="grade_year_level"
+                            :value="__('Grade/Year Level')"
+                        />
 
-                            <x-form.input
-                                id="grade_year_level"
-                                class="block w-full"
-                                type="text"
-                                name="grade_year_level"
-                                :value="old('grade_year_level')"
-                                autofocus
-                                placeholder="{{ __('Grade/Year Level') }}"
-                            />
+                        <x-form.input
+                            id="grade_year_level"
+                            class="block w-full"
+                            type="text"
+                            name="grade_year_level"
+                            :value="$is_stud[0]->grade_year_level"
+                            autofocus
+                            placeholder="{{ __('Grade/Year Level') }}"
+                        />
 
+                        @error('grade_year_level')
+                        <p class="text-red-500 text-xs p-1">
                             @error('grade_year_level')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('grade_year_level')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
-                    @endif
+                        </p>
+                        @enderror
+                        
+                    </div>
+                @else
+                    <!-- School -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="school"
+                            :value="__('School')"
+                        />
+                        <x-form.input
+                            id="school"
+                            class="block w-full"
+                            type="text"
+                            name="school"
+                            :value="old('school')"
+                            placeholder="{{ __('School') }}"
+                            autofocus
+                        />
+
+                        @error('school')
+                        <p class="text-red-500 text-xs p-1">
+                            @error('school')
+                                {{ $message }}
+                            @enderror
+                        </p>
+                        @enderror
+                        
+                    </div>
+
+                    <!-- Out of school-->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="oos"
+                            :value="__('Out of School')"
+                        />
+
+                        <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
+                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
+        
+                        <option value="" selected></option>
+                        <option value="NO"> NO </option>
+                        <option value="YES"> YES </option>
                     
-                </div>
+                        </select>
+
+                        @error('oos')
+                        <p class="text-red-500 text-xs p-1">
+                            @error('oos')
+                                {{ $message }}
+                            @enderror
+                        </p>
+                        @enderror
+                        
+                    </div>
+
+                    <!-- School Level -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="school_level"
+                            :value="__('School Level')"
+                        />
+
+                        <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
+                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
+        
+                        <option value="" selected></option>
+                        <option value="Elementary"> Elementary </option>
+                        <option value="Highschool"> Highschool </option>
+                        <option value="College"> College </option>
+                        </select>
+                        
+                        @error('school_level')
+                        <p class="text-red-500 text-xs p-1">
+                            @error('school_level')
+                                {{ $message }}
+                            @enderror
+                        </p>
+                        @enderror
+                        
+                    </div>
+
+                    <!-- Grade/Year Level -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="grade_year_level"
+                            :value="__('Grade/Year Level')"
+                        />
+
+                        <x-form.input
+                            id="grade_year_level"
+                            class="block w-full"
+                            type="text"
+                            name="grade_year_level"
+                            :value="old('grade_year_level')"
+                            autofocus
+                            placeholder="{{ __('Grade/Year Level') }}"
+                        />
+
+                        @error('grade_year_level')
+                        <p class="text-red-500 text-xs p-1">
+                            @error('grade_year_level')
+                                {{ $message }}
+                            @enderror
+                        </p>
+                        @enderror
+                        
+                    </div>
+                @endif
+                
+            </div>
              
-                <!-- If professional fields -->
-                <h2 id="prof_label" class="text-md mt-5 font-semibold leading-tight" style="display:none;">
-                    {{ __("If you are a professional:") }}
-                </h2>
-                <div id="prof_fields" class="grid grid-cols-2 gap-2 mt-2" style="display:none;">
-                    @if ($is_prof->count())
-                        <!-- position -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="position"
-                                :value="__('Position')"
-                            />
-                            <x-form.input
-                                id="position"
-                                class="block w-full"
-                                type="text"
-                                name="position"
-                                :value="$is_prof[0]->position"
-                                placeholder="{{ __('Position') }}"
-                                autofocus
-                            />
+            <!-- If professional fields -->
+            <h2 id="prof_label" class="text-md mt-5 font-semibold leading-tight" style="display:none;">
+                {{ __("If you are a professional:") }}
+            </h2>
+            <div id="prof_fields" class="grid grid-cols-2 gap-2 mt-2" style="display:none;">
+                @if ($is_prof->count())
+                    <!-- position -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="position"
+                            :value="__('Position')"
+                        />
+                        <x-form.input
+                            id="position"
+                            class="block w-full"
+                            type="text"
+                            name="position"
+                            :value="$is_prof[0]->position"
+                            placeholder="{{ __('Position') }}"
+                            autofocus
+                        />
 
+                        @error('position')
+                        <p class="text-red-500 text-xs p-1">
                             @error('position')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('position')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- office -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="office"
-                                :value="__('Office')"
-                            />
+                    <!-- office -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="office"
+                            :value="__('Office')"
+                        />
 
-                            <x-form.input
-                                id="office"
-                                class="block w-full"
-                                type="text"
-                                name="office"
-                                :value="$is_prof[0]->office"
-                            
-                                autofocus
-                                placeholder="{{ __('Office') }}"
-                            />
+                        <x-form.input
+                            id="office"
+                            class="block w-full"
+                            type="text"
+                            name="office"
+                            :value="$is_prof[0]->office"
+                        
+                            autofocus
+                            placeholder="{{ __('Office') }}"
+                        />
 
+                        @error('office')
+                        <p class="text-red-500 text-xs p-1">
                             @error('office')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('office')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- office address -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="office_address"
-                                :value="__('Office Address')"
-                            />
+                    <!-- office address -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="office_address"
+                            :value="__('Office Address')"
+                        />
 
-                            <x-form.input
-                                id="office_address"
-                                class="block w-full"
-                                type="text"
-                                name="office_address"
-                                :value="$is_prof[0]->office_address"
-                            
-                                autofocus
-                                placeholder="{{ __('Office Address') }}"
-                            />
+                        <x-form.input
+                            id="office_address"
+                            class="block w-full"
+                            type="text"
+                            name="office_address"
+                            :value="$is_prof[0]->office_address"
+                        
+                            autofocus
+                            placeholder="{{ __('Office Address') }}"
+                        />
 
+                        @error('office_address')
+                        <p class="text-red-500 text-xs p-1">
                             @error('office_address')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('office_address')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- Tel.NO(work) -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="tel_no_work"
-                                :value="__('Tel.No (Work)')"
-                            />
+                    <!-- Tel.NO(work) -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="tel_no_work"
+                            :value="__('Tel.No (Work)')"
+                        />
 
-                            <x-form.input
-                                id="tel_no_work"
-                                class="block w-full"
-                                type="text"
-                                name="tel_no_work"
-                                :value="$is_prof[0]->tel_no_work"
-                            
-                                autofocus
-                                placeholder="{{ __('Tel.No (Work)') }}"
-                            />
+                        <x-form.input
+                            id="tel_no_work"
+                            class="block w-full"
+                            type="text"
+                            name="tel_no_work"
+                            :value="$is_prof[0]->tel_no_work"
+                        
+                            autofocus
+                            placeholder="{{ __('Tel.No (Work)') }}"
+                        />
 
+                        @error('tel_no_work')
+                        <p class="text-red-500 text-xs p-1">
                             @error('tel_no_work')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('tel_no_work')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
-                    @else
-                        <!-- position -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="position"
-                                :value="__('Position')"
-                            />
-                            <x-form.input
-                                id="position"
-                                class="block w-full"
-                                type="text"
-                                name="position"
-                                :value="old('position')"
-                                placeholder="{{ __('Position') }}"
-                                autofocus
-                            />
+                        </p>
+                        @enderror
+                        
+                    </div>
+                @else
+                    <!-- position -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="position"
+                            :value="__('Position')"
+                        />
+                        <x-form.input
+                            id="position"
+                            class="block w-full"
+                            type="text"
+                            name="position"
+                            :value="old('position')"
+                            placeholder="{{ __('Position') }}"
+                            autofocus
+                        />
 
+                        @error('position')
+                        <p class="text-red-500 text-xs p-1">
                             @error('position')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('position')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- office -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="office"
-                                :value="__('Office')"
-                            />
+                    <!-- office -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="office"
+                            :value="__('Office')"
+                        />
 
-                            <x-form.input
-                                id="office"
-                                class="block w-full"
-                                type="text"
-                                name="office"
-                                :value="old('office')"
-                            
-                                autofocus
-                                placeholder="{{ __('Office') }}"
-                            />
+                        <x-form.input
+                            id="office"
+                            class="block w-full"
+                            type="text"
+                            name="office"
+                            :value="old('office')"
+                        
+                            autofocus
+                            placeholder="{{ __('Office') }}"
+                        />
 
+                        @error('office')
+                        <p class="text-red-500 text-xs p-1">
                             @error('office')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('office')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- office address -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="office_address"
-                                :value="__('Office Address')"
-                            />
+                    <!-- office address -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="office_address"
+                            :value="__('Office Address')"
+                        />
 
-                            <x-form.input
-                                id="office_address"
-                                class="block w-full"
-                                type="text"
-                                name="office_address"
-                                :value="old('office_address')"
-                            
-                                autofocus
-                                placeholder="{{ __('Office Address') }}"
-                            />
+                        <x-form.input
+                            id="office_address"
+                            class="block w-full"
+                            type="text"
+                            name="office_address"
+                            :value="old('office_address')"
+                        
+                            autofocus
+                            placeholder="{{ __('Office Address') }}"
+                        />
 
+                        @error('office_address')
+                        <p class="text-red-500 text-xs p-1">
                             @error('office_address')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('office_address')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
+                        </p>
+                        @enderror
+                        
+                    </div>
 
-                        <!-- Tel.NO(work) -->
-                        <div class="space-y-2">
-                            <x-form.label
-                                for="tel_no_work"
-                                :value="__('Tel.No (Work)')"
-                            />
+                    <!-- Tel.NO(work) -->
+                    <div class="space-y-2">
+                        <x-form.label
+                            for="tel_no_work"
+                            :value="__('Tel.No (Work)')"
+                        />
 
-                            <x-form.input
-                                id="tel_no_work"
-                                class="block w-full"
-                                type="text"
-                                name="tel_no_work"
-                                :value="old('tel_no_work')"
-                            
-                                autofocus
-                                placeholder="{{ __('Tel.No (Work)') }}"
-                            />
+                        <x-form.input
+                            id="tel_no_work"
+                            class="block w-full"
+                            type="text"
+                            name="tel_no_work"
+                            :value="old('tel_no_work')"
+                        
+                            autofocus
+                            placeholder="{{ __('Tel.No (Work)') }}"
+                        />
 
+                        @error('tel_no_work')
+                        <p class="text-red-500 text-xs p-1">
                             @error('tel_no_work')
-                            <p class="text-red-500 text-xs p-1">
-                                @error('tel_no_work')
-                                    {{ $message }}
-                                @enderror
-                            </p>
+                                {{ $message }}
                             @enderror
-                            
-                        </div>
-                    @endif
+                        </p>
+                        @enderror
+                        
+                    </div>
+                @endif
 
-                </div>
+            </div>
             
              
-
-            
-
             <!-- If recommended fields -->
             <h2 id="rec_label" class="text-md mt-5 font-semibold leading-tight" style="display:none;">
                 {{ __("If you are recommended by an LGU:") }}

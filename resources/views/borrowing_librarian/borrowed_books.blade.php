@@ -11,7 +11,7 @@
     </x-slot>
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-    
+       
         @if(session('message')) 
             <p
                 x-data="{ show: true }"
@@ -51,6 +51,7 @@
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                     </tr>
 
                     <tr>
@@ -60,6 +61,7 @@
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>  
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>       
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                     </tr>
                 </thead>
@@ -73,6 +75,19 @@
                             <td>{{$book->published}}</td>
                             <td>{{$book->collection}}</td>
                             <td>{{$book->status}}</td>
+
+                            <td>
+                            
+                                <div class="sm:rounded-lg">
+                                    <div class="max-w-xl">
+                                        <x-button variant="success" href="/borrowing_librarian/borrowed/books/view/{{$book->id}}">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </x-button> 
+                                    
+                                    </div>
+                                </div>  
+                        
+                            </td> 
                         </tr>
                     @endforeach 
                 </tbody>
@@ -85,6 +100,7 @@
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                     </tr>
                 </tfoot>
             </table>

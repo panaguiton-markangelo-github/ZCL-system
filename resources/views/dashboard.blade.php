@@ -108,6 +108,8 @@
                         <th scope="col" class="text-sm font-medium  text-left">Title</th>
                         <th scope="col" class="text-sm font-medium  text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Collection</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Status</th>
                         <th scope="col" class="text-sm font-medium  text-left"> </th>
                         <th scope="col" class="text-sm font-medium  text-left"> </th>
                     </tr>
@@ -117,6 +119,8 @@
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left select_search">Author</th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Published</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Collection</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Status</th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
                     </tr>
@@ -127,7 +131,15 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$book->title}}</td>
                                 <td>{{$book->author}}</td>                                  
-                                <td>{{$book->published}}</td>                            
+                                <td>{{$book->published}}</td>      
+                                <td>{{$book->collection}}</td>
+                                @if($book->status == "AVAILABLE")
+                                    <td class="text-green-500">{{$book->status}}</td>                     
+                                @endif 
+
+                                @if($book->status == "BORROWED")
+                                    <td class="text-red-500">{{$book->status}}</td>                     
+                                @endif 
                                     
                                 <td class="text-center">
                                     <x-button href="/catalog/book/{{ $book->id }}" class="justify-center">
@@ -157,6 +169,8 @@
                         <th scope="col" class="text-sm font-medium  text-left">Title</th>
                         <th scope="col" class="text-sm font-medium  text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Collection</th>
+                        <th scope="col" class="text-sm font-medium  text-left">Status</th>
                         <th scope="col" class="text-sm font-medium  text-left"> </th>
                         <th scope="col" class="text-sm font-medium  text-left"> </th>
                     </tr>

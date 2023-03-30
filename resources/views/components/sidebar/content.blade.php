@@ -32,6 +32,18 @@
     </x-sidebar.link>
 
     <x-sidebar.link
+        title="Transactions"
+        href="{{ route('trans.view') }}"
+        :isActive="request()->routeIs('trans.view')"
+    >
+        <x-slot name="icon">
+
+            <i class="fa-solid fa-receipt flex-shrink-0 w-6 h-5"></i>    
+        </x-slot>
+        
+    </x-sidebar.link>
+
+    <x-sidebar.link
         title="Notifications"
         href="{{ route('noty.view') }}"
         :isActive="request()->routeIs('noty.view')"

@@ -11,6 +11,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        @if(auth()->user()->unreadNotifications->count() == 0)
+            <p>No new notifications</p>
+        @endif
+
         @forelse (auth()->user()->unreadNotifications as $notification)
 
         <div

@@ -14,6 +14,7 @@ use App\Http\Controllers\LibrariansController;
 use App\Http\Controllers\PNotifyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PTransController;
 use App\Http\Controllers\RatingsController;
 use App\Http\Controllers\UserController;
 use App\Models\Events;
@@ -58,6 +59,9 @@ Route::post('/catalog/cart/remove', [CartController::class, 'remove'])->middlewa
 
 //notifications public user
 Route::get('/catalog/notifications', [PNotifyController::class, 'index'])->middleware(['auth', 'verified'])->name('noty.view');
+
+//transactions public user
+Route::get('/catalog/transactions', [PTransController::class, 'index'])->middleware(['auth', 'verified'])->name('trans.view');
 
 //borrower application routes
 Route::get('/borrower/application', [BorrowerAppController::class, 'create'])->middleware(['auth', 'verified'])->name('borrower.app');
@@ -128,6 +132,8 @@ Route::get('/borrowing_librarian/dashboard', [BLibrarianController::class, 'home
 
 //start borrowed books routes
 Route::get('/borrowing_librarian/borrowed/books', [BLibrarianController::class, 'borrowedBooksIndex'])->middleware('auth:librarians')->name('borrowing_librarian.borrowed_books.view');
+Route::get('/borrowing_librarian/borrowed/books/view/{id}', [BLibrarianController::class, 'borrowedBooksShow'])->middleware('auth:librarians')->name('borrowing_librarian.borrowed_books.show');
+Route::get('/borrowing_librarian/borrowed/books/update/{id}', [BLibrarianController::class, 'borrowedBooksUpdate'])->middleware('auth:librarians')->name('borrowing_librarian.borrowed_books.update');
 //end borrowed books routes
 
 //start requested books routes

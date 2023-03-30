@@ -19,49 +19,85 @@
         <br>
         <hr>
 
-        <div class="grid grid-cols-4 gap-4 text-center">
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Title: ') }} {{$book->title}} 
-                </p>
-            </div>
-            
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Author: ') }} {{$book->author}} 
-                </p>
-
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Published: ') }} {{$book->published}} 
-                </p>
-
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Subject: ') }} {{$book->subject}} 
-                </p>
-
-            </div>
+        <div>
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                {{ __('Title: ') }} {{$book->title}} 
+            </p>
         </div>
 
         <br>
 
-        <div class="grid grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-2 gap-2 text-start">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Author: ') }} {{$book->author}} 
+                </p>
+    
+            </div>
+
+            <div class="grid grid-cols-1 gap-1 text-start">
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        {{ __('Call No: ') }} {{$book->call_no}} 
+                    </p>
+                </div>
+                
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        {{ __('LC: ') }} {{$book->lc}} 
+                    </p>
+    
+                </div>
+    
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        {{ __('DDC: ') }} {{$book->ddc}} 
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-start">
+                    <div>
+                        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                            {{ __('Author No: ') }} {{$book->author_no}} 
+                        </p>
+    
+                    </div>
+                    
+                    <div>
+                        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                            {{ __('©: ') }} {{$book->c}} 
+                        </p>
+    
+                    </div>
+                </div>
+
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        {{ __('Section: ') }} {{$book->section}} 
+                    </p>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <br>
+
+        <div>
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                {{ __('Published: ') }} {{$book->published}} 
+            </p>
+
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-2 gap-2 text-start">
+
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                     {{ __('Place of Pub: ') }} {{$book->place_pub}} 
                 </p>
-            </div>
-            
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Edition/Vol: ') }} {{$book->edition_vol}} 
-                </p>
-
             </div>
 
             <div>
@@ -70,26 +106,32 @@
                 </p>
             </div>
             
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-2 gap-2 text-start">
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('ISBN: ') }} {{$book->isbn}} 
+                    {{ __('Edition/Vol: ') }} {{$book->edition_vol}} 
                 </p>
-
+    
+            </div>
+    
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Source: ') }} {{$book->source}} 
+                </p>
+    
             </div>
         </div>
 
         <br>
 
-        <div class="grid grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-2 gap-2 text-start">
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Pagination: ') }} {{$book->pagination}} 
-                </p>
-            </div>
-            
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Source: ') }} {{$book->source}} 
+                    {{ __('ISBN: ') }} {{$book->isbn}} 
                 </p>
 
             </div>
@@ -97,6 +139,16 @@
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                     {{ __('Series: ') }} {{$book->series}} 
+                </p>
+            </div>
+        </div>
+        
+        <br>
+
+        <div class="grid grid-cols-2 gap-2 text-start">
+            <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                    {{ __('Pagination: ') }} {{$book->pagination}} 
                 </p>
             </div>
             
@@ -110,7 +162,7 @@
 
         <br>
 
-        <div class="grid grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-4 gap-4 text-start">
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                     {{ __('Date Acquired: ') }} {{$book->date_acq}} 
@@ -140,51 +192,11 @@
 
         <br>
 
-        <div class="grid grid-cols-3 gap-3 text-center">
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Call No: ') }} {{$book->call_no}} 
-                </p>
-            </div>
-            
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('LC: ') }} {{$book->lc}} 
-                </p>
+        <div>
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                {{ __('Subject: ') }} {{$book->subject}} 
+            </p>
 
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('DDC: ') }} {{$book->ddc}} 
-                </p>
-            </div>
-            
-        </div>
-
-        <br>
-
-        <div class="grid grid-cols-3 gap-3 text-center">
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Author No: ') }} {{$book->author_no}} 
-                </p>
-
-            </div>
-            
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('©: ') }} {{$book->c}} 
-                </p>
-
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Section: ') }} {{$book->section}} 
-                </p>
-            </div>
-            
         </div>
 
         <br>

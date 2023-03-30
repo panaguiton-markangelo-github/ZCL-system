@@ -22,6 +22,10 @@ class CartController extends Controller
 
         $book = Books::findOrFail($request->input('book_id'));
 
+        if($book->status == "BORROWED") {
+            return redirect()->route('dashboard')->with('error_message', 'Sorry, this book is currently borrowed!');
+        }
+
         if($member_type->count()){
             if ($member_type[0]->type == '0') {
                 if($book->collection == "fiction-college" || $book->collection == "fiction-children" || $book->collection == "fiction-hs") {
@@ -35,7 +39,7 @@ class CartController extends Controller
                     return redirect()->route('dashboard')->with('message', 'Successfully added!');
                 }
                 else {
-                    return redirect()->route('dashboard')->with('error_message', 'Sorry, you are not allowed to borrow this book since you are a non-lgu user!');
+                    return redirect()->route('dashboard')->with('error_message', 'Sorry, you are not allowed to add this book to your cart since you are a non-lgu user!');
                 }
             }
             else {

@@ -39,8 +39,48 @@ class BLibrarianController extends Controller
 
     public function borrowedBooksIndex(){
         $borrowed_books = Books::where('status', '=', 'BORROWED')->orderBy('borrowed_at', 'desc')->get();
+
         return view('borrowing_librarian.borrowed_books', compact('borrowed_books'));
     }
+
+    public function borrowedBooksShow($id, Books $book){
+        $request_book = DB::table('book_bor_reqs')
+        ->join('books', 'book_id', '=', 'books.id')
+        ->where('book_bor_reqs.book_id', '=', $id)
+        ->where('book_bor_reqs.status', '=', 'APPROVED')
+        ->where('books.status', '=', 'BORROWED')
+        ->orderBy('book_bor_reqs.created_at', 'desc')
+        ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'book_bor_reqs.member_id', 'books.title', 'books.author', 'books.published', 
+                 'books.subject', 'books.publisher', 'books.isbn', 'books.summary', 
+                 'books.collection', 'books.shelf_location', 'books.status',
+                 'books.place_pub','books.edition_vol','books.pagination','books.date_acq',
+                 'books.source','books.series','books.incls','books.property_no',
+                 'books.acc_no','books.amount','books.call_no','books.lc',
+                 'books.ddc','books.author_no','books.c','books.section',
+                 'books.borrowed_at',
+                 'book_bor_reqs.status AS bookReqStatus'
+                 )
+        ->limit(1)
+        ->get();
+
+        $member_info = Member::where('id', '=', $request_book[0]->member_id)
+                               ->orderBy('created_at', 'desc')
+                               ->first();
+
+        return view('borrowing_librarian.show_borrower_info', compact('request_book', 'member_info'));
+    }
+
+    public function borrowedBooksUpdate($id, Books $book){
+        $book->where('id', $id)->update([   
+            "status" => 'AVAILABLE',
+            "borrowed_at" => null,
+        ]);
+
+        return redirect()->route('borrowing_librarian.borrowed_books.view')->with('message', 'Book was successfully flagged as available again!');
+
+    }
+
+
 
     //end borrowed books methods
 
