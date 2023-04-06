@@ -44,7 +44,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
 //done with the latest changes....
-//03/31/2023
+//04/07/2023
 
 // start public users routes:
 
