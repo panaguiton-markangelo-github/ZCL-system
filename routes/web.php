@@ -44,6 +44,7 @@ Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
 //done with the latest changes....
+//03/31/2023
 
 // start public users routes:
 
@@ -66,9 +67,9 @@ Route::get('/catalog/transactions', [PTransController::class, 'index'])->middlew
 //borrower application routes
 Route::get('/borrower/application', [BorrowerAppController::class, 'create'])->middleware(['auth', 'verified'])->name('borrower.app');
 Route::post('/borrower/application', [BorrowerAppController::class, 'store'])->middleware(['auth', 'verified'])->name('borrower.store');
-Route::get('/borrower/card/view/{id}', [BorrowerAppController::class, 'show'])->middleware(['auth', 'verified'])->name('borrower.view');
-Route::get('/borrower/card/edit/{id}', [BorrowerAppController::class, 'edit'])->middleware(['auth', 'verified'])->name('borrower.edit');
-Route::put('/borrower/card/update/{id}', [BorrowerAppController::class, 'update'])->middleware(['auth', 'verified'])->name('borrower.update');
+Route::post('/borrower/card/view', [BorrowerAppController::class, 'show'])->middleware(['auth', 'verified'])->name('borrower.view');
+Route::post('/borrower/card/edit', [BorrowerAppController::class, 'edit'])->middleware(['auth', 'verified'])->name('borrower.edit');
+Route::put('/borrower/card/update', [BorrowerAppController::class, 'update'])->middleware(['auth', 'verified'])->name('borrower.update');
 //Borrower Book Requests routes
 Route::get('/book/request', [BookRequestController::class, 'create'])->middleware(['auth', 'verified'])->name('book_req.view');
 Route::post('/book/request', [BookRequestController::class, 'store'])->middleware(['auth', 'verified'])->name('book_req.store');

@@ -8,10 +8,15 @@
             @include('partials.rate')
 
             @if (session('member.0.id'))
-                <x-button class="justify-center" href="/borrower/card/view/{{auth()->user()->id}}">
-                    <i class="fa-solid fa-users-rectangle px-1"></i>
-                    {{ __('Borrower Card') }}
-                </x-button>
+                <form method="POST" action="{{ route('borrower.view') }}">
+                    <input name="user_id" type="number" value="{{auth()->user()->id}}" hidden readonly>
+                    @csrf
+                    <x-button class="justify-center">
+                        <i class="fa-solid fa-users-rectangle px-1"></i>
+                        {{ __('Borrower Card') }}
+                    </x-button>
+                </form>
+                
             @endif
 
         </div>
@@ -25,7 +30,7 @@
             <p class="text-sm text-orange-500 dark:text-orange-400">
                 Hi there! It seems you have not yet applied for a borrower card application. 
                 <br>
-                Note: You will have to apply for a borrower card, in order to borrow books from the 
+                Note: You will have to apply for a borrower card, in order to borrow books or start transactions from the 
                 Zamboanga City Library.
                 <br>  
             </p> 

@@ -267,12 +267,15 @@
 
         @endif
 
-        <div>
-            <x-button class="justify-center mt-5" href="/borrower/card/edit/{{$member[0]->id}}">
-                <span>{{ __('Edit') }}</span>
-            </x-button>
-        </div>
         
+        <form method="POST" action="{{ route('borrower.edit') }}">
+            <input name="user_id" type="number" value="{{$member[0]->id}}" hidden readonly>
+            @csrf
+            <x-button class="justify-center mt-5">
+                {{ __('Edit') }}
+            </x-button>
+        </form>
+            
        
     </div>
 

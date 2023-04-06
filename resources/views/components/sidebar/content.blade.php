@@ -31,17 +31,22 @@
         </x-slot>
     </x-sidebar.link>
 
-    <x-sidebar.link
-        title="Transactions"
-        href="{{ route('trans.view') }}"
-        :isActive="request()->routeIs('trans.view')"
-    >
-        <x-slot name="icon">
+    
+    @if (session('member.0.id'))
+        @if (session('member.0.status') == "APPROVED")
+            <x-sidebar.link
+                title="Transactions"
+                href="{{ route('trans.view') }}"
+                :isActive="request()->routeIs('trans.view')"
+            >
+                <x-slot name="icon">
 
-            <i class="fa-solid fa-receipt flex-shrink-0 w-6 h-5"></i>    
-        </x-slot>
-        
-    </x-sidebar.link>
+                    <i class="fa-solid fa-receipt flex-shrink-0 w-6 h-5"></i>    
+                </x-slot>
+                
+            </x-sidebar.link>
+        @endif
+    @endif
 
     <x-sidebar.link
         title="Notifications"

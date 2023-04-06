@@ -32,8 +32,8 @@ class HLibrarianController extends Controller
     // start of methods for adding,updating,deleting librarian users.
     public function store(Request $request){
         $validated = $request->validate([
-            "firstName" => ['required', 'min:4'],
-            "lastName" => ['required', 'min:4'],
+            "firstName" => ['required', 'max:255'],
+            "lastName" => ['required', 'max:255'],
             "email" => ['required', 'email', Rule::unique('librarians', 'email')],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             "type" => ['required'],
@@ -57,8 +57,8 @@ class HLibrarianController extends Controller
 
     public function update(Request $request, Librarians $librarians){
         $validated = $request->validate([
-            "firstName" => ['min:4'],
-            "lastName" => ['min:4'],
+            "firstName" => ['max:255'],
+            "lastName" => ['max:255'],
             "email" => ['email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             "type" => [], 

@@ -30,8 +30,8 @@ class BorrowerAppController extends Controller
         //type 0=NON-LGU, 1=LGU, 2=RECOMMENED
         //status PENDING, APPROVED, DECLINED
         $validated = $request->validate([
-            "firstName" => ['required', 'min:4'],
-            "lastName" => ['required', 'min:4'],
+            "firstName" => ['required', 'max:255'],
+            "lastName" => ['required', 'max:255'],
             "email" => ['required', 'email'],
             "phone" => ['required'],
             "address" => ['required'],
@@ -151,11 +151,12 @@ class BorrowerAppController extends Controller
 
         //end send notification via database
 
-        return redirect()->route('cart.view')->with('message', 'Borrower card application was successfully sent for verification!');
+        return redirect()->route('dashboard')->with('message', 'Borrower card application was successfully sent for verification!');
 
     }
 
-    public function show($id){
+    public function show(Request $request){
+        $id = $request->user_id;
         $member = Member::where('user_id', $id)->orderBy('created_at', 'desc')->limit(1)->get();
         $is_prof = Professional::where('member_id', '=', $member[0]->id)->limit(1)->get();
         $is_stud = Student::where('member_id', '=', $member[0]->id)->limit(1)->get();
@@ -164,26 +165,25 @@ class BorrowerAppController extends Controller
         return view('view_borrower_card', compact('member', 'is_prof', 'is_stud', 'is_rec'));
     }
 
-    public function edit($id){
+    public function edit(Request $request){
+        $id = $request->user_id;
         $member = Member::findOrFail($id);
         $is_prof = Professional::where('member_id', '=', $id)->limit(1)->get();
         $is_stud = Student::where('member_id', '=', $id)->limit(1)->get();
         $is_rec = Recommended::where('member_id', '=', $id)->limit(1)->get();
+
         return view('edit_borrower_card', compact('member', 'is_prof', 'is_stud', 'is_rec'));
     }
 
-    public function update(Request $request, Member $members, $id, Student $students, Professional $profs, Recommended $recs){
+    public function update(Request $request, Member $members, Student $students, Professional $profs){
+        $id = $request->id;
         $is_prof = Professional::where('member_id', '=', $id)->limit(1)->get();
         $is_stud = Student::where('member_id', '=', $id)->limit(1)->get();
-        $is_rec = Recommended::where('member_id', '=', $id)->limit(1)->get();
 
         $validated = $request->validate([
-            "firstName" => ['required', 'min:4'],
-            "lastName" => ['required', 'min:4'],
             "email" => ['required', 'email'],
             "phone" => ['required'],
             "address" => ['required'],
-            "type" => ['required'],
             "id_card" => ['required']
         ]);
 
@@ -205,25 +205,11 @@ class BorrowerAppController extends Controller
             ]);
         }
 
-        if($request->type == "2"){
-            $request->validate([
-                "rec_by" => ['required'],
-                "rec_by_position" => ['required'],
-                "rec_by_office" => ['required'],
-                "rec_by_office_address" => ['required'],
-                "rec_by_home_address" => ['required'],
-                "rec_by_tel_no_work" => ['required'],
-                "rec_by_cel_no" => ['required'],
-            ]);
-        }
-
+        
         $members->where('id', $id)->update([
-            "firstName" => $request->firstName,
-            "lastName" => $request->lastName,
             "email" => $request->email,
             "phone" => $request->phone,
             "address" => $request->address,
-            "type" => $request->type,
             "id_card" => $request->id_card,
         ]);
 
@@ -270,48 +256,6 @@ class BorrowerAppController extends Controller
             }
         }
         
-        if($is_rec->count()){
-            if ($request->type == "2"){
-                $recs->where('member_id', $id)->update([
-                    "rec_by" =>  $request->rec_by,
-                    "rec_by_position" => $request->rec_by_position,
-                    "rec_by_office" => $request->rec_by_office,
-                    "rec_by_office_address" => $request->rec_by_office_address,
-                    "rec_by_home_address" => $request->rec_by_home_address,
-                    "rec_by_tel_no_work" => $request->rec_by_tel_no_work,
-                    "rec_by_cel_no" => $request->rec_by_cel_no,
-               ]);
-            }
-            else{
-                DB::table('recommended')->where('member_id', $id)->delete();
-
-                $members->where('id', $id)->update([
-                    "type" =>  $request->type,
-                   
-               ]);
-            }
-        }
-        else {
-            if ($request->type == "2"){
-                $members->where('id', $id)->update([
-                    "type" =>  $request->type,
-                   
-               ]);
-
-                Recommended::create([
-                    "member_id" => $id,
-                    "rec_by" =>  $request->rec_by,
-                    "rec_by_position" => $request->rec_by_position,
-                    "rec_by_office" => $request->rec_by_office,
-                    "rec_by_office_address" => $request->rec_by_office_address,
-                    "rec_by_home_address" => $request->rec_by_home_address,
-                    "rec_by_tel_no_work" => $request->rec_by_tel_no_work,
-                    "rec_by_cel_no" => $request->rec_by_cel_no,
-               ]);
-            }
-
-        }
-
         
         //check if the current user has already filed for member card application or is already a member
         if ($member_data = Member::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->limit(1)->get()){
@@ -325,7 +269,6 @@ class BorrowerAppController extends Controller
 
         $user = User::find($cur_user);
 
-       
 
         $info = [
                 'info' => "You have updated your borrower card details: at $date_time",
