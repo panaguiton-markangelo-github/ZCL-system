@@ -20,6 +20,6 @@
     },
     "dependencies": {
         "@sweetalert2/theme-material-ui": "^5.0.15",
-        "sweetalert2": "^11.7.1"
+        "sweetalert2": "^11.4.8"
     }
 }

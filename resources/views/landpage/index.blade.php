@@ -25,7 +25,7 @@
   <!-- responsive style -->
   {{-- <link href="resources/css/responsive.css" rel="stylesheet"/> --}}
 
-  
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
   @vite(['resources/css/landpage/css/style.css', 'resources/css/landpage/css/fullcalendar.css','resources/css/landpage/css/responsive.css', 'resources/css/landpage/css/bootstrap.css', 'resources/js/landpage/js/bootstrap.js'])
   
   {{-- old css for full calender ver. --}}
