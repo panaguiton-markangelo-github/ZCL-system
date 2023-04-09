@@ -15,24 +15,24 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"/>
 
   <!-- bootstrap core css -->
-  {{-- <link rel="stylesheet" type="text/css" href="ZCL-system\resources\css\bootstrap.css"/> --}}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&amp;display=swap" rel="stylesheet"/>
   
   <!-- Custom styles for this template -->
-  {{-- <link href="resources/css/style.css" rel="stylesheet"/> --}}
-  <!-- responsive style -->
-  {{-- <link href="resources/css/responsive.css" rel="stylesheet"/> --}}
+  <link href="{{ asset('css/style_user.css') }}" rel="stylesheet"/>
 
-  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-  @vite(['resources/css/landpage/css/style.css', 'resources/css/landpage/css/fullcalendar.css','resources/css/landpage/css/responsive.css', 'resources/css/landpage/css/bootstrap.css', 'resources/js/landpage/js/bootstrap.js'])
+  <!-- responsive style -->
+  <link href="{{ asset('css/responsive.css') }}" rel="stylesheet"/>
+  
+  {{-- @vite(['resources/css/style_user.css', 'resources/css/fullcalendar.css','resources/css/responsive.css']) --}}
   
   {{-- old css for full calender ver. --}}
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" /> --}}
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
-
+  
   {{-- <script type="text/javascript" src="resources/js/landpage/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="resources/js/landpage/js/bootstrap.js"></script> --}}
   
@@ -163,14 +163,14 @@
                     <div class="btn-box">
                       @auth
                         <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 
 
                       @else
 
                       <a href="{{ route('login') }}" class="btn-1">
-                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                         Browse Books
                       </a>
 
@@ -181,7 +181,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider_4.jpg" alt=""/>
+                    <img src="{{ asset('images/slider_4.jpg') }}" alt=""/>
                     
                   </div>
                 </div>
@@ -207,14 +207,14 @@
                     <div class="btn-box">
                       @auth
                         <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 
 
                       @else
 
                       <a href="{{ route('login') }}" class="btn-1">
-                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                         Browse Books
                       </a>
                       
@@ -224,7 +224,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="slider_img-box">
-                    <img src="images/slider_2.jpg" alt=""/>
+                    <img src="{{ asset('images/slider_2.jpg') }}" alt=""/>
                   </div>
                 </div>
               </div>
@@ -249,14 +249,14 @@
                     <div class="btn-box">
                       @auth
                         <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                           Browse Books
                         </a> 
 
                       @else
 
                       <a href="{{ route('login') }}" class="btn-1">
-                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
                         Browse Books
                       </a>
                       
@@ -266,7 +266,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="slider_img-box">
-                    <img src="images/slider_3.jpg" alt=""/>
+                    <img src="{{ asset('images/slider_3.jpg') }}" alt=""/>
                   </div>
                 </div>
               </div>
@@ -296,7 +296,7 @@
       </div>
       <div class="layout_padding2">
         <div class="img-box">
-          <img src="images/welcome.png" alt=""/>
+          <img src="{{ asset('images/welcome.png') }}" alt=""/>
         </div>
         <div class="detail-box">
           <p>
@@ -310,7 +310,7 @@
           <div>
             
             <a href="https://www.facebook.com/Zamboangacitylibrary" target="_blank">
-              <img src="images/fb.png" width="22px" height="22px" alt="">
+              <img src="{{ asset('images/fb.png') }}" width="22px" height="22px" alt="">
               Visit FB page
             </a>
           </div>
@@ -333,7 +333,7 @@
       <div class="service_container layout_padding2">
         <div class="service_box">
           <div class="img-box">
-            <img src="images/ss-1.jpg" alt=""/>
+            <img src="{{ asset('images/ss-1.jpg') }}" alt=""/>
           </div>
           <div class="detail-box">
             <h4>
@@ -349,7 +349,7 @@
         </div>
         <div class="service_box">
           <div class="img-box">
-            <img src="images/ss-2.jpg" alt=""/>
+            <img src="{{ asset('images/ss-2.jpg') }}" alt=""/>
           </div>
           <div class="detail-box">
             <h4>
@@ -555,7 +555,6 @@
     <!-- footer section -->
   </div>
 
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
 
@@ -590,6 +589,7 @@
     });
 </script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
