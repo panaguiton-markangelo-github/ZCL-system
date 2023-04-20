@@ -686,11 +686,7 @@
                     required
                     autofocus
                     maxlength="200"
-                >
-
-                    {{$book->summary}}
-
-                </textarea>
+                >{{$book->summary}}</textarea>
 
                 @error('summary')
                     <p class="text-red-500 text-xs p-1">

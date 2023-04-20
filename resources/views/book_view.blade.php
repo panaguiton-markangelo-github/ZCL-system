@@ -10,13 +10,13 @@
     </x-slot>
 
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" >
         <x-button href="{{ route('dashboard') }}">
             <span>{{ __('Go Back') }}</span>
         </x-button>
     </div>
 
-    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" style="white-space: nowrap">
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">
             {{ __('Book Details') }}
         </p>
@@ -26,28 +26,44 @@
 
         <div class="grid grid-cols-4 gap-4 text-center">
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Title: ') }} 
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Title: ') }} {{$book->title}} 
+                    {{$book->title}} 
                 </p>
             </div>
             
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Author: ') }}  
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Author: ') }} {{$book->author}} 
+                    {{$book->author}} 
                 </p>
 
             </div>
 
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Published: ') }} 
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Published: ') }} {{$book->published}} 
+                    {{$book->published}} 
                 </p>
 
             </div>
 
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Subject: ') }}
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Subject: ') }} {{$book->subject}} 
+                    {{$book->subject}} 
                 </p>
 
             </div>
@@ -57,14 +73,22 @@
 
         <div class="grid grid-cols-2 gap-2 text-center">
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Publisher: ') }}
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Publisher: ') }} {{$book->publisher}} 
+                    {{$book->publisher}} 
                 </p>
             </div>
             
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('ISBN: ') }}
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('ISBN: ') }} {{$book->isbn}} 
+                    {{$book->isbn}} 
                 </p>
 
             </div>
@@ -80,8 +104,12 @@
         <hr>
         
         <div>
-            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                {{ __('Summary: ') }} {{$book->summary}} 
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                {{ __('Summary: ') }}
+            </p>
+
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400" >
+                {{$book->summary}} 
             </p>
 
         </div>
@@ -97,21 +125,32 @@
 
         <div class="grid grid-cols-3 gap-3 text-center">
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Collection: ') }}  
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Collection: ') }} {{$book->collection}} 
+                    {{$book->collection}}
                 </p>
             </div>
             
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Shelf Location: ') }}
+                </p>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Shelf Location: ') }} {{$book->shelf_location}} 
+                    {{$book->shelf_location}} 
                 </p>
 
             </div>
 
             <div>
+                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                    {{ __('Status: ') }}
+                </p>
+
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Status: ') }} {{$book->status}} 
+                     {{$book->status}} 
                 </p>
 
             </div>
