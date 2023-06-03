@@ -56,6 +56,7 @@
                 <thead>
                     <tr>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
@@ -72,6 +73,7 @@
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>
                         
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>
@@ -84,7 +86,10 @@
                 <tbody>
                     @foreach ($books as $book)
                         <tr>
-                        <td>{{$loop->iteration}}</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>
+                                <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="150" height="150">
+                            </td>
                             <td>{{$book->title}}</td>
                             <td>{{$book->author}}</td>
                             <td>{{$book->published}}</td>
@@ -97,7 +102,7 @@
 
                                 <div class="sm:rounded-lg">
                                     <div class="max-w-xl">
-                                        <x-button variant="success" href="/catalog_librarian/show/book/{{ $book->id }}">
+                                        <x-button variant="danger" href="/catalog_librarian/show/book/{{ $book->id }}">
                                             {{-- <i class="fa-solid fa-pen-to-square mx-2"></i> --}}
                                             <i class="fa-solid fa-circle-info"></i>
                                         </x-button> 
@@ -113,7 +118,7 @@
 
                                 <div class="sm:rounded-lg">
                                     <div class="max-w-xl">
-                                        <x-button variant="success" href="/catalog_librarian/edit/book/{{ $book->id }}">
+                                        <x-button variant="danger" href="/catalog_librarian/edit/book/{{ $book->id }}">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </x-button> 
                                     
@@ -130,6 +135,7 @@
                 <tfoot>
                     <tr>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">No.</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Title</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
@@ -185,8 +191,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;

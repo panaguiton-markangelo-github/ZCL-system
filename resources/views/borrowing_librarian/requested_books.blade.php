@@ -84,7 +84,7 @@
                             <td>
                                 <div class="sm:rounded-lg">
                                     <div class="max-w-xl">
-                                        <x-button variant="success" href="/borrowing_librarian/requested/books/{{$rbook->id}}">
+                                        <x-button variant="danger" href="/borrowing_librarian/requested/books/{{$rbook->id}}">
                                             {{-- <i class="fa-solid fa-pen-to-square mx-2"></i> --}}
                                             <i class="fa-solid fa-circle-info"></i>
                                         </x-button> 
@@ -153,8 +153,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;

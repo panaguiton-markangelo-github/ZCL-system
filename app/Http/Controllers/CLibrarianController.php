@@ -27,7 +27,8 @@ class CLibrarianController extends Controller
     public function storeBooks(Request $request)
     {
         $validated = $request->validate([
-            "title" => ['required'],
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
+            "title" => ['required', 'unique:'.Books::class],
             "author" => ['required'],
 
             "place_pub" => ['required'],
@@ -58,7 +59,10 @@ class CLibrarianController extends Controller
             
         ]);
 
+        $image_path = $request->file('image')->store('book_images', 'public');
+
         $announcement = Books::create([
+            "image" => $image_path,
             "title" => $request->title,
             "author" => $request->author,
 

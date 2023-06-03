@@ -19,6 +19,13 @@
         <br>
         <hr>
 
+        <br>
+
+        <div class="flex justify-center">
+            <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="300" height="300">
+        </div>
+
+
         <div>
             <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                 {{ __('Title: ') }} {{$book->title}} 
@@ -96,7 +103,7 @@
 
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Place of Pub: ') }} {{$book->place_pub}} 
+                    {{ __('Place of Publication: ') }} {{$book->place_pub}} 
                 </p>
             </div>
 
@@ -259,6 +266,7 @@
         <!-- Buttons -->
         <div class="mt-6 flex justify-end">
             <x-button
+                variant="danger"
                 href="{{route('catalog_librarian.view.books')}}"
             >
                 {{ __('Go Back') }}

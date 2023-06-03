@@ -36,7 +36,7 @@
                 @enderror 
 
             <div>
-                <x-button class="justify-center mt-5 w-50 gap-2">
+                <x-button variant="success" class="justify-center mt-5 w-50 gap-2">
                     <span>{{ __('Confirm') }}</span>
                 </x-button>
             </div>

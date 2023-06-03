@@ -20,7 +20,7 @@
         :isActive="request()->routeIs('borrowing_librarian.borrowed_books.view')"
     >
         <x-slot name="icon">
-            <i class="fa-solid fa-book-open-reader flex-shrink-0" aria-hidden="true"></i>
+            <i class="fa-solid fa-book-open-reader flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
         </x-slot>
     </x-sidebar.link>
 
@@ -30,7 +30,7 @@
         :isActive="request()->routeIs('borrowing_librarian.requested_books.view')"
     >
         <x-slot name="icon">
-            <i class="fa-solid fa-book flex-shrink-0" aria-hidden="true"></i>
+            <i class="fa-solid fa-book flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
         </x-slot>
     </x-sidebar.link>
 
@@ -40,7 +40,7 @@
         :isActive="request()->routeIs('borrowing_librarian.borrower_card_app.view')"
     >
         <x-slot name="icon">
-            <i class="fa-solid fa-users-rectangle flex-shrink-0" aria-hidden="true"></i>
+            <i class="fa-solid fa-users-rectangle flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
         </x-slot>
     </x-sidebar.link>
 

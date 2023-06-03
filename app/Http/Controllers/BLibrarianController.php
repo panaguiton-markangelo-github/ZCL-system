@@ -56,7 +56,7 @@ class BLibrarianController extends Controller
                  'books.place_pub','books.edition_vol','books.pagination','books.date_acq',
                  'books.source','books.series','books.incls','books.property_no',
                  'books.acc_no','books.amount','books.call_no','books.lc',
-                 'books.ddc','books.author_no','books.c','books.section',
+                 'books.ddc','books.author_no','books.c','books.section', 'books.image',
                  'books.borrowed_at',
                  'book_bor_reqs.status AS bookReqStatus'
                  )
@@ -92,7 +92,7 @@ class BLibrarianController extends Controller
         $request_books = DB::table('book_bor_reqs')
         ->join('books', 'book_id', '=', 'books.id')
         ->join('members', 'member_id', '=', 'members.id')
-        ->select('book_bor_reqs.created_at','book_bor_reqs.id','book_bor_reqs.book_id','book_bor_reqs.member_id','book_bor_reqs.status', 'books.title', 'members.firstName', 'members.lastName')
+        ->select('book_bor_reqs.created_at','book_bor_reqs.id','book_bor_reqs.book_id','book_bor_reqs.member_id','book_bor_reqs.status', 'books.title', 'books.image', 'members.firstName', 'members.lastName')
         ->orderBy('book_bor_reqs.created_at', 'desc')
         ->get();
 
@@ -111,7 +111,7 @@ class BLibrarianController extends Controller
                  'books.place_pub','books.edition_vol','books.pagination','books.date_acq',
                  'books.source','books.series','books.incls','books.property_no',
                  'books.acc_no','books.amount','books.call_no','books.lc',
-                 'books.ddc','books.author_no','books.c','books.section',
+                 'books.ddc','books.author_no','books.c','books.section', 'books.image',
                  'book_bor_reqs.status AS bookReqStatus'
                  )
         ->limit(1)

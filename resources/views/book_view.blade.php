@@ -11,7 +11,7 @@
 
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1" >
-        <x-button href="{{ route('dashboard') }}">
+        <x-button variant="danger" href="{{ route('dashboard') }}">
             <span>{{ __('Go Back') }}</span>
         </x-button>
     </div>
@@ -23,6 +23,14 @@
 
         <br>
         <hr>
+
+        <br>
+
+        <div class="flex justify-center">
+            <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="300" height="300">
+        </div>
+
+        <br>
 
         <div class="grid grid-cols-4 gap-4 text-center">
             <div>
@@ -173,7 +181,7 @@
                 @csrf
                 <input type="hidden" value="{{$book->id}}" name="book_id">
                 <input type="number" value="1" name="quantity" hidden>
-                <x-button class="justify-center w-full">
+                <x-button variant="success" class="justify-center w-full">
                     <i class="fa-solid fa-cart-plus mx-2"></i>
                     <span>{{ __('Add to cart') }}</span>
                 </x-button>

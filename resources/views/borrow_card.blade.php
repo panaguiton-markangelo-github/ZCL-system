@@ -617,6 +617,7 @@
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
 
                 <option value="" selected></option>
+                <option value="Ph National ID"> Ph National ID </option>
                 <option value="Philhealth ID"> Philhealth ID </option>
                 <option value="SSS ID"> SSS ID </option>
                 <option value="GSIS ID"> GSIS ID </option>
@@ -627,7 +628,7 @@
              </div>
 
             <div>
-                <x-button class="justify-center mt-5 w-50 gap-2">
+                <x-button variant="success" class="justify-center mt-5 w-50 gap-2">
                     <span>{{ __('Submit') }}</span>
                 </x-button>
             </div>

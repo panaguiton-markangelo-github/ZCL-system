@@ -102,7 +102,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Books currently borrowed</h3>
-                        <x-button variant="success" href="{{route('borrowing_librarian.borrowed_books.view')}}">
+                        <x-button variant="danger" href="{{route('borrowing_librarian.borrowed_books.view')}}">
                             <span>{{ __('See all') }}</span>
                             <i class="fa-solid fa-arrow-right ml-2"></i>
                         </x-button> 
@@ -149,7 +149,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Book/s request/s for borrowing</h3>
-                        <x-button variant="success" href="{{route('borrowing_librarian.requested_books.view')}}">
+                        <x-button variant="danger" href="{{route('borrowing_librarian.requested_books.view')}}">
                             <span>{{ __('See all') }}</span>
                             <i class="fa-solid fa-arrow-right ml-2"></i>
                         </x-button>
@@ -197,7 +197,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Borrower's card application</h3>
-                        <x-button variant="success" href="{{route('borrowing_librarian.borrower_card_app.view')}}">
+                        <x-button variant="danger" href="{{route('borrowing_librarian.borrower_card_app.view')}}">
                             <span>{{ __('See all') }}</span>
                             <i class="fa-solid fa-arrow-right ml-2"></i>
                         </x-button>

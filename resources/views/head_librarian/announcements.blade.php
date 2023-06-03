@@ -134,8 +134,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;

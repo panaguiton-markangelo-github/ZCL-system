@@ -286,6 +286,79 @@
     <!-- end slider section -->
   </div>
 
+  <!--news and announcements section -->
+  <section class="client_section layout_padding" id="news_ann_section">
+    <div class="container">
+      <div class="custom_heading-container">
+        <h2>
+          News and Announcements
+        </h2>
+      </div>
+      <div id="carouselNewsControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="client_container layout_padding2">
+              <div class="client_text text-center">
+                <p>
+                  News and Announcements from the Zamboanga City Library will be displayed
+                  in this section.
+                </p>
+              </div>
+              <div class="detail-box">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
+                </div>
+                <div class="name">
+                  <h5>
+                    Zamboanga City Library
+                  </h5>
+                  <p>
+                    Region 9, Philippines
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          @foreach ($data as $announce)
+          <div class="carousel-item">
+            <div class="client_container layout_padding2">
+              <div class="client_text text-center">
+                <p>
+                  {{$announce->details}}
+                  <br>
+                  Announced at: <b>{{$announce->created_at}}</b>
+                </p>
+              </div>
+              <div class="detail-box">
+                <div class="img-box">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
+                </div>
+                <div class="name">
+                  <h5>
+                    Zamboanga City Library
+                  </h5>
+                  <p>
+                    Region 9, Philippines
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        
+        </div>
+        <a class="carousel-control-prev" href="#carouselNewsControls" role="button" data-slide="prev">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselNewsControls" role="button" data-slide="next">
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- end news and announcements section -->
+
   <!-- welcome section -->
   <section class="welcome_section layout_padding" id="welcome_section">
     <div class="container">
@@ -368,79 +441,6 @@
 
   <!-- end service section -->
 
-
-  <!--news and announcements section -->
-  <section class="client_section layout_padding" id="news_ann_section">
-    <div class="container">
-      <div class="custom_heading-container">
-        <h2>
-          News and Announcements
-        </h2>
-      </div>
-      <div id="carouselNewsControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="client_container layout_padding2">
-              <div class="client_text text-center">
-                <p>
-                  News and Announcements from the Zamboanga City Library will be displayed
-                  in this section.
-                </p>
-              </div>
-              <div class="detail-box">
-                <div class="img-box">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
-                </div>
-                <div class="name">
-                  <h5>
-                    Zamboanga City Library
-                  </h5>
-                  <p>
-                    Region 9, Philippines
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          @foreach ($data as $announce)
-          <div class="carousel-item">
-            <div class="client_container layout_padding2">
-              <div class="client_text text-center">
-                <p>
-                  {{$announce->details}}
-                  <br>
-                  Announced at: <b>{{$announce->created_at}}</b>
-                </p>
-              </div>
-              <div class="detail-box">
-                <div class="img-box">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png" alt=""/>
-                </div>
-                <div class="name">
-                  <h5>
-                    Zamboanga City Library
-                  </h5>
-                  <p>
-                    Region 9, Philippines
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        
-        </div>
-        <a class="carousel-control-prev" href="#carouselNewsControls" role="button" data-slide="prev">
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselNewsControls" role="button" data-slide="next">
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-  <!-- end news and announcements section -->
 
   <!--event calendar section -->
   <section class="event_section layout_padding" id="event_section">

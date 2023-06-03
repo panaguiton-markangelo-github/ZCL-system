@@ -73,6 +73,12 @@
         <br>
         <hr>
 
+        <br>
+
+        <div class="flex justify-center">
+            <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$request_book[0]->image) }}" alt="none" width="300" height="300">
+        </div>
+
         <div>
             <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
                 {{ __('Title: ') }} {{$request_book[0]->title}} 
@@ -150,7 +156,7 @@
 
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Place of Pub: ') }} {{$request_book[0]->place_pub}} 
+                    {{ __('Place of Publication: ') }} {{$request_book[0]->place_pub}} 
                 </p>
             </div>
 
@@ -308,6 +314,7 @@
         <!-- Buttons -->
         <div class="mt-6 flex justify-end">
             <x-button
+                variant="danger"
                 href="{{route('borrowing_librarian.borrowed_books.view')}}"
             >
                 {{ __('Go Back') }}

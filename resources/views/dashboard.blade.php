@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('borrower.view') }}">
                     <input name="user_id" type="number" value="{{auth()->user()->id}}" hidden readonly>
                     @csrf
-                    <x-button class="justify-center">
+                    <x-button variant="danger" class="justify-center">
                         <i class="fa-solid fa-users-rectangle px-1"></i>
                         {{ __('Borrower Card') }}
                     </x-button>
@@ -23,6 +23,18 @@
     </x-slot>
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <h2 class="font-bold mb-2">
+            Important Reminder: Online ZC Library Services Operating Hours
+        </h2>
+        <p class="text-m text-orange-700 dark:text-orange-400">   
+            We would like to remind you that the online services provided by the ZC Library will be processed exclusively during our regular work hours, <b>Monday to Friday, from 8:00 AM to 5:00 PM.</b> 
+            <br>
+            <br>
+            Please note that any requests submitted outside of our operating hours will be addressed promptly on the next business day. We kindly request your understanding and patience in such cases.
+        </p>
+    </div>
+
+    <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         Welcome! {{auth()->user()->firstName}} {{auth()->user()->lastName}}
         @if (!session('member.0.id'))
             <br>
@@ -61,6 +73,17 @@
             @endif
         @endif
         
+    </div>
+
+    <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <h3 class="font-semibold mb-2">
+            Hints:
+        </h3>
+        <p class="text-sm"> 
+            To add a book to your cart, kindly click the button that indicates a "cart icon".
+            <br>
+            To know more about a specific book, kindly click the button that indicates a "info circle icon".
+        </p>
     </div>
 
     <div class="p-6 mt-5 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
@@ -109,31 +132,36 @@
             <table id="table" class="min-w-full">
                 <thead>
                     <tr>
-                        <th scope="col" class="text-sm font-medium  text-left">No</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Title</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Author</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Published</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Collection</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Status</th>
-                        <th scope="col" class="text-sm font-medium  text-left"> </th>
-                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Collection</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"> </th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"> </th>
                     </tr>
 
                     <tr>
-                        <th scope="col" class="text-sm font-medium  text-left"></th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"></th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left select_search">Author</th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Published</th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Collection</th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 text-left select_search">Status</th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900   px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900   px-6 py-4 text-left select_search">Author</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  px-6 py-4 text-left select_search">Published</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  px-6 py-4 text-left select_search">Collection</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900  px-6 py-4 text-left select_search">Status</th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900   px-6 py-4 text-left"> </th>
+                        <th scope="col" class="text-sm font-medium  dark:text-gray-900   px-6 py-4 text-left"> </th>
                     </tr>
                 </thead>
                 <tbody>
                         @foreach ($books as $book)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>
+                                    <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="150" height="150">
+                                </td>
                                 <td>{{$book->title}}</td>
                                 <td>{{$book->author}}</td>                                  
                                 <td>{{$book->published}}</td>      
@@ -147,7 +175,7 @@
                                 @endif 
                                     
                                 <td class="text-center">
-                                    <x-button href="/catalog/book/{{ $book->id }}" class="justify-center">
+                                    <x-button variant="danger" href="/catalog/book/{{ $book->id }}" class="justify-center">
                                         <i class="fa-solid fa-circle-info"></i>
                                     </x-button>
                                 </td>
@@ -159,7 +187,7 @@
                                         @csrf
                                         <input type="hidden" value="{{$book->id}}" name="book_id">
                                         <input type="number" value="1" name="quantity" hidden>
-                                        <x-button class="justify-center">
+                                        <x-button variant="danger" class="justify-center">
                                             <i class="fa-solid fa-cart-plus"></i>
                                         </x-button>
                                     </form>
@@ -170,14 +198,15 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th scope="col" class="text-sm font-medium  text-left">No</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Title</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Author</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Published</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Collection</th>
-                        <th scope="col" class="text-sm font-medium  text-left">Status</th>
-                        <th scope="col" class="text-sm font-medium  text-left"> </th>
-                        <th scope="col" class="text-sm font-medium  text-left"> </th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">No</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Title</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Author</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Published</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Collection</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left">Status</th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"> </th>
+                        <th scope="col" class="text-sm font-medium   px-6 py-4 text-left"> </th>
                     </tr>
                 </tfoot>
               </table>
@@ -227,8 +256,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;

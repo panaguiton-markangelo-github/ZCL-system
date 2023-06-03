@@ -276,6 +276,7 @@
         <!-- Buttons -->
         <div class="mt-6 flex justify-end">
             <x-button
+                variant="danger"
                 href="{{route('borrowing_librarian.borrower_card_app.view')}}"
             >
                 {{ __('Go Back') }}

@@ -646,7 +646,7 @@
             </div>
 
           
-            <x-button class="justify-center mt-5 w-50 gap-2">
+            <x-button variant="success" class="justify-center mt-5 w-50 gap-2">
                 {{ __('Update') }}
             </x-button>
             

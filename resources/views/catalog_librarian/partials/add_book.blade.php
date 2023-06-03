@@ -17,6 +17,7 @@
             method="post"
             action="{{ route('catalog_librarian.add.books') }}"
             class="p-6"
+            enctype="multipart/form-data"
         >
             @csrf
     
@@ -31,6 +32,33 @@
             <br>
            
             <p class="text-md text-center font-bold">Book's Details</p>
+
+            <!-- Image -->
+            <div class="mt-6 space-y-6">
+                <x-form.label
+                    for="image"
+                    :value="__('Upload an image for the book (max size: 5mb)')"
+                />
+
+                <x-form.input
+                    id="image"
+                    name="image"
+                    type="file"
+                    class="block w-3/4"
+                    :value="old('image')"
+                    placeholder="{{ __('Image') }}"
+                    required
+                    autofocus
+                />
+
+                @error('image')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('image')
+                            The file must be an image!
+                        @enderror
+                    </p>
+                @enderror 
+            </div>
             
         
             <!-- Title -->
@@ -91,7 +119,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="place_pub"
-                    :value="__('Place of Pub')"
+                    :value="__('Place of Publication')"
                 />
 
                 <x-form.input
@@ -100,7 +128,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('place_pub')"
-                    placeholder="{{ __('Place of Pub') }}"
+                    placeholder="{{ __('Place of Publication') }}"
                     required
                     autofocus
                 />

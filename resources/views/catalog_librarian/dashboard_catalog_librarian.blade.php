@@ -77,7 +77,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Books</h3>
-                        <x-button variant="success" href="{{route('catalog_librarian.view.books')}}">
+                        <x-button variant="danger" href="{{route('catalog_librarian.view.books')}}">
                             <span>{{ __('See all') }}</span>
                             <i class="fa-solid fa-arrow-right ml-2"></i>
                         </x-button> 

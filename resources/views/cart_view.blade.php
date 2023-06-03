@@ -31,14 +31,18 @@
                         application.
                     </p>
                 @else
-                    <x-button href="{{ route('book_req.view') }}">
+                    <x-button variant="success" href="{{ route('book_req.view') }}">
                         <i class="fa-solid fa-check pr-2"></i>
                         <span>{{ __('Borrow') }}</span>
                     </x-button>
+
+                    <p class="mt-2 text-sm text-orange-600 dark:text-orange-400">
+                        Hint: The books list down in this section can be borrowed by clicking the "borrow" button.
+                    </p>
                 @endif
             
             @else
-                <x-button href="{{ route('borrower.app') }}">
+                <x-button variant="success" href="{{ route('borrower.app') }}">
                     <i class="fa-solid fa-check pr-2"></i>
                     <span>{{ __('Borrow') }}</span>
                 </x-button>
@@ -92,7 +96,7 @@
                             <form action="{{ route('cart.remove') }}" method="POST">
                                 @csrf
                                 <input type="hidden" value="{{$item->rowId}}" name="row_id">
-                                <x-button class="justify-center w-full">
+                                <x-button variant="danger" class="justify-center w-full">
                                     <i class="fa-solid fa-xmark pr-2"></i>
                                     <span>{{ __('Remove') }}</span>
                                 </x-button>
@@ -136,8 +140,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;

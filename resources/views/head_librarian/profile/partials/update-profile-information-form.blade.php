@@ -99,7 +99,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-button>
+            <x-button variant="success">
                 {{ __('Save') }}
             </x-button>
         </div>

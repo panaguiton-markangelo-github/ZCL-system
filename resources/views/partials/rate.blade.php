@@ -92,6 +92,7 @@
 
 <section class="space-y-6">
     <x-button
+        variant="danger"
         class="justify-center max-w-xs gap-2"
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'add-rating')"

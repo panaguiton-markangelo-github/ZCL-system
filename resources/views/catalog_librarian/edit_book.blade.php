@@ -120,7 +120,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="place_pub"
-                    :value="__('Place of Pub')"
+                    :value="__('Place of Publication')"
                 />
 
                 <x-form.input
@@ -1003,7 +1003,7 @@
             <!-- Buttons -->
             <div class="mt-6 flex justify-end">
                 <x-button
-                    variant="secondary"
+                    variant="danger"
                     href="{{route('catalog_librarian.view.books')}}"
                 >
                     {{ __('Cancel') }}

@@ -86,7 +86,7 @@
                 </div>
 
                 <div>
-                    <x-button class="justify-center w-full gap-2">
+                    <x-button variant="danger" class="justify-center w-full gap-2">
                         <x-heroicon-o-login class="w-6 h-6" aria-hidden="true" />
 
                         <span>{{ __('Log in') }}</span>

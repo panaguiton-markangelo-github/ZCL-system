@@ -271,7 +271,7 @@
         <form method="POST" action="{{ route('borrower.edit') }}">
             <input name="user_id" type="number" value="{{$member[0]->id}}" hidden readonly>
             @csrf
-            <x-button class="justify-center mt-5">
+            <x-button variant="danger" class="justify-center mt-5">
                 {{ __('Edit') }}
             </x-button>
         </form>

@@ -89,7 +89,7 @@
                             <td>
                                 <div class="sm:rounded-lg">
                                     <div class="max-w-xl">
-                                        <x-button variant="success" href="/head_librarian/edit/librarian/{{ $user->id }}">
+                                        <x-button variant="danger" href="/head_librarian/edit/librarian/{{ $user->id }}">
                                             <i class="fa-solid fa-user-pen"></i>
                                         </x-button>
                                     
@@ -154,8 +154,6 @@
     .dataTables_wrapper .dataTables_length select {
         padding-right: 25px;
         font-weight: 900;
-        background-color: #9d4edd;
-        color: white;
     }
     tfoot input {
         width: 100%;
