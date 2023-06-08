@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->string('r_image');
             $table->string('rec_by');
             $table->string('rec_by_position');
             $table->string('rec_by_office');

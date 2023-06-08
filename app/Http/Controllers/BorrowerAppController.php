@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule as ValidationRule;
+use Illuminate\Support\Facades\Storage;
 
 class BorrowerAppController extends Controller
 {
@@ -30,13 +31,15 @@ class BorrowerAppController extends Controller
         //type 0=NON-LGU, 1=LGU, 2=RECOMMENED
         //status PENDING, APPROVED, DECLINED
         $validated = $request->validate([
+            'b_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
             "firstName" => ['required', 'max:255'],
             "lastName" => ['required', 'max:255'],
             "email" => ['required', 'email'],
             "phone" => ['required'],
             "address" => ['required'],
             "type" => ['required'],
-            "id_card" => ['required']
+            "id_card" => ['required'],
+            
         ]);
 
         if($request->stud_prof == "0"){
@@ -59,6 +62,7 @@ class BorrowerAppController extends Controller
 
         if($request->type == "2"){
             $request->validate([
+                'r_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
                 "rec_by" => ['required'],
                 "rec_by_position" => ['required'],
                 "rec_by_office" => ['required'],
@@ -66,11 +70,16 @@ class BorrowerAppController extends Controller
                 "rec_by_home_address" => ['required'],
                 "rec_by_tel_no_work" => ['required'],
                 "rec_by_cel_no" => ['required'],
+                
             ]);
         }
 
+        $b_image_path = $request->file('b_image')->store('b_id_images', 'public');
+        $r_image_path = $request->file('r_image')->store('r_id_images', 'public');
+
         $member = Member::create([
             "user_id" => auth()->user()->id,
+            'b_image' => $b_image_path,
             "firstName" => $request->firstName,
             "lastName" => $request->lastName,
             "email" => $request->email,
@@ -79,6 +88,7 @@ class BorrowerAppController extends Controller
             "type" => $request->type,
             "id_card" => $request->id_card,
             "status" => 'PENDING',
+            
         ]);
         
         if ($request->stud_prof == "0"){
@@ -102,6 +112,7 @@ class BorrowerAppController extends Controller
         if ($request->type == "2"){
             Recommended::create([
                 "member_id" => $member->id,
+                'r_image' => $r_image_path,
                 "rec_by" =>  $request->rec_by,
                 "rec_by_position" => $request->rec_by_position,
                 "rec_by_office" => $request->rec_by_office,
@@ -179,8 +190,10 @@ class BorrowerAppController extends Controller
         $id = $request->id;
         $is_prof = Professional::where('member_id', '=', $id)->limit(1)->get();
         $is_stud = Student::where('member_id', '=', $id)->limit(1)->get();
+        $member_img_path = Member::where('id', '=', $id)->limit(1)->get(['b_image']);
 
         $validated = $request->validate([
+            'b_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
             "email" => ['required', 'email'],
             "phone" => ['required'],
             "address" => ['required'],
@@ -205,14 +218,18 @@ class BorrowerAppController extends Controller
             ]);
         }
 
-        
+        Storage::disk('public')->delete($member_img_path[0]->b_image);
+
+        $b_image_path = $request->file('b_image')->store('b_id_images', 'public');
+
         $members->where('id', $id)->update([
+            'b_image' => $b_image_path,
             "email" => $request->email,
             "phone" => $request->phone,
             "address" => $request->address,
             "id_card" => $request->id_card,
         ]);
-
+        
         if($is_stud->count()){
             if ($request->stud_prof == "0"){
                 $students->where('member_id', $id)->update([

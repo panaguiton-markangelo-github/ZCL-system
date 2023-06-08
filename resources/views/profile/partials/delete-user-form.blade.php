@@ -9,14 +9,46 @@
         </p>
     </header>
 
-    <x-button
-        variant="danger"
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >
-        {{ __('Delete Account') }}
-    </x-button>
+    @if (!session('member.0.id'))
+        <x-button
+                variant="danger"
+                x-data=""
+                x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+            >
+                {{ __('Delete Account') }}
+        </x-button>
+    @endif
 
+    @if (session('member.0.id'))
+        @if(count($request_book) == 0)
+            <x-button
+                variant="danger"
+                x-data=""
+                x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+            >
+                {{ __('Delete Account') }}
+            </x-button>
+        @endif
+
+        @if(count($request_book) > 0)
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ __('Delete account button is disabled.') }}
+            </p>
+
+            <x-button
+                variant="secondary"
+                disabled="true"
+            >
+                {{ __('Delete Account') }}
+            </x-button>
+
+            <p class="text-sm text-orange-600 dark:text-orange-500">
+                {{ __('Note: You cannot delete your account, because you still have pending transactions (such as borrowed books are not yet returned.)') }}
+            </p>
+        @endif
+    @endif
+
+    
     <x-modal
         name="confirm-user-deletion"
         :show="$errors->userDeletion->isNotEmpty()"

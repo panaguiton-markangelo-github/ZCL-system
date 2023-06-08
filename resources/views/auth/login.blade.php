@@ -91,6 +91,13 @@
                     </x-button>
                 </div>
 
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Login as Admin') }}
+                    <a href="{{ route('librarian.login') }}" class="text-blue-500 hover:underline">
+                        {{ __('here') }}
+                    </a>
+                </p>
+
                 @if (Route::has('register'))
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('Don’t have an account?') }}
@@ -99,12 +106,13 @@
                         </a>
                     </p>
                 @endif
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Go back') }}
-                        <a href="/" class="text-blue-500 hover:underline">
-                            {{ __('home') }}
-                        </a>
-                    </p>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Go back') }}
+                    <a href="/" class="text-blue-500 hover:underline">
+                        {{ __('home') }}
+                    </a>
+                </p>          
             </div>
         </form>
     </x-auth-card>

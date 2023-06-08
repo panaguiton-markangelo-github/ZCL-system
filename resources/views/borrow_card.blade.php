@@ -24,7 +24,7 @@
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
        
-        <form method="POST" action="{{ route('borrower.store') }}">
+        <form method="POST" action="{{ route('borrower.store') }}" enctype="multipart/form-data">
             @csrf
             <input type="text" name="status" id="status" value="PENDING" hidden>
 
@@ -144,7 +144,7 @@
                     :value="__('Please select if you are a student or professional')"
                 />
                 <select name="stud_prof" id="stud_prof" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
 
                 <option value="" selected></option>
@@ -161,7 +161,7 @@
                     :value="__('Member Type')"
                 />
                 <select name="type" id="type" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
 
                 <option value="" selected></option>
@@ -215,7 +215,7 @@
                     />
 
                     <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                    focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                    focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                     dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
     
                     <option value="" selected></option>
@@ -242,7 +242,7 @@
                     />
 
                     <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                    focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                    focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                     dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
     
                     <option value="" selected></option>
@@ -613,7 +613,7 @@
                     :value="__('Please select your ID card')"
                 />
                 <select name="id_card" id="id_card" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
 
                 <option value="" selected></option>
@@ -626,6 +626,60 @@
              </select>
              <p class="mx-2 text-sm"> Note: The selected ID will be presented on the Zamboanga City Library, if your request to borrow books are approved.</p>
              </div>
+
+             <!-- Image for the borrower ID -->
+            <div class="mt-6 space-y-6">
+                <x-form.label
+                    for="b_image"
+                    :value="__('Upload an image of your ID (max size: 5mb)')"
+                />
+
+                <x-form.input
+                    id="b_image"
+                    name="b_image"
+                    type="file"
+                    class="block w-3/4"
+                    :value="old('b_image')"
+                    placeholder="{{ __('Image') }}"
+                    required
+                    autofocus
+                />
+
+                @error('b_image')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('b_image')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                @enderror 
+            </div>
+
+            <!-- Image for the recommened ID -->
+            <div id="rec_upload_id" class="mt-6 space-y-6">
+                <x-form.label
+                    for="r_image"
+                    :value="__('Upload the ID (image) of the one who recommended you (max size: 5mb)')"
+                />
+
+                <x-form.input
+                    id="r_image"
+                    name="r_image"
+                    type="file"
+                    class="block w-3/4"
+                    :value="old('r_image')"
+                    placeholder="{{ __('Image') }}"
+                    required
+                    autofocus
+                />
+
+                @error('r_image')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('r_image')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                @enderror 
+            </div>
 
             <div>
                 <x-button variant="success" class="justify-center mt-5 w-50 gap-2">
@@ -649,6 +703,7 @@
 
             $('#rec_label').hide();
             $('#rec_fields').hide();
+            $('#rec_upload_id').hide();
             
         
            
@@ -660,6 +715,7 @@
             $('#desc_2').hide();
             $('#rec_label').hide();
             $('#rec_fields').hide();
+            $('#rec_upload_id').hide();
           }
 
           else if($(this).val()==="2"){
@@ -669,6 +725,7 @@
             $('#desc_2').show();
             $('#rec_label').show();
             $('#rec_fields').show();
+            $('#rec_upload_id').show();
           }
 
           else if($(this).val()===""){
@@ -677,6 +734,7 @@
             $('#desc_2').hide();
             $('#rec_label').hide();
             $('#rec_fields').hide();
+            $('#rec_upload_id').hide();
           }
         }).change();
 

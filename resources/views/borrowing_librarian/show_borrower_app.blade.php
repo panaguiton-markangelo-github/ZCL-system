@@ -109,6 +109,13 @@
            
         </div>
 
+        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+            {{ __('ID card (image): ') }}
+        </p>
+        <div class="mt-2 flex justify-start">
+            <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$borrowers_app[0]->b_image) }}" alt="none" width="200" height="200">
+        </div>
+
         @if ($is_prof->count())
 
             <br>
@@ -267,6 +274,13 @@
 
                 </div>
             
+            </div>
+
+            <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+                {{ __('ID card (image): ') }}
+            </p>
+            <div class="mt-2 flex justify-start">
+                <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$is_rec[0]->r_image) }}" alt="none" width="200" height="200">
             </div>
 
         @endif

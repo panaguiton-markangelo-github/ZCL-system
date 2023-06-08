@@ -110,10 +110,6 @@
                           <a href="{{ route('login') }}" class="nav-link">Log in</a>
                         </li>
                         
-                        <li class="nav-item active">
-                          <a href="{{ route('librarian.login') }}" class="nav-link">Admin</a>
-                        </li>
-
                         <li class="nav-item">
                           <a href="#news_ann_section" class="nav-link">Announcements</a>
                         </li>
@@ -285,6 +281,27 @@
     </section>
     <!-- end slider section -->
   </div>
+
+  <!--browse catalog section -->
+  <section class="event_section layout_padding" id="event_section">
+    <div class="container">
+      <div class="custom_heading-container">
+        <h2>
+          Browse the catalog of books
+        </h2>
+      </div>
+
+      <div class="layout_padding2">
+        <div class="detail-box">
+
+          <!-- end continue here later... Display the catalog of books-->
+         
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- end browse catalog section -->
 
   <!--news and announcements section -->
   <section class="client_section layout_padding" id="news_ann_section">

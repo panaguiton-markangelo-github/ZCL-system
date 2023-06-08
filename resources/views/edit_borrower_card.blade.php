@@ -19,7 +19,7 @@
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
        
-        <form method="POST" action="{{ route('borrower.update')}}">
+        <form method="POST" action="{{ route('borrower.update')}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -95,7 +95,7 @@
                     :value="__('Please select if you are a student or professional')"
                 />
                 <select name="stud_prof" id="stud_prof" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
                 
                 @if ($is_prof->count())
@@ -152,7 +152,7 @@
                         />
 
                         <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                         dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
                         
                         @if ($is_stud[0]->out_of_school == "NO")
@@ -187,7 +187,7 @@
                         />
 
                         <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                         dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
 
 
@@ -283,7 +283,7 @@
                         />
 
                         <select name="oos" id="oos" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                         dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
         
                         <option value="" selected></option>
@@ -310,7 +310,7 @@
                         />
 
                         <select name="school_level" id="school_level" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                        focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                        focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                         dark:text-gray-300 dark:focus:ring-offset-dark-eval-1 w-full">
         
                         <option value="" selected></option>
@@ -598,10 +598,11 @@
                     :value="__('Please select your ID card')"
                 />
                 <select name="id_card" id="id_card" class="py-2 border-gray-400 rounded-md focus:border-gray-400 focus:ring
-                focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
+                focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
                 dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
 
                 @if($member->id_card == "Philhealth ID")
+                    <option value="Ph National ID"> Ph National ID </option>
                     <option value="Philhealth ID" selected> Philhealth ID </option>
                     <option value="SSS ID"> SSS ID </option>
                     <option value="GSIS ID"> GSIS ID </option>
@@ -610,6 +611,7 @@
                 @endif
 
                 @if($member->id_card == "SSS ID")
+                    <option value="Ph National ID"> Ph National ID </option>
                     <option value="Philhealth ID"> Philhealth ID </option>
                     <option value="SSS ID" selected> SSS ID </option>
                     <option value="GSIS ID"> GSIS ID </option>
@@ -618,6 +620,7 @@
                 @endif
 
                 @if($member->id_card == "GSIS ID")
+                    <option value="Ph National ID"> Ph National ID </option>
                     <option value="Philhealth ID"> Philhealth ID </option>
                     <option value="SSS ID"> SSS ID </option>
                     <option value="GSIS ID" selected> GSIS ID </option>
@@ -626,6 +629,7 @@
                 @endif
 
                 @if($member->id_card == "Government ID")
+                    <option value="Ph National ID"> Ph National ID </option>
                     <option value="Philhealth ID"> Philhealth ID </option>
                     <option value="SSS ID"> SSS ID </option>
                     <option value="GSIS ID"> GSIS ID </option>
@@ -634,6 +638,7 @@
                 @endif
 
                 @if($member->id_card == "Student ID")
+                    <option value="Ph National ID"> Ph National ID </option>
                     <option value="Philhealth ID"> Philhealth ID </option>
                     <option value="SSS ID"> SSS ID </option>
                     <option value="GSIS ID"> GSIS ID </option>
@@ -641,8 +646,44 @@
                     <option value="Student ID" selected> Student ID  </option>
                 @endif
 
+                @if($member->id_card == "Ph National ID")
+                    <option value="Ph National ID" selected> Ph National ID  </option>
+                    <option value="Philhealth ID"> Philhealth ID </option>
+                    <option value="SSS ID"> SSS ID </option>
+                    <option value="GSIS ID"> GSIS ID </option>
+                    <option value="Government ID"> Government ID </option>
+                    <option value="Student ID"> Student ID  </option>
+                @endif
+
                 </select>
                 <p class="mx-2 text-sm"> Note: The selected ID will be presented on the Zamboanga City Library, if your request to borrow books are approved.</p>
+            </div>
+
+            <!-- Image for the borrower ID -->
+            <div class="mt-6 space-y-6">
+                <x-form.label
+                    for="b_image"
+                    :value="__('Upload an image of your ID (max size: 5mb)')"
+                />
+
+                <x-form.input
+                    id="b_image"
+                    name="b_image"
+                    type="file"
+                    class="block w-3/4"
+                    :value="old('b_image')"
+                    placeholder="{{ __('Image') }}"
+                    required
+                    autofocus
+                />
+
+                @error('b_image')
+                    <p class="text-red-500 text-xs p-1">
+                        @error('b_image')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                @enderror 
             </div>
 
           

@@ -6,7 +6,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <h3 class="text-2xl font-bold text-center">Librarian Login</h3>
+        <h3 class="text-2xl font-bold text-center">ADMIN</h3>
 
         <form method="POST" action="{{ route('librarian.login') }}">
             @csrf
@@ -103,12 +103,21 @@
                         </p>
                     @endif
                 @endif
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Go back') }}
-                        <a href="/" class="text-blue-500 hover:underline">
-                            {{ __('home') }}
-                        </a>
-                    </p>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Login as Public User') }}
+                    <a href="{{ route('login') }}" class="text-blue-500 hover:underline">
+                        {{ __('here') }}
+                    </a>
+                </p>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ __('Go back') }}
+                    <a href="/" class="text-blue-500 hover:underline">
+                        {{ __('home') }}
+                    </a>
+                </p>
+                
             </div>
         </form>
     </x-auth-card>
