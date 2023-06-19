@@ -20,8 +20,13 @@
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&amp;display=swap" rel="stylesheet"/>
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/style_user.css') }}" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
   <!-- responsive style -->
   <link href="{{ asset('css/responsive.css') }}" rel="stylesheet"/>
@@ -67,6 +72,10 @@
                         </li>
 
                         <li class="nav-item">
+                          <a href="#catalog_books" class="nav-link">Books</a>
+                        </li>
+
+                        <li class="nav-item">
                           <a href="#news_ann_section" class="nav-link">Announcements</a>
                         </li>
     
@@ -95,6 +104,10 @@
                               <a href="{{ route('catalog_librarian.dashboard') }}" class="nav-link">Catalog Librarian Dashboard</a>
                             </li>
                           @endif
+
+                          <li class="nav-item">
+                            <a href="#catalog_books" class="nav-link">Books</a>
+                          </li>
                           
                           <li class="nav-item">
                             <a href="#news_ann_section" class="nav-link">Announcements</a>
@@ -108,6 +121,10 @@
                       @else
                         <li class="nav-item active">
                           <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="#catalog_books" class="nav-link">Books</a>
                         </li>
                         
                         <li class="nav-item">
@@ -283,7 +300,7 @@
   </div>
 
   <!--browse catalog section -->
-  <section class="event_section layout_padding" id="event_section">
+  <section class="catalog_books layout_padding" id="catalog_books">
     <div class="container">
       <div class="custom_heading-container">
         <h2>
@@ -291,11 +308,80 @@
         </h2>
       </div>
 
-      <div class="layout_padding2">
+      <div style="padding: 5px">
         <div class="detail-box">
+          @if (!auth()->user())
 
-          <!-- end continue here later... Display the catalog of books-->
-         
+            @if (auth()->guard('librarians')->user())
+              <p class="font-weight-bold" style="display: none">To borrow books, kindly login to your account. Click <a href="{{ route('login') }}"> here </a> </p>
+            @else
+              <p class="font-weight-bold">To borrow books, kindly login to your account. Click <a href="{{ route('login') }}"> here </a> </p>
+            @endif
+
+          @endif
+  
+          <div class="table-responsive">
+            <table id="table" class="table table-striped-columns">
+              <thead>
+                  <tr>
+                      <th scope="col" class="text-sm fs-5">No</th>
+                      <th scope="col" class="text-sm fs-5"></th>
+                      <th scope="col" class="text-sm fs-5">Title</th>
+                      <th scope="col" class="text-sm fs-5">Author</th>
+                      <th scope="col" class="text-sm fs-5">Published</th>
+                      <th scope="col" class="text-sm fs-5">Collection</th>
+                      <th scope="col" class="text-sm fs-5">Status</th>
+                        
+                  </tr>
+  
+                  <tr>
+                      <th scope="col" class="text-sm fs-5"></th>
+                      <th scope="col" class="text-sm fs-5"></th>
+                      <th scope="col" class="text-sm fs-5"></th>
+                      <th scope="col" class="text-sm fs-5 select_search">Author</th>
+                      <th scope="col" class="text-sm fs-5 select_search">Published</th>
+                      <th scope="col" class="text-sm fs-5 select_search">Collection</th>
+                      <th scope="col" class="text-sm fs-5 select_search">Status</th>
+                                            
+                  </tr>
+              </thead>
+              <tbody>
+                      @foreach ($books as $book)
+                          <tr>
+                              <td>{{$loop->iteration}}</td>
+                              <td>
+                                  <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="150" height="150">
+                              </td>
+                              <td>{{$book->title}}</td>
+                              <td>{{$book->author}}</td>                                  
+                              <td>{{$book->published}}</td>      
+                              <td>{{$book->collection}}</td>
+                              @if($book->status == "AVAILABLE")
+                                  <td class="text-success">{{$book->status}}</td>                     
+                              @endif 
+  
+                              @if($book->status == "BORROWED")
+                                  <td class="text-danger">{{$book->status}}</td>                     
+                              @endif 
+                                                                  
+                          </tr>
+                      @endforeach
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <th scope="col" class="text-sm fs-5">No</th>
+                      <th scope="col" class="text-sm fs-5"></th>
+                      <th scope="col" class="text-sm fs-5">Title</th>
+                      <th scope="col" class="text-sm fs-5">Author</th>
+                      <th scope="col" class="text-sm fs-5">Published</th>
+                      <th scope="col" class="text-sm fs-5">Collection</th>
+                      <th scope="col" class="text-sm fs-5">Status</th>
+                                            
+                  </tr>
+              </tfoot>
+            </table>
+          </div>
+          
         </div>
       </div>
 
@@ -572,15 +658,53 @@
     <!-- footer section -->
   </div>
 
+  
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+  
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
   {{-- Old moment js version --}}
   {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script> --}}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
 
-  
+  <script>
+        $(document).ready(function () {
+             $('#table').DataTable({
+                responsive: true,
+                "language": {
+                    "emptyTable": "There are no books currently available in the catalog."
+                },
+                 initComplete: function () {
+                     this.api()
+                         .columns()
+                         .every(function () {
+                             var column = this;
+                             if ($(column.header()).hasClass('select_search')) {
+
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.header()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+
+                            }
+                         });
+                 },
+             });
+         });
+ </script>
+
   <script>
     $(document).ready(function () {
         $.ajaxSetup({

@@ -668,7 +668,7 @@
                     class="block w-3/4"
                     :value="old('r_image')"
                     placeholder="{{ __('Image') }}"
-                    required
+                    
                     autofocus
                 />
 

@@ -398,18 +398,21 @@ a:focus {
 }
 
 .news_ann_section,
-.event_section {
+.event_section,
+.catalog_books {
   text-align: center;
 }
 
 .news_ann_section .img-box,
-.event_section .img-box {
+.event_section .img-box,
+.catalog_books .img-box {
   width: 65%;
   margin: 0 auto;
 }
 
 .news_ann_section .img-box img, 
-.event_section .img-box img {
+.event_section .img-box img,
+.catalog_books .img-box img {
   width: 100%;
 }
 
@@ -418,8 +421,13 @@ a:focus {
   margin-top: 45px;
 }
 
+.catalog_books .detail-box {
+  margin-top: 5px;
+}
+
 .news_ann_section .detail-box a,
-.event_section .detail-box a {
+.event_section .detail-box a,
+.catalog_books .detail-box a {
   display: inline-block;
   padding: 12px 40px;
   background-color: #feb543;
@@ -434,7 +442,8 @@ a:focus {
 }
 
 .news_ann_section .detail-box a:hover,
-.event_section .detail-box a:hover{
+.event_section .detail-box a:hover,
+.catalog_books .detail-box a:hover{
   -webkit-transform: translateY(-7px);
           transform: translateY(-7px);
 }
