@@ -363,6 +363,10 @@
                               @if($book->status == "BORROWED")
                                   <td class="text-danger">{{$book->status}}</td>                     
                               @endif 
+
+                              @if($book->status == "RESERVED")
+                                  <td class="text-warning">{{$book->status}}</td>                     
+                              @endif 
                                                                   
                           </tr>
                       @endforeach

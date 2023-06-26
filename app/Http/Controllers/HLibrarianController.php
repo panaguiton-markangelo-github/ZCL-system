@@ -87,6 +87,24 @@ class HLibrarianController extends Controller
 
     //-----------------------------------------------------------------
 
+    //start of methods for the books
+    public function indexBooksH(){
+        $books = Books::all();
+
+        return view('head_librarian.books', compact('books'));
+    }
+
+    public function showBookH($id){
+        $book = Books::findOrFail($id);
+
+        return view('head_librarian.show_book', compact('book'));
+    }
+
+
+    //end of methods for the books
+
+    //-----------------------------------------------------------------
+
     // start of methods for announcements module.
 
     public function indexAnnounce(){

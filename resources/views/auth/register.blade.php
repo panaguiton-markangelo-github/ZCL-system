@@ -731,6 +731,13 @@
                 </div>
 
                 <div>
+                    <p class="text-sm text-center">
+                        Data Privacy: 
+                        The users' personal information would be used solely for the purpose of reference for future transactions between the user and the Zamboanga City Library or for keeping track of pending returns.
+                    </p>
+                </div>
+
+                <div>
                     <x-button variant="danger" class="justify-center w-full gap-2">
                         <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
 

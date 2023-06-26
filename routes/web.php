@@ -40,6 +40,8 @@ use Illuminate\Http\Request;
 //update - update a data
 //destroy - delete a data
 
+//latest update : 06/20/2023 in the GITHUB
+
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');
 
@@ -93,6 +95,14 @@ Route::put('/head_librarian/update/librarian/{id}', [HLibrarianController::class
 
 Route::delete('/head_librarian/delete/librarian/{id}', [HLibrarianController::class, 'destroy'])->middleware('auth:librarians')->name('librarians.delete');
 //end of librarians module routes
+
+// start books module
+
+Route::get('/head_librarian/view_books', [HLibrarianController::class, 'indexBooksH'])->middleware('auth:librarians')->name('head_librarian.view.books');
+
+Route::get('/head_librarian/show/book/{id}', [HLibrarianController::class, 'showBookH'])->middleware('auth:librarians')->name('head_librarian.show.books');
+
+//end books module
 
 
 //announcements module routes

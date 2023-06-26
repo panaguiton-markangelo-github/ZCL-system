@@ -16,7 +16,7 @@ class PTransController extends Controller
         ->join('books', 'book_id', '=', 'books.id')
         ->where('member_id', '=', $cur_member[0]->id)
         ->orderBy('book_bor_reqs.created_at', 'desc')
-        ->select('book_bor_reqs.created_at', 'book_bor_reqs.updated_at', 'book_bor_reqs.member_id',
+        ->select('book_bor_reqs.avail_at', 'book_bor_reqs.due_at', 'book_bor_reqs.created_at', 'book_bor_reqs.updated_at', 'book_bor_reqs.member_id',
                  'books.title', 'book_bor_reqs.status AS bookReqStatus'
                 )
         ->get();

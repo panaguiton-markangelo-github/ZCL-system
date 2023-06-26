@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("User's Cart") }}
+                {{ __("User's Basket") }}
             </h2>
 
 
@@ -11,7 +11,7 @@
 
     <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         @if ($cart->count() <= 0)
-            <p class="text-sm text-red-500 dark:text-red-400">The cart is empty! Kindly add at least one book to your cart.</p>
+            <p class="text-sm text-red-500 dark:text-red-400">The basket is empty! Kindly add at least one book to your basket.</p>
         @else
             @if($is_status_member->count())
                 @if ($is_status_member[0]->status == 'DECLINED')
@@ -129,7 +129,7 @@
                 responsive: true,
                 scrollX: true,
                 "language": {
-                    "emptyTable": "There are currently no books in your cart."
+                    "emptyTable": "There are currently no books in your basket."
                 },
             });
             });

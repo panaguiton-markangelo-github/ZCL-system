@@ -20,6 +20,24 @@
                     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
                         <p class="font-bold">Request status: {{$req->bookReqStatus}}</p>
                         <p>Book title: {{$req->title}}</p>
+                        <p>Available pickup at (date and time): {{$req->avail_at}}</p>
+                        <p>Due date for the books to be returned (date and time): {{$req->due_at}}</p>
+                        <p>Request sent at: {{$req->created_at}}</p>
+                        <p>Request updated at: {{$req->updated_at}}</p>
+                    </div>
+                @endif
+
+                @if($req->bookReqStatus == "RELEASED")
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+                        <p class="font-bold">Request status: {{$req->bookReqStatus}}</p>
+                        <p>Book title: {{$req->title}}</p>
+                        <p>Important Notes:
+                            <br>
+                            Lost/Damaged Books = Replacement.
+                            <br>
+                           Over-due fine = Php 2.00/day per book
+                        </p>
+                        <p>Due date for the books to be returned (date and time): {{$req->due_at}}</p>
                         <p>Request sent at: {{$req->created_at}}</p>
                         <p>Request updated at: {{$req->updated_at}}</p>
                     </div>
@@ -35,6 +53,15 @@
                 @endif
 
                 @if($req->bookReqStatus == "DECLINED")
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                        <p class="font-bold">Request status: {{$req->bookReqStatus}}</p>
+                        <p>Book title: {{$req->title}}</p>
+                        <p>Request sent at: {{$req->created_at}}</p>
+                        <p>Request updated at: {{$req->updated_at}}</p>
+                    </div>
+                @endif
+
+                @if($req->bookReqStatus == "CANCELLED")
                     <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
                         <p class="font-bold">Request status: {{$req->bookReqStatus}}</p>
                         <p>Book title: {{$req->title}}</p>

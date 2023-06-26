@@ -172,7 +172,7 @@
         @if ($cart->where('id', $book->id)->count())
             <div class="text-center" >
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('This book is already on your cart.') }}
+                    {{ __('This book is already on your basket.') }}
                 </p>
             </div>
         @else
@@ -183,7 +183,7 @@
                 <input type="number" value="1" name="quantity" hidden>
                 <x-button variant="success" class="justify-center w-full">
                     <i class="fa-solid fa-cart-plus mx-2"></i>
-                    <span>{{ __('Add to cart') }}</span>
+                    <span>{{ __('Add to basket') }}</span>
                 </x-button>
             </form>
         </div>

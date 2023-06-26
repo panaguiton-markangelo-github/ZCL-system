@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('status')->default('PENDING');
+            $table->dateTime('avail_at');
+            $table->dateTime('due_at');
             $table->timestamps();
         });
     }

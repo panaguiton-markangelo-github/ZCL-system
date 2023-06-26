@@ -47,7 +47,7 @@ class BLibrarianController extends Controller
         $request_book = DB::table('book_bor_reqs')
         ->join('books', 'book_id', '=', 'books.id')
         ->where('book_bor_reqs.book_id', '=', $id)
-        ->where('book_bor_reqs.status', '=', 'APPROVED')
+        ->where('book_bor_reqs.status', '=', 'RELEASED')
         ->where('books.status', '=', 'BORROWED')
         ->orderBy('book_bor_reqs.created_at', 'desc')
         ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'book_bor_reqs.member_id', 'books.title', 'books.author', 'books.published', 
@@ -131,18 +131,27 @@ class BLibrarianController extends Controller
             "status" => $request->status,
         ]);
 
-
         if($request->status == "APPROVED")
         {
+            $request->validate([
+                "avail_date" => ['required'],
+                "due_date" => ['required'],
+            ]);
+            
             $bookID = BookBorReq::find($request->id);
             $books_id = Books::where('id', '=', $bookID->book_id)->get();
 
             foreach ($books_id as $b_id) {
+
+                $book_req->where('book_id', $b_id->id)->update([   
+                    "avail_at" => $request->avail_date,
+                    "due_at" => $request->due_date,
+                ]);
+
                 $date_time = Carbon::now()->toDateTimeString();
 
                 $book->where('id', $b_id->id)->update([   
                     "status" => $request->statusBook,
-                    "borrowed_at" => $date_time,
                 ]);
 
                 $cur_member = BookBorReq::find($request->id);
@@ -154,8 +163,13 @@ class BLibrarianController extends Controller
             
                 $info = [
                         'info' => "Your Book Request was APPROVED: Book Title($b_id->title) at $date_time",
-                        'remarks' => "Request Approved. Kindly proceed to Zamboanga City Library to get your borrowed book.",
+                        'remarks' => "Available pickup at $request->avail_date.  
+                                      Due date to be returned is on $request->due_date",
                         'id' => $user->id,
+                        'book' => $b_id->title,
+                        'username' => $user->firstName.' '.$user->lastName,
+                        'avail_date' => $request->avail_date,
+                        'due_date' => $request->due_date,
                 ];
                 
 
@@ -182,6 +196,10 @@ class BLibrarianController extends Controller
                         'info' => "Your Book Request was DECLINED: Book Title($b_id->title) at $date_time",
                         'remarks' => $request->remarks,
                         'id' => $user->id,
+                        'book' => $b_id->title,
+                        'username' => $user->firstName.' '.$user->lastName,
+                        'avail_date' => "none",
+                        'due_date' => "none",
                 ];
                 
 
@@ -189,6 +207,82 @@ class BLibrarianController extends Controller
             }
 
             return redirect()->route('borrowing_librarian.requested_books.view')->with('message', 'Book borrow request was successfully declined!');
+        }
+        else if($request->status == "CANCELLED")
+        {
+            $bookID = BookBorReq::find($request->id);
+            $books_id = Books::where('id', '=', $bookID->book_id)->get();
+            foreach ($books_id as $b_id) {
+                $book_req->where('book_id', $b_id->id)->update([   
+                    "avail_at" => null,
+                    "due_at" => null,
+                ]);
+
+                $book->where('id', $b_id->id)->update([   
+                    "status" => $request->statusBook,
+                ]);
+
+                $date_time = Carbon::now()->toDateTimeString();
+
+                $cur_member = BookBorReq::find($request->id);
+
+                $cur_user = Member::find($cur_member->member_id);
+
+                $user = User::find($cur_user->user_id);
+
+            
+                $info = [
+                        'info' => "Your Approved Book Request was CANCELLED: Book Title($b_id->title) at $date_time",
+                        'remarks' => $request->remarks,
+                        'id' => $user->id,
+                        'book' => $b_id->title,
+                        'username' => $user->firstName.' '.$user->lastName,
+                        'avail_date' => "cancel",
+                        'due_date' => "none",
+                ];
+                
+
+                $user->notify(new RequestNotification($info));
+            }
+
+            return redirect()->route('borrowing_librarian.requested_books.view')->with('message', 'Approved Book borrow request was successfully cancelled!');
+        }
+        else if($request->status == "RELEASED")
+        {
+            $bookID = BookBorReq::find($request->id);
+            $books_id = Books::where('id', '=', $bookID->book_id)->get();
+            foreach ($books_id as $b_id) {                
+                $date_time = Carbon::now()->toDateTimeString();
+
+                $book->where('id', $b_id->id)->update([   
+                    "status" => $request->statusBook,
+                    "borrowed_at" => $date_time,
+                ]);
+
+                $cur_member = BookBorReq::find($request->id);
+
+                $cur_user = Member::find($cur_member->member_id);
+
+                $user = User::find($cur_user->user_id);
+
+            
+                $info = [
+                        'info' => "Your Requested Book was Released: Book Title($b_id->title) at $date_time",
+                        'remarks' => "
+                        Important Note: Lost/Damaged Books = Replacement.
+                        Over-due fine = Php 2.00/day per book",
+                        'id' => $user->id,
+                        'book' => $b_id->title,
+                        'username' => $user->firstName.' '.$user->lastName,
+                        'avail_date' => "released",
+                        'due_date' => "Released on: ".$date_time,
+                ];
+                
+
+                $user->notify(new RequestNotification($info));
+            }
+
+            return redirect()->route('borrowing_librarian.requested_books.view')->with('message', 'Approved Book borrow request was successfully released!');
         }
     }
 

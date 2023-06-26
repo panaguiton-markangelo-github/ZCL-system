@@ -29,10 +29,67 @@
                     </h2>
 
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Note: After confirmation, the request to borrow this book will be approved and will update the status of the book into "borrowed".') }}
+                        {{ __('Note: After confirmation, the request to borrow this book will be approved and will update the status of the book into "reserved".') }}
                     </p>
 
+                    <!-- available for pickup date&&time -->
+                    <div class="text-start mt-6 space-y-6">
+                        <x-form.label
+                            for="avail_date"
+                            :value="__('Available for pickup (date and time)')"
+                        />
+
+                        <x-form.input
+                            id="avail_date"
+                            name="avail_date"
+                            type="datetime-local"
+                            class="block w-3/4"
+                            :value="old('avail_date')"
+                            placeholder="{{ __('Available for pickup (date and time)') }}"
+                            required
+                            autofocus
+                        />
+
+                        @error('avail_date')
+                            <p class="text-red-500 text-xs p-1">
+                                @error('avail_date')
+                                    {{ $message }}
+                                @enderror
+                            </p>
+                        @enderror 
+                    </div>
+
                     <br>
+
+                    <!-- due date for the books to be returned date&&time -->
+                    <div class="text-start mt-6 space-y-6">
+                        <x-form.label
+                            for="due_date"
+                            :value="__('Due date for the books to be returned (date and time)')"
+                        />
+
+                        <x-form.input
+                            id="due_date"
+                            name="due_date"
+                            type="datetime-local"
+                            class="block w-3/4"
+                            :value="old('due_date')"
+                            placeholder="{{ __('Due date for the books to be returned (date and time)') }}"
+                            required
+                            autofocus
+                        />
+
+                        @error('due_date')
+                            <p class="text-red-500 text-xs p-1">
+                                @error('due_date')
+                                    {{ $message }}
+                                @enderror
+                            </p>
+                        @enderror 
+                    </div>
+
+                    <br>
+
 
                     <p class="text-sm text-center font-bold">
                         Current status of this book: {{$request_book[0]->status}}
@@ -48,7 +105,7 @@
 
                     <input type="text" name="status" id="status" value="APPROVED" hidden>
 
-                    <input type="text" name="statusBook" id="statusBook" value="BORROWED" hidden>
+                    <input type="text" name="statusBook" id="statusBook" value="RESERVED" hidden>
 
 
 

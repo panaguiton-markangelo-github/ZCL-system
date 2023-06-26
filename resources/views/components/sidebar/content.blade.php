@@ -15,7 +15,7 @@
     </x-sidebar.link>
 
     <x-sidebar.link
-        title="Cart"
+        title="Basket"
         href="{{ route('cart.view') }}"
         :isActive="request()->routeIs('cart.view')"
     >

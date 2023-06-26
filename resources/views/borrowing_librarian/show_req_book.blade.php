@@ -366,6 +366,7 @@
                     
                 </div>
             @endif
+            
 
             @if ($request_book[0]->bookReqStatus == 'APPROVED')
                 <div class="flex justify-center text-center">
@@ -375,6 +376,44 @@
                     </p>
                     
                 </div>
+            @endif
+
+            @if ($request_book[0]->bookReqStatus == 'RELEASED')
+                <div class="flex justify-center text-center">
+                    
+                    <p class="text-sm text-cyan-600 dark:text-cyan-400 text-center font-bold">
+                        You have released this Book to the user.
+                    </p>
+                    
+                </div>
+            @endif
+
+            @if ($request_book[0]->bookReqStatus == 'CANCELLED')
+                <div class="flex justify-center text-center">
+                    
+                    <p class="text-sm text-cyan-600 dark:text-cyan-400 text-center font-bold">
+                        You have cancelled this Approved Book Borrow Request.
+                    </p>
+                    
+                </div>
+            @endif
+
+            @if ($request_book[0]->bookReqStatus == 'APPROVED' && $request_book[0]->status == 'RESERVED')
+                <div class="mt-3 grid grid-cols-2 gap-2 text-center">
+
+                    <div class="sm:rounded-lg">
+                        <div class="max-w-xl">
+                            @include('borrowing_librarian.partials.cancel_book')
+                        </div>
+                    </div>
+                    
+                    <div class="ml-5 sm:rounded-lg">
+                        <div class="max-w-xl">
+                            @include('borrowing_librarian.partials.released_book')
+                        </div>
+                    </div>
+
+                </div>             
             @endif
 
             @if ($request_book[0]->bookReqStatus == 'DECLINED')

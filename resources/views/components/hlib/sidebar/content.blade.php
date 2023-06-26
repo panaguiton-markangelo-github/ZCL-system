@@ -25,6 +25,16 @@
     </x-sidebar.link>
 
     <x-sidebar.link
+        title="Books"
+        href="{{ route('head_librarian.view.books') }}"
+        :isActive="request()->routeIs('head_librarian.view.books')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-book flex-shrink-0 w-6 h-5" aria-hidden="true"></i>
+        </x-slot>
+    </x-sidebar.link>
+
+    <x-sidebar.link
         title="Events"
         href="{{ route('head_librarian.view.events') }}"
         :isActive="request()->routeIs('head_librarian.view.events')"

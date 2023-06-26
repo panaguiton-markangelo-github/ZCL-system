@@ -80,7 +80,7 @@
             Hints:
         </h3>
         <p class="text-sm"> 
-            To add a book to your cart, kindly click the button that indicates a "cart icon".
+            To add a book to your basket, kindly click the button that indicates a "basket icon".
             <br>
             To know more about a specific book, kindly click the button that indicates a "info circle icon".
         </p>
@@ -173,6 +173,10 @@
                                 @if($book->status == "BORROWED")
                                     <td class="text-red-500">{{$book->status}}</td>                     
                                 @endif 
+
+                                @if($book->status == "RESERVED")
+                                    <td class="text-yellow-500">{{$book->status}}</td>                     
+                                @endif 
                                     
                                 <td class="text-center">
                                     <x-button variant="danger" href="/catalog/book/{{ $book->id }}" class="justify-center">
@@ -180,7 +184,7 @@
                                     </x-button>
                                 </td>
                                 @if ($cart->where('id', $book->id)->count())
-                                    <td class="text-center">In Cart</td>
+                                    <td class="text-center">In Basket</td>
                                 @else
                                 <td class="text-center">
                                     <form action="{{ route('cart.store') }}" method="POST">
