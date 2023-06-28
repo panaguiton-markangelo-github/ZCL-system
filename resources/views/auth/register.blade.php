@@ -808,13 +808,16 @@
             $('#stud_fields').show();
             $('#prof_label').hide();
             $('#prof_fields').hide();
-           
+
+            $("#type option[value='1']").prop("disabled", true);           
           }
           else if($(this).val()==="1"){
             $('#stud_label').hide();
             $('#stud_fields').hide();
             $('#prof_label').show();
             $('#prof_fields').show();
+
+            $("#type option[value='1']").prop("disabled", false);
           }
 
           else if($(this).val()===""){
@@ -822,6 +825,8 @@
             $('#stud_fields').hide();
             $('#prof_label').hide();
             $('#prof_fields').hide();
+
+            $("#type option[value='1']").prop("disabled", false);
           }
         }).change();
     </script>
