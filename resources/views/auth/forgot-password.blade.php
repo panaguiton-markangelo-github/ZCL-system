@@ -41,7 +41,7 @@
                 </div>
 
                 <div>
-                    <x-button class="justify-center w-full">
+                    <x-button variant="danger" class="justify-center w-full">
                         {{ __('Email Password Reset Link') }}
                     </x-button>
                 </div>

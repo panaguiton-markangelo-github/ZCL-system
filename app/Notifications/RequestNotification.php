@@ -70,6 +70,14 @@ class RequestNotification extends Notification implements ShouldQueue
             ->line($this->info['due_date'])
             ->line('This is a system generated message, do not reply here!');
         }
+        else if($this->info['avail_date'] == "register" && $this->info['due_date'] == "register"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('You have successfully applied for a borrower card.'))
+            ->line('Important Note!')
+            ->line('Your borrower card application was sent for approval. However, you can start using you ZCL account by verifying your account email thru the email sent by the system and logging into the ZCL online portal.')
+            ->line('This is a system generated message, do not reply here!');
+        }
         else {
             return (new MailMessage)
                     ->greeting('Greetings '.$this->info['username'].'!')

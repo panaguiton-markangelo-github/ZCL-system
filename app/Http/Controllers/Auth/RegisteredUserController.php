@@ -158,6 +158,10 @@ class RegisteredUserController extends Controller
                 'info' => "You have applied for borrower card (PENDING): at $date_time",
                 'remarks' => "Sent for approval request",
                 'id' => $user->id,
+                'book' => "none",
+                'username' => $user->firstName.' '.$user->lastName,
+                'avail_date' => "register",
+                'due_date' => "register",
         ];
         
 
