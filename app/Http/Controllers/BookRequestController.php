@@ -54,7 +54,10 @@ class BookRequestController extends Controller
                 'info' => "Request to borrow book/s (PENDING): at $date_time",
                 'remarks' => "Sent for approval request",
                 'id' => auth()->user()->id,
-
+                'book' => "none",
+                'username' => $user->firstName.' '.$user->lastName,
+                'avail_date' => "book_req",
+                'due_date' => "book_req",
         ];
         
 

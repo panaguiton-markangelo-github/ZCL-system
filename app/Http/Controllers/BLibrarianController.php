@@ -326,6 +326,10 @@ class BLibrarianController extends Controller
                     'info' => "Your Borrower Card Application was APPROVED: at $date_time",
                     'remarks' => "Application Approved",
                     'id' => $user->id,
+                    'book' => "none",
+                    'username' => $user->firstName.' '.$user->lastName,
+                    'avail_date' => "card_approve",
+                    'due_date' => "card_approve",
             ];
             
 
@@ -346,6 +350,10 @@ class BLibrarianController extends Controller
                     'info' => "Your Borrower Card Application was DECLINED: at $date_time",
                     'remarks' => $request->remarks,
                     'id' => $user->id,
+                    'book' => "none",
+                    'username' => $user->firstName.' '.$user->lastName,
+                    'avail_date' => "card_decline",
+                    'due_date' => "card_decline",
             ];
             
 

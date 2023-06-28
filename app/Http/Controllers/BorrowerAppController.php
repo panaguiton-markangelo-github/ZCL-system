@@ -141,6 +141,10 @@ class BorrowerAppController extends Controller
                 'info' => "You have applied for borrower card (PENDING): at $date_time",
                 'remarks' => "Sent for approval request",
                 'id' => auth()->user()->id,
+                'book' => "none",
+                'username' => $user->firstName.' '.$user->lastName,
+                'avail_date' => "borrower_card_app",
+                'due_date' => "borrower_card_app",
         ];
         
 
@@ -291,6 +295,10 @@ class BorrowerAppController extends Controller
                 'info' => "You have updated your borrower card details: at $date_time",
                 'remarks' => "Notified",
                 'id' => auth()->user()->id,
+                'book' => "none",
+                'username' => $user->firstName.' '.$user->lastName,
+                'avail_date' => "borrower_card_update",
+                'due_date' => "borrower_card_update",
         ];
         
 

@@ -70,12 +70,43 @@ class RequestNotification extends Notification implements ShouldQueue
             ->line($this->info['due_date'])
             ->line('This is a system generated message, do not reply here!');
         }
+        else if($this->info['avail_date'] == "card_approve" && $this->info['due_date'] == "card_approve"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('Your Borrower Card Application was approved.'))
+            ->line('This is a system generated message, do not reply here!');
+        }
+        else if($this->info['avail_date'] == "card_decline" && $this->info['due_date'] == "card_decline"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('Your Borrower Card Application was declined.'))
+            ->line('Remarks: '.$this->info['remarks'])
+            ->line('This is a system generated message, do not reply here!');
+        }
         else if($this->info['avail_date'] == "register" && $this->info['due_date'] == "register"){
             return (new MailMessage)
             ->greeting('Greetings '.$this->info['username'].'!')
             ->subject(Lang::get('You have successfully applied for a borrower card.'))
             ->line('Important Note!')
             ->line('Your borrower card application was sent for approval. However, you can start using you ZCL account by verifying your account email thru the email sent by the system and logging into the ZCL online portal.')
+            ->line('This is a system generated message, do not reply here!');
+        }
+        else if($this->info['avail_date'] == "book_req" && $this->info['due_date'] == "book_req"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('Book Borrow Request was sent successfully.'))
+            ->line('This is a system generated message, do not reply here!');
+        }
+        else if($this->info['avail_date'] == "borrower_card_app" && $this->info['due_date'] == "borrower_card_app"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('Borrower Card Application was successfully sent for approval.'))
+            ->line('This is a system generated message, do not reply here!');
+        }
+        else if($this->info['avail_date'] == "borrower_card_update" && $this->info['due_date'] == "borrower_card_update"){
+            return (new MailMessage)
+            ->greeting('Greetings '.$this->info['username'].'!')
+            ->subject(Lang::get('Your Borrower Card was updated successfully.'))
             ->line('This is a system generated message, do not reply here!');
         }
         else {
