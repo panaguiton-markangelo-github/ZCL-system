@@ -16,6 +16,7 @@ class LandingPageController extends Controller
         $books = Books::all();
         
         $ratings = Ratings::join('users', 'users.id', '=', 'ratings.user_id')
+        ->where('reviewed', '=', '1')
         ->get(['ratings.*', 'users.firstName', 'users.lastName']);
 
         return view('landpage.index', compact('data', 'ratings', 'books'));

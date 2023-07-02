@@ -63,7 +63,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QEn6yi3hmCFD5Bh3',
+            '_route' => 'generated::0lhKhiz40AnfIHZ4',
           ),
           1 => NULL,
           2 => 
@@ -83,7 +83,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::bJazOPQZSyJJWMpZ',
+            '_route' => 'generated::FHrPIrFdYvOGsGdt',
           ),
           1 => NULL,
           2 => 
@@ -180,7 +180,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::rpi78v5uiuMW6t4I',
+            '_route' => 'generated::8tHMYTNIeFyWcGWc',
           ),
           1 => NULL,
           2 => 
@@ -695,6 +695,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/head_librarian/feedbacks' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'head_librarian.view.feedbacks',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/borrowing_librarian/dashboard' => 
       array (
         0 => 
@@ -981,7 +1001,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::F0eIJJkUbLmCqpM3',
+            '_route' => 'generated::3SPsq1373qbmCVtb',
           ),
           1 => NULL,
           2 => 
@@ -1017,7 +1037,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::iEOh7VYLhJD0LAoz',
+            '_route' => 'generated::xZ4oiyeYGR7JUGKI',
           ),
           1 => NULL,
           2 => 
@@ -1147,7 +1167,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::tbAFIDg953M0qCEU',
+            '_route' => 'generated::x5iKPoIWDhBdMVvx',
           ),
           1 => NULL,
           2 => 
@@ -1257,7 +1277,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'librarian.generated::2acMEwuSX9Ym0m44',
+            '_route' => 'librarian.generated::SToyKc69MxTgzPDJ',
           ),
           1 => NULL,
           2 => 
@@ -1387,7 +1407,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'librarian.generated::YJkqDC8NjBnmyeiK',
+            '_route' => 'librarian.generated::o9w8gne5e7N2TPd2',
           ),
           1 => NULL,
           2 => 
@@ -1441,7 +1461,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/li(?|vewire/preview\\-file/([^/]++)(*:117)|brarians/(?|reset\\-password/([^/]++)(*:161)|verify\\-email/([^/]++)/([^/]++)(*:200)))|/catalog(?|/book/([^/]++)(*:235)|_librarian/(?|show/book/([^/]++)(*:275)|edit/book/([^/]++)(*:301)|update/book/([^/]++)(*:329)|delete/book/([^/]++)(*:357)))|/head_librarian/(?|edit/(?|librarian/([^/]++)(*:412)|announcement/([^/]++)(*:441))|update/(?|librarian/([^/]++)(*:478)|announcement/([^/]++)(*:507))|delete/(?|librarian/([^/]++)(*:544)|announcement/([^/]++)(*:573))|show/book/([^/]++)(*:600))|/borrowing_librarian/(?|borrowed/books/(?|view/([^/]++)(*:664)|update/([^/]++)(*:687))|requested/books/([^/]++)(*:720)|update/(?|requested/books/([^/]++)(*:762)|application/borrower/([^/]++)(*:799))|application/borrower/([^/]++)(*:837))|/markAsRead/(?|([^/]++)(*:869)|librarian/([^/]++)(*:895))|/reset\\-password/([^/]++)(*:929)|/verify\\-email/([^/]++)/([^/]++)(*:969))/?$}sDu',
+      0 => '{^(?|/livewire/message/([^/]++)(*:33)|/([^/]++)/livewire/message/([^/]++)(*:75)|/li(?|vewire/preview\\-file/([^/]++)(*:117)|brarians/(?|reset\\-password/([^/]++)(*:161)|verify\\-email/([^/]++)/([^/]++)(*:200)))|/catalog(?|/book/([^/]++)(*:235)|_librarian/(?|show/book/([^/]++)(*:275)|edit/book/([^/]++)(*:301)|update/book/([^/]++)(*:329)|delete/book/([^/]++)(*:357)))|/head_librarian/(?|edit/(?|librarian/([^/]++)(*:412)|announcement/([^/]++)(*:441))|update/(?|librarian/([^/]++)(*:478)|announcement/([^/]++)(*:507)|feedback/([^/]++)(*:532))|delete/(?|librarian/([^/]++)(*:569)|announcement/([^/]++)(*:598))|show/(?|book/([^/]++)(*:628)|feedback/([^/]++)(*:653)))|/borrowing_librarian/(?|borrowed/books/(?|view/([^/]++)(*:718)|update/([^/]++)(*:741))|requested/books/([^/]++)(*:774)|update/(?|requested/books/([^/]++)(*:816)|application/borrower/([^/]++)(*:853))|application/borrower/([^/]++)(*:891))|/markAsRead/(?|([^/]++)(*:923)|librarian/([^/]++)(*:949))|/reset\\-password/([^/]++)(*:983)|/verify\\-email/([^/]++)/([^/]++)(*:1023))/?$}sDu',
     ),
     3 => 
     array (
@@ -1763,7 +1783,29 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      544 => 
+      532 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'head_librarian.feedback.update',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      569 => 
       array (
         0 => 
         array (
@@ -1785,7 +1827,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      573 => 
+      598 => 
       array (
         0 => 
         array (
@@ -1807,7 +1849,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      600 => 
+      628 => 
       array (
         0 => 
         array (
@@ -1830,7 +1872,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      664 => 
+      653 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'head_librarian.feedback.show',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      718 => 
       array (
         0 => 
         array (
@@ -1853,7 +1918,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      687 => 
+      741 => 
       array (
         0 => 
         array (
@@ -1876,7 +1941,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      720 => 
+      774 => 
       array (
         0 => 
         array (
@@ -1899,7 +1964,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      762 => 
+      816 => 
       array (
         0 => 
         array (
@@ -1921,7 +1986,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      799 => 
+      853 => 
       array (
         0 => 
         array (
@@ -1943,7 +2008,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      837 => 
+      891 => 
       array (
         0 => 
         array (
@@ -1966,7 +2031,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      869 => 
+      923 => 
       array (
         0 => 
         array (
@@ -1989,7 +2054,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      895 => 
+      949 => 
       array (
         0 => 
         array (
@@ -2012,7 +2077,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      929 => 
+      983 => 
       array (
         0 => 
         array (
@@ -2035,7 +2100,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      969 => 
+      1023 => 
       array (
         0 => 
         array (
@@ -2236,7 +2301,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::QEn6yi3hmCFD5Bh3' => 
+    'generated::0lhKhiz40AnfIHZ4' => 
     array (
       'methods' => 
       array (
@@ -2248,7 +2313,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::QEn6yi3hmCFD5Bh3',
+        'as' => 'generated::0lhKhiz40AnfIHZ4',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2264,7 +2329,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::bJazOPQZSyJJWMpZ' => 
+    'generated::FHrPIrFdYvOGsGdt' => 
     array (
       'methods' => 
       array (
@@ -2276,7 +2341,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::bJazOPQZSyJJWMpZ',
+        'as' => 'generated::FHrPIrFdYvOGsGdt',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2434,7 +2499,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::rpi78v5uiuMW6t4I' => 
+    'generated::8tHMYTNIeFyWcGWc' => 
     array (
       'methods' => 
       array (
@@ -2457,7 +2522,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::rpi78v5uiuMW6t4I',
+        'as' => 'generated::8tHMYTNIeFyWcGWc',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3761,6 +3826,119 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'head_librarian.view.feedbacks' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'head_librarian/feedbacks',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:librarians',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HLibrarianController@indexFeeds',
+        'controller' => 'App\\Http\\Controllers\\HLibrarianController@indexFeeds',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'head_librarian.view.feedbacks',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'head_librarian.feedback.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'head_librarian/show/feedback/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:librarians',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HLibrarianController@feedbackShow',
+        'controller' => 'App\\Http\\Controllers\\HLibrarianController@feedbackShow',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'head_librarian.feedback.show',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'head_librarian.feedback.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+      ),
+      'uri' => 'head_librarian/update/feedback/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth:librarians',
+        ),
+        'uses' => 'App\\Http\\Controllers\\HLibrarianController@feedbackUpdate',
+        'controller' => 'App\\Http\\Controllers\\HLibrarianController@feedbackUpdate',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'head_librarian.feedback.update',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'borrowing_librarian.dashboard' => 
     array (
       'methods' => 
@@ -4465,7 +4643,7 @@ app('router')->setCompiledRoutes(
 
 	return \\redirect()->back();
 
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000049d0000000000000000";}";s:4:"hash";s:44:"zzVlr5EIFInL/dHLpSmZAy8lHlG+2OKFn0s1AK6/pj8=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004a00000000000000000";}";s:4:"hash";s:44:"DbX8dBCjI3Razdi1blz96NbWE5pUbDkrmdljI0R2dn8=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -4521,7 +4699,7 @@ app('router')->setCompiledRoutes(
     }
 
 
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000049f0000000000000000";}";s:4:"hash";s:44:"hsKYeg12ECjkftqVo0fFA2t+OaVlrHMfy5nWB0Pb+3g=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004a20000000000000000";}";s:4:"hash";s:44:"s2spJALpNZD7tYwWk/KDv8Ddq4Ar5a/kY5WTtn7xixA=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -4805,7 +4983,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::F0eIJJkUbLmCqpM3' => 
+    'generated::3SPsq1373qbmCVtb' => 
     array (
       'methods' => 
       array (
@@ -4826,7 +5004,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::F0eIJJkUbLmCqpM3',
+        'as' => 'generated::3SPsq1373qbmCVtb',
       ),
       'fallback' => false,
       'defaults' => 
@@ -4880,7 +5058,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::iEOh7VYLhJD0LAoz' => 
+    'generated::xZ4oiyeYGR7JUGKI' => 
     array (
       'methods' => 
       array (
@@ -4901,7 +5079,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::iEOh7VYLhJD0LAoz',
+        'as' => 'generated::xZ4oiyeYGR7JUGKI',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5221,7 +5399,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::tbAFIDg953M0qCEU' => 
+    'generated::x5iKPoIWDhBdMVvx' => 
     array (
       'methods' => 
       array (
@@ -5242,7 +5420,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::tbAFIDg953M0qCEU',
+        'as' => 'generated::x5iKPoIWDhBdMVvx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5445,7 +5623,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'librarian.generated::2acMEwuSX9Ym0m44' => 
+    'librarian.generated::SToyKc69MxTgzPDJ' => 
     array (
       'methods' => 
       array (
@@ -5461,7 +5639,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'App\\Http\\Controllers\\LibAuth\\AuthenticatedSessionController@store',
         'controller' => 'App\\Http\\Controllers\\LibAuth\\AuthenticatedSessionController@store',
-        'as' => 'librarian.generated::2acMEwuSX9Ym0m44',
+        'as' => 'librarian.generated::SToyKc69MxTgzPDJ',
         'namespace' => NULL,
         'prefix' => '/librarians',
         'where' => 
@@ -5786,7 +5964,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'librarian.generated::YJkqDC8NjBnmyeiK' => 
+    'librarian.generated::o9w8gne5e7N2TPd2' => 
     array (
       'methods' => 
       array (
@@ -5802,7 +5980,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'App\\Http\\Controllers\\LibAuth\\ConfirmablePasswordController@store',
         'controller' => 'App\\Http\\Controllers\\LibAuth\\ConfirmablePasswordController@store',
-        'as' => 'librarian.generated::YJkqDC8NjBnmyeiK',
+        'as' => 'librarian.generated::o9w8gne5e7N2TPd2',
         'namespace' => NULL,
         'prefix' => '/librarians',
         'where' => 

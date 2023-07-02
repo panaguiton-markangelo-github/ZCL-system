@@ -129,6 +129,14 @@ Route::post('/head_librarian/update/event', [HLibrarianController::class, 'updat
 Route::post('/head_librarian/delete/event', [HLibrarianController::class, 'destroyEvents'])->middleware('auth:librarians')->name('events.delete');
 //end of events module routes
 
+
+//start feedbacks module routes
+Route::get('/head_librarian/feedbacks', [HLibrarianController::class, 'indexFeeds'])->middleware('auth:librarians')->name('head_librarian.view.feedbacks');
+Route::get('/head_librarian/show/feedback/{id}', [HLibrarianController::class, 'feedbackShow'])->middleware('auth:librarians')->name('head_librarian.feedback.show');
+Route::put('/head_librarian/update/feedback/{id}', [HLibrarianController::class, 'feedbackUpdate'])->middleware('auth:librarians')->name('head_librarian.feedback.update');
+//end feedbacks module routes
+
+
 //end of head librarian routes
 
 //-------------------------------------------------

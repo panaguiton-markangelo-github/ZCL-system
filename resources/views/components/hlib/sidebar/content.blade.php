@@ -54,6 +54,16 @@
         </x-slot>
     </x-sidebar.link>
 
+    <x-sidebar.link
+        title="Feedbacks"
+        href="{{ route('head_librarian.view.feedbacks') }}"
+        :isActive="request()->routeIs('head_librarian.view.feedbacks')"
+    >
+        <x-slot name="icon">
+            <i class="fa-solid fa-comments flex-shrink-0 w-6 h-5"></i>
+        </x-slot>
+    </x-sidebar.link>
+
      
     {{-- <x-sidebar.dropdown
         title="Buttons"

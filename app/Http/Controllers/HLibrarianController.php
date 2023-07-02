@@ -6,8 +6,11 @@ use App\Models\Announcements;
 use App\Models\Books;
 use App\Models\Events;
 use App\Models\Librarians;
+use App\Models\Member;
+use App\Models\Ratings;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -265,6 +268,40 @@ class HLibrarianController extends Controller
 
 
     // end of methods for events module.
+
+    // start of methods for feedbacks module.
+    public function indexFeeds(Request $request){
+        $data = Ratings::all();
+
+        return view('head_librarian.feedbacks', compact('data'));
+    }
+
+    public function feedbackShow($id){
+        $user_id = Ratings::where('id', '=', $id)->limit(1)->get();
+
+        $member_info = Member::where('user_id', '=', $user_id[0]->user_id)
+                               ->orderBy('created_at', 'desc')
+                               ->first();
+
+        return view('head_librarian.show_feedback', compact('member_info', 'user_id'));
+
+    }
+
+    public function feedbackUpdate(Request $request, $id, Ratings $feedback){
+        $request->validate([
+            "id" => ['required'],
+        ]);
+
+        $feedback->where('id', $request->id)->update([   
+            "reviewed" => 1,
+        ]);
+
+        return redirect()->route('head_librarian.view.feedbacks')->with('message', 'Feeback was successfully reviewed!');
+
+    }
+
+
+    // end of methods for feedbacks module.
 
 
 }

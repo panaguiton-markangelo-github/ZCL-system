@@ -9,10 +9,33 @@
     </x-slot>
 
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
-        <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
             Note: Your request to borrow book/s will be processed by the librarian,
             kindly wait for the notification if your request was approved or declined.
         </p>
+    </div>
+
+    <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <h4 class="font-bold text-center">
+            Terms and Conditions
+        </h4>
+        <p class="text-sm p-1">
+            Books not returned on time are charged PhP2.00/day per book.
+            <br>
+            <br>
+            Lost books are to be replaced with the same title. 
+            <br>
+            <br>
+            Users are responsible for all costs associated with lost or damaged materials including overdue fines, handling, and other processing charges.
+            <br>
+            <br>
+            The material borrowed must be returned by the due date. You are responsible for the book until it is returned. Borrowed material must be treated with care and protected from damage. Damage includes underlining, notes, and marks. 
+            <br>
+            <br>
+            Zamboanga City Library may modify any of these terms and conditions at any time by providing notice on ZCLibrary Services or Libserv. A User's continued use of LibServ shall be conclusively deemed acceptance of such modification.
+
+        </p>
+
     </div>
 
 
