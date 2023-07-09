@@ -40,7 +40,7 @@ use Illuminate\Http\Request;
 //update - update a data
 //destroy - delete a data
 
-//latest update : 06/27/2023 in the GITHUB
+//latest update : 07/02/2023 in the GITHUB
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landingpage');
 Route::get('/fetch/events', [LandingPageController::class, 'fetchEvents'])->name('fetch_events');

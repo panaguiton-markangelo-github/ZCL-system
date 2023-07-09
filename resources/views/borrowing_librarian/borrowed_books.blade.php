@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Borrowed Books") }}
+                {{ __("Borrowed Books / Returned Books") }}
             </h2>
 
         
@@ -50,7 +50,6 @@
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
-                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                     </tr>
 
@@ -62,25 +61,32 @@
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">Published</th>  
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left select_search">collection</th>       
                         <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
-                        <th scope="col" class="text-sm font-medium  dark:text-gray-900 px-6 py-4 text-left"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($borrowed_books as $book)
                         <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$book->borrowed_at}}</td>
+                            <td>{{$loop->iteration}} + book id:{{$book->bookReqID}}</td>
+
+                            @if($book->bookReqStatus == 'RETURNED')
+                                <td> RETURNED </td>
+                            @endif
+
+                            @if($book->bookReqStatus == 'RELEASED')
+                                <td>{{$book->borrowed_at}}</td>
+                            @endif
+
                             <td>{{$book->title}}</td>
                             <td>{{$book->author}}</td>
                             <td>{{$book->published}}</td>
                             <td>{{$book->collection}}</td>
-                            <td>{{$book->status}}</td>
+            
 
                             <td>
                             
                                 <div class="sm:rounded-lg">
                                     <div class="max-w-xl">
-                                        <x-button variant="danger" href="/borrowing_librarian/borrowed/books/view/{{$book->id}}">
+                                        <x-button variant="danger" href="/borrowing_librarian/borrowed/books/view/{{$book->bookReqID}}">
                                             <i class="fa-solid fa-circle-info"></i>
                                         </x-button> 
                                     
@@ -99,7 +105,6 @@
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>  
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>       
-                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th>
                     </tr>
                 </tfoot>

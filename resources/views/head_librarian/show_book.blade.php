@@ -127,7 +127,7 @@
     
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Source: ') }} {{$book->source}} 
+                    {{ __('Source of acquisition: ') }} {{$book->source}} 
                 </p>
     
             </div>
@@ -161,7 +161,7 @@
             
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Incls: ') }} {{$book->incls}} 
+                    {{ __('Includes: ') }} {{$book->incls}} 
                 </p>
 
             </div>

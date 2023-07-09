@@ -201,7 +201,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="source"
-                    :value="__('Source')"
+                    :value="__('Source of acquisition')"
                 />
 
                 <x-form.input
@@ -210,7 +210,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="$book->source"
-                    placeholder="{{ __('Source') }}"
+                    placeholder="{{ __('Source of acquisition') }}"
                     required
                     autofocus
                 />
@@ -255,7 +255,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="incls"
-                    :value="__('Incls')"
+                    :value="__('Includes')"
                 />
 
                 <x-form.input
@@ -264,7 +264,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="$book->incls"
-                    placeholder="{{ __('Incls') }}"
+                    placeholder="{{ __('Includes') }}"
                     required
                     autofocus
                 />

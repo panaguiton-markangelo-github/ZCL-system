@@ -173,23 +173,7 @@
                       information,     
                       connects people with information.
                     </p>
-                    <div class="btn-box">
-                      @auth
-                        <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                          Browse Books
-                        </a> 
-
-                      @else
-
-                      <a href="{{ route('login') }}" class="btn-1">
-                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                        Browse Books
-                      </a>
-
-                      @endauth
-                      
-                    </div>
+                    
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -217,22 +201,7 @@
                       
                       connects people with information.
                     </p>
-                    <div class="btn-box">
-                      @auth
-                        <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                          Browse Books
-                        </a> 
-
-                      @else
-
-                      <a href="{{ route('login') }}" class="btn-1">
-                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                        Browse Books
-                      </a>
-                      
-                      @endauth
-                    </div>
+                  
                   </div>
                 </div>
                 <div class="col-md-7">
@@ -259,22 +228,7 @@
                       information, 
                       connects people with information.
                     </p>
-                    <div class="btn-box">
-                      @auth
-                        <a href="{{ route('dashboard') }}" class="btn-1">
-                          <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                          Browse Books
-                        </a> 
-
-                      @else
-
-                      <a href="{{ route('login') }}" class="btn-1">
-                        <img src="{{ asset('images/search-icon.png') }}" width="22px" height="22px" alt="">
-                        Browse Books
-                      </a>
-                      
-                      @endauth
-                    </div>
+                
                   </div>
                 </div>
                 <div class="col-md-6">

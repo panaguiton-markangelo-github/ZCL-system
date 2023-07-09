@@ -41,7 +41,7 @@
                 x-data="{ show: true }"
                 x-show="show"
                 x-transition
-                x-init="setTimeout(() => show = false, 2500)"
+                x-init="setTimeout(() => show = false, 5000)"
                 class="text-sm text-red-600 dark:text-red-400 mb-2"
             >
                 {{ $error }}

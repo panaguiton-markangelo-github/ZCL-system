@@ -38,17 +38,22 @@ class BLibrarianController extends Controller
     //start borrowed books methods
 
     public function borrowedBooksIndex(){
-        $borrowed_books = Books::where('status', '=', 'BORROWED')->orderBy('borrowed_at', 'desc')->get();
+        $borrowed_books = DB::table('books')
+        ->join('book_bor_reqs', 'books.id', '=', 'book_bor_reqs.book_id')
+        ->where('book_bor_reqs.status', '=', 'RELEASED')
+        ->orWhere('book_bor_reqs.status', '=', 'RETURNED')
+        ->orderBy('book_bor_reqs.created_at', 'desc')
+        ->select('books.*','book_bor_reqs.id AS bookReqID','book_bor_reqs.status AS bookReqStatus', 'books.status AS bookStatus')
+        ->get();
 
+        
         return view('borrowing_librarian.borrowed_books', compact('borrowed_books'));
     }
 
     public function borrowedBooksShow($id, Books $book){
         $request_book = DB::table('book_bor_reqs')
         ->join('books', 'book_id', '=', 'books.id')
-        ->where('book_bor_reqs.book_id', '=', $id)
-        ->where('book_bor_reqs.status', '=', 'RELEASED')
-        ->where('books.status', '=', 'BORROWED')
+        ->where('book_bor_reqs.id', '=', $id)
         ->orderBy('book_bor_reqs.created_at', 'desc')
         ->select('book_bor_reqs.created_at', 'book_bor_reqs.id', 'book_bor_reqs.book_id', 'book_bor_reqs.member_id', 'books.title', 'books.author', 'books.published', 
                  'books.subject', 'books.publisher', 'books.isbn', 'books.summary', 
@@ -70,10 +75,20 @@ class BLibrarianController extends Controller
         return view('borrowing_librarian.show_borrower_info', compact('request_book', 'member_info'));
     }
 
-    public function borrowedBooksUpdate($id, Books $book){
+    public function borrowedBooksUpdate($id, Books $book, BookBorReq $book_bor_req){
         $book->where('id', $id)->update([   
             "status" => 'AVAILABLE',
             "borrowed_at" => null,
+        ]);
+
+        $l_borrowed_books = DB::table('book_bor_reqs')
+        ->where('book_id', '=', $id)
+        ->where('status', '=', 'RELEASED')
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+        $book_bor_req->where('id', $l_borrowed_books->id)->update([   
+            "status" => 'RETURNED',
         ]);
 
         return redirect()->route('borrowing_librarian.borrowed_books.view')->with('message', 'Book was successfully flagged as available again!');

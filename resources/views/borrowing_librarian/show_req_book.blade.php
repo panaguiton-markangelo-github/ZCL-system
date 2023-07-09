@@ -137,7 +137,7 @@
     
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Source: ') }} {{$request_book[0]->source}} 
+                    {{ __('Source of acquisition: ') }} {{$request_book[0]->source}} 
                 </p>
     
             </div>
@@ -171,7 +171,7 @@
             
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Incls: ') }} {{$request_book[0]->incls}} 
+                    {{ __('Includes: ') }} {{$request_book[0]->incls}} 
                 </p>
 
             </div>
@@ -383,6 +383,16 @@
                     
                     <p class="text-sm text-cyan-600 dark:text-cyan-400 text-center font-bold">
                         You have released this Book to the user.
+                    </p>
+                    
+                </div>
+            @endif
+
+            @if ($request_book[0]->bookReqStatus == 'RETURNED')
+                <div class="flex justify-center text-center">
+                    
+                    <p class="text-sm text-cyan-600 dark:text-cyan-400 text-center font-bold">
+                        This book was successfully returned by the user.
                     </p>
                     
                 </div>

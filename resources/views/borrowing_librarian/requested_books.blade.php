@@ -78,8 +78,11 @@
                                 <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
                             @endif
                             @if ($rbook->status == 'RELEASED')
-                            <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
-                        @endif
+                                <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
+                            @endif
+                            @if ($rbook->status == 'RETURNED')
+                                <td class="text-green-500 dark:text-green-400">{{$rbook->status}}</td>
+                            @endif
                             @if ($rbook->status == 'DECLINED')
                                 <td class="text-red-500 dark:text-red-400">{{$rbook->status}}</td>
                             @endif

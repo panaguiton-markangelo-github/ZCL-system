@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Additional information for this borrowed book") }}
+                {{ __("Additional information for this borrowed book / returned book") }}
             </h2>
 
         </div>
@@ -10,11 +10,17 @@
 
     
     <div class="p-6 mt-2 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        @if ($request_book[0]->bookReqStatus == 'RETURNED')
+            <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
+                Book Returned
+            </p>
+        @endif
 
-        <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
-            {{ __('Book Borrowed at: ') }} {{$request_book[0]->borrowed_at}}
-        </p>
-
+        @if ($request_book[0]->bookReqStatus == 'RELEASED')
+            <p class="mt-1 font-bold text-xl text-gray-600 dark:text-gray-400 text-center">
+                {{ __('Book Borrowed at: ') }} {{$request_book[0]->borrowed_at}}
+            </p>
+        @endif
 
         <br>
         <hr>
@@ -180,7 +186,7 @@
     
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Source: ') }} {{$request_book[0]->source}} 
+                    {{ __('Source of acquisition: ') }} {{$request_book[0]->source}} 
                 </p>
     
             </div>
@@ -214,7 +220,7 @@
             
             <div>
                 <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{ __('Incls: ') }} {{$request_book[0]->incls}} 
+                    {{ __('Includes: ') }} {{$request_book[0]->incls}} 
                 </p>
 
             </div>
@@ -322,25 +328,37 @@
 
         </div>
 
-        <br>
-        <hr>
-        <br>
+        @if ($request_book[0]->bookReqStatus == 'RETURNED')
+            <br>
+            <hr>
+            <br>
 
-        <div class="mt-6 flex justify-center">
-            <x-button
-                href="/borrowing_librarian/borrowed/books/update/{{$request_book[0]->book_id}}"
-                variant="success"
-            >
-                <i class="fa-solid fa-check pr-1"></i>
-                {{ __('Returned') }}
-            </x-button>
+            <p class="text-center text-sm">
+                Note: You have tagged this book as "returned", meaning the book was successfully returned by the borrower.
+            </p>
+        @endif
 
-        </div>
-        <br>
-        <p class="text-center text-sm">Note: Clicking the button "Returned" will make the book available again. Furthermore,
-            this will also indicate that the book was successfully returned!
-        </p>
-       
+        @if ($request_book[0]->bookReqStatus == 'RELEASED')
+            <br>
+            <hr>
+            <br>
+
+            <div class="mt-6 flex justify-center">
+                <x-button
+                    href="/borrowing_librarian/borrowed/books/update/{{$request_book[0]->book_id}}"
+                    variant="success"
+                >
+                    <i class="fa-solid fa-check pr-1"></i>
+                    {{ __('Returned') }}
+                </x-button>
+
+            </div>
+            <br>
+            <p class="text-center text-sm">Note: Clicking the button "Returned" will make the book available again. Furthermore,
+                this will also indicate that the book was successfully returned!
+            </p>
+        @endif
+        
         
     </div>
 

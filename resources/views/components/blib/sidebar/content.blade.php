@@ -15,7 +15,7 @@
     </x-sidebar.link>
 
     <x-sidebar.link
-        title="Borrowed Books"
+        title="Borrowed Books / Returned Books"
         href="{{ route('borrowing_librarian.borrowed_books.view') }}"
         :isActive="request()->routeIs('borrowing_librarian.borrowed_books.view')"
     >
