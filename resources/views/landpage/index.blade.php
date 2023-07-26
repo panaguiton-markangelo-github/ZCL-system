@@ -173,6 +173,17 @@
                       information,     
                       connects people with information.
                     </p>
+
+                    <div class="btn-box">
+
+                      <a href="#catalog_books" class="btn-1">
+                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        Browse Books
+                      </a>
+
+      
+                      
+                    </div>
                     
                   </div>
                 </div>
@@ -201,6 +212,17 @@
                       
                       connects people with information.
                     </p>
+
+                    <div class="btn-box">
+
+                      <a href="#catalog_books" class="btn-1">
+                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        Browse Books
+                      </a>
+
+      
+                      
+                    </div>
                   
                   </div>
                 </div>
@@ -228,6 +250,17 @@
                       information, 
                       connects people with information.
                     </p>
+
+                    <div class="btn-box">
+
+                      <a href="#catalog_books" class="btn-1">
+                        <img src="images/search-icon.png" width="22px" height="22px" alt="">
+                        Browse Books
+                      </a>
+
+      
+                      
+                    </div>
                 
                   </div>
                 </div>
