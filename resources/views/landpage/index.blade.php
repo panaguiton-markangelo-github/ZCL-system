@@ -52,7 +52,7 @@
           <div class="col-lg-8">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
               <a class="navbar-brand" href="#">
-                <img width="50" class="mx-2" alt="Seal of Zamboanga City" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Seal_of_Zamboanga_City.png">
+                <img width="50" class="mx-2" src="{{ asset('images/new_zcl_logo.png') }}" alt="Seal of Zamboanga City Library">
                 <span>
                   LibServ
                 </span>
@@ -187,9 +187,9 @@
                     
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                   <div class="slider_img-box">
-                    <img src="{{ asset('images/slider_4.jpg') }}" alt=""/>
+                    <img src="{{ asset('images/slider_4.jpg') }}" width="350px" height="350px" alt=""/>
                     
                   </div>
                 </div>
@@ -228,7 +228,7 @@
                 </div>
                 <div class="col-md-7">
                   <div class="slider_img-box">
-                    <img src="{{ asset('images/slider_2.jpg') }}" alt=""/>
+                    <img src="{{ asset('images/new_slider_1.jpg') }}" width="350px" height="350px" alt=""/>
                   </div>
                 </div>
               </div>
@@ -264,9 +264,9 @@
                 
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                   <div class="slider_img-box">
-                    <img src="{{ asset('images/slider_3.jpg') }}" alt=""/>
+                    <img src="{{ asset('images/new_slider_2.jpg') }}" width="350px" height="350px" alt=""/>
                   </div>
                 </div>
               </div>

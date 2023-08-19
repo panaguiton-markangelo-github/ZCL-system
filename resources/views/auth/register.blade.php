@@ -3,6 +3,24 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
+        <div class="m-3 p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+            <h2 class="font-bold mb-2">
+                Important Reminder: Online ZC Library Services Operating Hours
+            </h2>
+            <p class="text-m text-orange-700 dark:text-orange-400">   
+                We would like to remind you that the online services provided by the ZC Library will be processed exclusively during our regular work hours, <b>Monday to Friday, from 8:00 AM to 5:00 PM.</b> 
+                <br>
+                <br>
+                Please note that any requests submitted outside of our operating hours will be addressed promptly on the next business day. We kindly request your understanding and patience in such cases.
+            </p>
+
+            <br>
+
+            <p class="text-sm"> 
+                Students are only allowed to borrow fiction books but LGU and Recommended By type of users are able to borrow any kind of books.
+            </p>
+        </div>
+        
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
             
