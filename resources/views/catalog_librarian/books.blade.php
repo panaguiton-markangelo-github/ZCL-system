@@ -61,7 +61,7 @@
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Author</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Published</th>
                         
-                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">collection</th>
+                        <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Collection</th>
         
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left">Status</th>
                         <th scope="col" class="text-sm font-medium  px-6 py-4 text-left"></th> 

@@ -27,81 +27,55 @@
         <br>
 
         <div class="flex justify-center">
-            <img class="border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="300" height="300">
-        </div>
-
-        <br>
-
-        <div class="grid grid-cols-4 gap-4 text-center">
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('Title: ') }} 
-                </p>
-
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->title}} 
-                </p>
-            </div>
+            <img class="mr-2 border-solid border-4 border-red-500" src="{{ asset('storage/'.$book->image) }}" alt="none" width="300" height="300">
             
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('Author: ') }}  
-                </p>
+            <div class="ml-3">
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('Title: ') }} {{$book->title}}
+                    </p>
+    
+                </div>
+                
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('Author: ') }} {{$book->author}}
+                    </p>
 
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->author}} 
-                </p>
+                </div>
+    
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('Published: ') }} {{$book->published}}
+                    </p>
+    
+                </div>
+    
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('Subject: ') }} {{$book->subject}}
+                    </p>
+    
+                </div>
+    
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('Publisher: ') }} {{$book->publisher}}
+                    </p>
 
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('Published: ') }} 
-                </p>
-
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->published}} 
-                </p>
-
-            </div>
-
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('Subject: ') }}
-                </p>
-
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->subject}} 
-                </p>
-
-            </div>
-        </div>
-
-        <br>
-
-        <div class="grid grid-cols-2 gap-2 text-center">
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('Publisher: ') }}
-                </p>
-
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->publisher}} 
-                </p>
-            </div>
+                </div>
+                
+                <div>
+                    <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
+                        {{ __('ISBN: ') }} {{$book->isbn}}
+                    </p>
             
-            <div>
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400" style="font-weight: 900">
-                    {{ __('ISBN: ') }}
-                </p>
-
-                <p class="mt-2 text-md text-gray-600 dark:text-gray-400">
-                    {{$book->isbn}} 
-                </p>
-
+                </div>
             </div>
         </div>
 
+
+    
         <br>
 
         <p class="mt-1 text-xl text-gray-600 dark:text-gray-400 text-center">

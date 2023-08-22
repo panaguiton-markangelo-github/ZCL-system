@@ -55,7 +55,7 @@
     </x-sidebar.link>
 
     <x-sidebar.link
-        title="Feedbacks"
+        title="Feedback"
         href="{{ route('head_librarian.view.feedbacks') }}"
         :isActive="request()->routeIs('head_librarian.view.feedbacks')"
     >

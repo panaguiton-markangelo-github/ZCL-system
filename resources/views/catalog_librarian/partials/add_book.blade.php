@@ -308,7 +308,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="property_no"
-                    :value="__('Property No')"
+                    :value="__('Property No.')"
                 />
 
                 <x-form.input
@@ -317,7 +317,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('property_no')"
-                    placeholder="{{ __('Property No') }}"
+                    placeholder="{{ __('Property No.') }}"
                     required
                     autofocus
                 />
@@ -335,7 +335,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="acc_no"
-                    :value="__('Acc. No')"
+                    :value="__('Account No.')"
                 />
 
                 <x-form.input
@@ -344,7 +344,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('acc_no')"
-                    placeholder="{{ __('Acc. No') }}"
+                    placeholder="{{ __('Account No.') }}"
                     required
                     autofocus
                 />
@@ -389,7 +389,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="call_no"
-                    :value="__('Call No')"
+                    :value="__('Call No.')"
                 />
 
                 <x-form.input
@@ -398,7 +398,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('call_no')"
-                    placeholder="{{ __('Call No') }}"
+                    placeholder="{{ __('Call No.') }}"
                     required
                     autofocus
                 />
@@ -470,7 +470,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="author_no"
-                    :value="__('Author No')"
+                    :value="__('Author No.')"
                 />
 
                 <x-form.input
@@ -479,7 +479,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('author_no')"
-                    placeholder="{{ __('Author No') }}"
+                    placeholder="{{ __('Author No.') }}"
                     required
                     autofocus
                 />
@@ -497,7 +497,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="c"
-                    :value="__('©')"
+                    :value="__('Copyright')"
                 />
 
                 <x-form.input
@@ -506,7 +506,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('c')"
-                    placeholder="{{ __('©') }}"
+                    placeholder="{{ __('Copyright') }}"
                     required
                     autofocus
                 />
@@ -524,7 +524,7 @@
             <div class="mt-6 space-y-6">
                 <x-form.label
                     for="section"
-                    :value="__('section')"
+                    :value="__('Section')"
                 />
 
                 <x-form.input
@@ -533,7 +533,7 @@
                     type="text"
                     class="block w-3/4"
                     :value="old('section')"
-                    placeholder="{{ __('section') }}"
+                    placeholder="{{ __('Section') }}"
                     required
                     autofocus
                 />
@@ -701,10 +701,10 @@
                     dark:text-gray-300 dark:focus:ring-offset-dark-eval-1" required>
     
                     <option value="" selected>Select collection</option>
-                    <option value="non-fiction"> non-fiction </option>
-                    <option value="fiction-college"> fiction for College </option>
-                    <option value="fiction-children"> fiction for Children </option>
-                    <option value="fiction-hs"> fiction for High School </option>
+                    <option value="non-fiction"> Non-fiction </option>
+                    <option value="fiction-college"> Fiction for College </option>
+                    <option value="fiction-children"> Fiction for Children </option>
+                    <option value="fiction-hs"> Fiction for High School </option>
                     <option value="rotary-collection"> Rotary Collection </option>
                     <option value="filipiniana"> Filipiniana </option>
                     <option value="circulation"> Circulation </option>

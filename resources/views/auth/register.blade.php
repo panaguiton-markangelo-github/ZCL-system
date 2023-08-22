@@ -3,7 +3,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <div class="m-3 p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+        <div class="m-5 p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
             <h2 class="font-bold mb-2">
                 Important Reminder: Online ZC Library Services Operating Hours
             </h2>
@@ -16,10 +16,12 @@
 
             <br>
 
-            <p class="text-sm"> 
+            <p class="text-sm text-orange-700 dark:text-orange-400"> 
                 Students are only allowed to borrow fiction books but LGU and Recommended By type of users are able to borrow any kind of books.
             </p>
         </div>
+
+        <br>
         
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf

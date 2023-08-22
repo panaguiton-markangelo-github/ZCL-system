@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
-                {{ __("Feedbacks") }}
+                {{ __("Feedback") }}
             </h2>
 
            
@@ -11,7 +11,7 @@
 
     <div class="p-6 mt-2 bg-white rounded-md shadow-md dark:bg-dark-eval-1">
         <p class="text-sm">
-            Note: Feedbacks that are not yet reviewed will not be displayed in the home page.
+            Note: Feedback that are not yet reviewed will not be displayed in the home page.
         </p>
         
     </div>
